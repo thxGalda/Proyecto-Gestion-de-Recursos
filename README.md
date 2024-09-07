@@ -10,7 +10,7 @@ Para cada profesor, se puede ingresar a los cursos los cuales dictas y una vez e
 Por otro lado, si eres alumno, puedes tener acceso a todos los cursos los cuales estas cursando, teniendo la capacidad de interactuar con todos los recursos que el Profesor o encargado de curso ponga a tu disposición.
 
 ## Estructura de datos / JavaColeccions presentes
-Para organizar nuestro datos y poder obtener la mayor eficiencia del manejo de recursos, hemos utilizado e implementado un "Hash Map" para cada recurso a agregar, eliminar o modificar.
+Para organizar nuestro datos y poder obtener la mayor eficiencia del manejo de recursos, hemos utilizado e implementado un "Map" para cada recurso a agregar, eliminar o modificar.
 Dicho mapa se encuentra dentro de una "List" que almacena carpetas, dentro de la clase "Curso" esto nos permite que dentro de cada curso, podamos organizar varias carpetas en las cuales la presencia del mapa nos ayude a hacer una busqueda mucho mas efectiva al recurso que queremos acceder.
 
 ### Cabe recalcar que esto es un demo, un avance del proyecto, por lo cual iremos agregando mas funciones con el paso del tiempo
