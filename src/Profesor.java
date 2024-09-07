@@ -42,6 +42,9 @@ public class Profesor extends Usuario {
             System.out.println("Advertencia: La lista de cursos impartidos no puede ser null.");
         }
     }
+    //
+    // Setters y Getters
+    //
     public String getDepartamento() {
         return departamento;
     }
