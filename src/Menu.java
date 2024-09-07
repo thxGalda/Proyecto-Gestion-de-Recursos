@@ -7,15 +7,23 @@ public class Menu {
 	private Usuario usuarioActual;
     private Scanner scanner;
     private List<Curso> cursos;  // Lista de cursos disponibles
-    private List <Estudiante> estudiantes; // Lista de estudiantes
+    private List <Estudiante> estudiantes; // Lista de estudiantes auxiliares
 
     // Constructor
  // Constructor
     public Menu() {
         scanner = new Scanner(System.in);
-        cursos = new ArrayList<>();  // Inicializamos la lista de cursos
-        estudiantes = new ArrayList<>();   // Inicializamos la lista de estudiantes
-        inicializarCursos();  // Cargar cursos iniciales
+        this.cursos = new ArrayList<>();  // Inicializamos la lista de cursos
+        this.estudiantes = new ArrayList<>();   // Inicializamos la lista de estudiantes
+    }
+    // Metodo para agregar cursos en la carga inicial de datos
+    public void agregarCurso(Curso curso) {
+        if (curso != null) {
+            cursos.add(curso);
+            System.out.println("Curso agregado: " + curso.getNombre());
+        } else {
+            System.out.println("No se puede agregar un curso nulo.");
+        }
     }
     // Método para iniciar el menú principal
     public void iniciar() {
@@ -24,6 +32,7 @@ public class Menu {
 
         // Recoger datos del usuario y determinar si es Estudiante o Profesor
         usuarioActual = ingresarDatosUsuario();
+        cambiarContraseña(); // metodo para establecer contraseña
 
         // Menú principal
         while (true) {
@@ -31,13 +40,12 @@ public class Menu {
             System.out.println("1. Configuración");
             System.out.println("2. Ficha Personal");
             System.out.println("3. Revisar Cursos");
-            System.out.println("4. Buscar Recursos");
 
             if (usuarioActual instanceof Profesor) {
-                System.out.println("5. Añadir o Editar Curso");
+                System.out.println("4. Modificar Curso");
             }
 
-            System.out.println("6. Salir");
+            System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -54,16 +62,13 @@ public class Menu {
                     revisarCursos();
                     break;
                 case 4:
-                    buscarRecursos();
-                    break;
-                case 5:
                     if (usuarioActual instanceof Profesor) {
                         editarCurso();
                     } else {
                         System.out.println("Opción no válida.");
                     }
                     break;
-                case 6:
+                case 0:
                     System.out.println("Saliendo del sistema. ¡Hasta luego!");
                     return;
                 default:
@@ -72,6 +77,7 @@ public class Menu {
             }
         }
     }
+
     // Método auxiliar para generar un ID de usuario aleatorio
     private int generarIdUsuario() {
         // Usar Random para generar un entero aleatorio de hasta 6 dígitos
@@ -122,48 +128,6 @@ public class Menu {
             return estudiantePorDefecto;
         }
     }
-
-    // Método para la configuración del usuario
-    private void configurarUsuario() {
-        System.out.println("\n--- Configuración ---");
-        System.out.println("1. Cambiar nombre");
-        System.out.println("2. Cambiar correo electrónico");
-        System.out.println("3. Cambiar contraseña");
-        System.out.println("4. Regresar");
-        System.out.print("Seleccione una opción: ");
-        
-        int opcion = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer del scanner
-
-        switch (opcion) {
-            case 1:
-                System.out.print("Ingrese el nuevo nombre: ");
-                String nuevoNombre = scanner.nextLine();
-                usuarioActual.setNombre(nuevoNombre);
-                break;
-            case 2:
-                System.out.print("Ingrese el nuevo correo electrónico: ");
-                String nuevoCorreo = scanner.nextLine();
-                usuarioActual.setEmail(nuevoCorreo);
-                break;
-            case 3:
-            	while(true) {
-	            	System.out.println("Ingrese la contraseña actual: ");
-	                String contraseña = scanner.nextLine();
-	                if(contraseña == usuarioActual.getContrasena()) {
-	                	System.out.println("Ingrese la contraseña nueva: ");
-	                	String nuevaContraseña = scanner.nextLine();
-	                    usuarioActual.setContrasena(nuevaContraseña);
-	                    break;
-	                }else {
-	                	System.out.println("La contraseña no coincide");
-	                }
-            	}
-            default:
-                System.out.println("Opción no válida.");
-                break;
-        }
-    }
     // Método para mostrar la ficha personal del usuario
     private void mostrarFichaPersonal() {
     	System.out.println(usuarioActual.toString());
@@ -176,31 +140,34 @@ public class Menu {
             System.out.println("Departamento " + profesor.getDepartamento());
         }
     }
-    // Método para buscar recursos en carpeta
-    private void buscarRecursos() {
-        System.out.println("Buscar por: 1. Autor 2. Categoría 3. Fecha");
-        int opcion = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer
+    private void cambiarContraseña(){
+        while (true) {
+            // Verificar si el usuario no tiene contraseña establecida
+            String contraseñaActual = usuarioActual.getContrasena();
+            if (contraseñaActual == null) {
+                // Caso donde no hay contraseña establecida
+                System.out.println("No tiene una contraseña establecida. Ingrese una nueva contraseña: ");
+                String nuevaContraseña = scanner.nextLine();
+                usuarioActual.setContrasena(nuevaContraseña);
+                System.out.println("Contraseña establecida correctamente.");
+                break;
+            } else {
+                // Caso donde ya hay una contraseña establecida
+                System.out.println("Ingrese la contraseña actual: ");
+                String contraseñaIngresada = scanner.nextLine();
 
-        System.out.print("Ingrese el término de búsqueda: ");
-        String terminoBusqueda = scanner.nextLine();
-
-        switch (opcion) {
-            case 1:
-                // Método para buscar por autor
-                break;
-            case 2:
-                // Método para buscar por categoría
-                break;
-            case 3:
-                // Método para buscar por fecha
-                break;
-            default:
-                System.out.println("Opción no válida.");
-                break;
+                if (contraseñaIngresada.equals(contraseñaActual)) {
+                    System.out.println("Ingrese la nueva contraseña: ");
+                    String nuevaContraseña = scanner.nextLine();
+                    usuarioActual.setContrasena(nuevaContraseña);
+                    System.out.println("Contraseña cambiada correctamente.");
+                    break;
+                } else {
+                    System.out.println("La contraseña actual no es correcta. Intente nuevamente.");
+                }
+            }
         }
     }
-    
     // Método para mostrar y revisar cursos disponibles
     private void revisarCursos() {
         
@@ -210,19 +177,18 @@ public class Menu {
             System.out.println("No hay cursos disponibles.");
             return;
         }
-        System.out.println("\n--- Lista de Cursos ---");
+        System.out.println("\n--- Lista de Cursos ---\n");
             for (int i = 0; i < cursos.size(); i++) {
                 Curso curso = cursos.get(i);
                 System.out.println((i + 1) + ". " + curso.getNombre() + " - " + curso.getDescripcion());
             }
-	    System.out.print("Selecciona un curso (número): ");
+	    System.out.print("Selecciona un curso (número): \n");
 	    int opcionCurso = scanner.nextInt();
 	    
 	    if (opcionCurso < 1 || opcionCurso > cursos.size()) {
 	        System.out.println("Opción no válida.");
 	        return;
 	    }
-	    
 	    // Selecciona el curso correspondiente
 	    Curso cursoSeleccionado = cursos.get(opcionCurso - 1);
 	    
@@ -234,7 +200,7 @@ public class Menu {
     //
     // Método exclusivo para profesores
     private void editarCurso() {
-        System.out.println("Seleccione el curso que desea editar:");
+        System.out.println("Seleccione el curso que desea editar:\n");
         
         // Aquí listarías los cursos para que el profesor seleccione cuál editar
         for (int i = 0; i < cursos.size(); i++) {
@@ -247,7 +213,7 @@ public class Menu {
         int opcion;
         do {
 	        System.out.println("Opciones de edición del curso:");
-	        System.out.println("1. Actualizar descripción del curso");
+	        System.out.println("1. Actualizar Descripción del Curso");
 	        System.out.println("2. Asignar Profesor");
 	        System.out.println("3. Agregar Carpeta");
 	        System.out.println("4. Eliminar Carpeta");
@@ -311,8 +277,25 @@ public class Menu {
 	                }
 	                break;
 	            case 5: // Agregar Estudiante
+                    System.out.print("Ingrese el nombre del estudiante: ");
+                    String nombreEstudiante = scanner.nextLine();
+                    
+                    System.out.print("Ingrese el rut del estudiante: ");
+                    String rutEstudiante = scanner.nextLine();
+                    
+                    System.out.print("Ingrese el correo electrónico del estudiante: ");
+                    String correoEstudiante = scanner.nextLine();
+            
+                    System.out.print("Seleccione el paralelo donde quiera agregar al estudiante: ");
+                    int paraleloEstudiante = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar el buffer del scanner
+                    // Generar un ID aleatorio para el usuario
+                    int idEstudiante = generarIdUsuario();
+                    // Constructor 3:
+                    Estudiante nuevoEstudiante = new Estudiante(nombreEstudiante, idEstudiante, rutEstudiante, correoEstudiante, paraleloEstudiante);
+                    curso.agregarEstudiante(nuevoEstudiante);
 	            	break;
-	            case 6 : // Eliminar Estudiante
+	            case 6 : // Eliminar Estudiante por ID o Nombre
 	            	System.out.print("Ingrese el nombre o el ID del estudiante a eliminar: ");
 	                String entradaEliminarEstudiante = scanner.nextLine();
 	                try {
@@ -324,9 +307,54 @@ public class Menu {
 	                    curso.eliminarEstudiante(entradaEliminarEstudiante);
 	                }
 	                break;
-	            case 7: // Cargar Recurso
-	            	// pide un id de carpeta y un objeto tipo recurso y se llama a la funcion cargarRecurso de la clase curso
-	            	// tiene 4 distintos metodos sobrecargados, subir un solo objeto recurso por nombre de carpeta o id de carpeta, o subir una lista de recursos por nombre de carpeta o id de carpeta
+	            case 7: // Cargar Recurso (Llama al método sobrecargado cargar recurso correspondiente de clase curso)
+                    System.out.println("¿Desea cargar un solo recurso o una lista de recursos?");
+                    System.out.println("1. Un solo recurso");
+                    System.out.println("2. Lista de recursos");
+                    int opcionRecurso = scanner.nextInt();
+                    scanner.nextLine(); // limpiar el buffer
+
+                    System.out.println("Ingrese el nombre o id de la carpeta:");
+                    String entradaCarpeta = scanner.nextLine();
+                    // Intentar convertir la entrada a un número
+                    try {
+                        int idCarpetaAgregar = Integer.parseInt(entradaCarpeta);
+                        if (opcionRecurso == 1) {
+                            Recurso recurso = Recurso.crearRecurso(); // Método para crear un recurso
+                            if (recurso != null) {
+                                curso.cargarRecurso(idCarpetaAgregar, recurso); // Llama al método sobrecargado de clase curso
+                            } else {
+                                System.out.println("Error al crear el recurso.");
+                            }
+                        } else if (opcionRecurso == 2) {
+                            List<Recurso> listaRecursos = Carpeta.crearListaRecursos(); // Método para crear multiples recursos
+                            if (listaRecursos != null && !listaRecursos.isEmpty()) {
+                                curso.cargarRecurso(idCarpetaAgregar, listaRecursos);// Llama al método sobrecargado de clase curso
+                            } else {
+                                System.out.println("Error al crear la lista de recursos.");
+                            }
+                        } else {
+                            System.out.println("Opción no válida.");
+                        } 
+                    } catch (NumberFormatException e) {
+                        if (opcionRecurso == 1) {
+                            Recurso recurso = Recurso.crearRecurso(); // Método para crear un recurso
+                            if (recurso != null) {
+                                curso.cargarRecurso(entradaCarpeta, recurso); // Llama al método sobrecargado de clase carpeta
+                            } else {
+                                System.out.println("Error al crear el recurso.");
+                            }
+                        } else if (opcionRecurso == 2) {
+                            List<Recurso> listaRecursos = Carpeta.crearListaRecursos();  // Método para crear multiples recursos
+                            if (listaRecursos != null && !listaRecursos.isEmpty()) {
+                                curso.cargarRecurso(entradaCarpeta, listaRecursos); // Llama al método sobrecargado de clase curso
+                            } else {
+                                System.out.println("Error al crear la lista de recursos.");
+                            }
+                        } else {
+                            System.out.println("Opción no válida.");
+                        } 
+                    }
 	            	break;
 	            case 0:
 	                System.out.println("Volviendo al Menú Principal...");
@@ -336,28 +364,31 @@ public class Menu {
 	        	}
 	    	} while (opcion != 0);
     }
+    // -------------------------------------------------- SUBMENU ----------------------------------
+    // Metodo para el submenu del curso
     public void mostrarSubmenuCurso(Curso curso) {
         int opcion;
         
         do {
-            System.out.println("\n=== Menú del Curso: " + curso.getNombre() + " ===");
+            System.out.println("\n=== Menú del Curso: " + curso.getNombre() + " ===\n");
             System.out.println("1. Revisar Carpetas");
             System.out.println("2. Mostrar Estudiantes");
             System.out.println("3. Buscar Estudiante");
             System.out.println("4. Ordenar Carpetas");
+            System.out.println("5. Buscar Recursos");
             System.out.println("0. Volver al Menú Principal");
-            System.out.print("Selecciona una opción: ");
+            System.out.print("Selecciona una opción: \n");
             opcion = scanner.nextInt();
             scanner.nextLine();  // Consumir el salto de línea
             
             switch (opcion) {
                 case 1:
-                    curso.mostrarCarpetas();
+                    mostrarSubmenuCarpetas(curso);
                     break;
-                case 2:
+                case 2: // Mostrar Estudiantes
                     curso.mostrarEstudiantesInscritos();
                     break;
-                case 3:
+                case 3: // Buscar Estudiante
                     System.out.print("Ingrese el nombre o el id del estudiante: ");
                     String entradaEstudiante = scanner.nextLine();
                     Estudiante estudianteAux;
@@ -377,7 +408,7 @@ public class Menu {
                         System.out.println("\nEstudiante no encontrado.");
                     }
                     break;
-                case 4:
+                case 4: // Ordenar Carpetas
                     System.out.println("1. Ordenar por nombre");
                     System.out.println("2. Ordenar por visibilidad");
                     int opcionOrden = scanner.nextInt();
@@ -389,6 +420,42 @@ public class Menu {
                         System.out.println("Opción no válida.");
                     }
                     break;
+                case 5: // Buscar recursos 
+                    System.out.println("¿Cómo desea buscar el recurso?\n");
+                        System.out.println("1. Por fecha");
+                        System.out.println("2. Por categoría");
+                        System.out.println("3. Por autor");
+                        System.out.println("4. Por nombre");
+                        System.out.println("Seleccione una opción: \n");
+                        int opcionBusqueda = scanner.nextInt();
+                        scanner.nextLine(); // Limpiar el buffer
+                    
+                        // Variable para guardar el criterio de búsqueda
+                        String criterioBusqueda = "";
+                    
+                        switch(opcionBusqueda) {
+                            case 1:
+                                System.out.println("Ingrese la fecha (formato: yyyy-MM-dd):");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            case 2:
+                                System.out.println("Ingrese la categoría:");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            case 3:
+                                System.out.println("Ingrese el autor:");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            case 4:
+                                System.out.println("Ingrese el nombre del recurso:");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            default:
+                                System.out.println("Opción no válida.");
+                                return;
+                        }
+                    curso.buscarRecursos(opcionBusqueda, criterioBusqueda); // Llama al método sobrecargado de clase curso, la cual llama a la de clase carpeta
+                    break;
                 case 0:
                     System.out.println("Volviendo al Menú Principal...");
                     break;
@@ -397,5 +464,194 @@ public class Menu {
             }
         } while (opcion != 0);
     }
-   
+    // -------------------------------------------------- SUBMENU ----------------------------------
+    // Metodo para el submenu de carpeta
+    public void mostrarSubmenuCarpetas(Curso curso){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nSeleccione una carpeta para acceder:\n");
+        
+        List<Carpeta> carpetas = curso.getCarpetas(); // Mostrar todas las carpetas del objeto curso
+        for (int i = 0; i < carpetas.size(); i++) {
+            System.out.println((i + 1) + ". " + carpetas.get(i).getNombre());
+        }
+        
+        int opcionCarpeta = scanner.nextInt();
+        scanner.nextLine(); // Limpiar el buffer
+        
+        if (opcionCarpeta < 1 || opcionCarpeta > carpetas.size()) {
+            System.out.println("Opción inválida.");
+            return;
+        }
+        Carpeta carpetaSeleccionada = carpetas.get(opcionCarpeta - 1);
+        int opcion;
+
+        do{
+            System.out.println("\n--- Submenú de Carpeta ---\n");
+            System.out.println("1. Mostrar Recursos");
+            System.out.println("2. Buscar Recursos");
+            if (usuarioActual instanceof Profesor) {
+                System.out.println("3. Cargar Recurso");
+                System.out.println("4. Eliminar Recurso");
+                System.out.println("5. Cambiar nombre de la carpeta");
+                System.out.println("6. Mover recurso a otra carpeta");
+            }
+            System.out.println("0. Regresar al curso");
+            System.out.println("Seleccione una opción: \n");
+    
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer
+    
+            switch (opcion) {   
+                case 1: // Listar recursos
+                    carpetaSeleccionada.listarRecursos();
+                    break;
+                case 2: // Buscar recurso por tipo
+                    System.out.println("¿Cómo desea buscar el recurso?\n");
+                        System.out.println("1. Por fecha");
+                        System.out.println("2. Por categoría");
+                        System.out.println("3. Por autor");
+                        System.out.println("4. Por nombre");
+                        System.out.println("Seleccione una opción: \n");
+                        int opcionBusqueda = scanner.nextInt();
+                        scanner.nextLine(); // Limpiar el buffer
+                    
+                        // Variable para guardar el criterio de búsqueda
+                        String criterioBusqueda = "";
+                    
+                        switch(opcionBusqueda) {
+                            case 1:
+                                System.out.println("Ingrese la fecha (formato: yyyy-MM-dd):");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            case 2:
+                                System.out.println("Ingrese la categoría:");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            case 3:
+                                System.out.println("Ingrese el autor:");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            case 4:
+                                System.out.println("Ingrese el nombre del recurso:");
+                                criterioBusqueda = scanner.nextLine();
+                                break;
+                            default:
+                                System.out.println("Opción no válida.");
+                                return;
+                        }
+                    carpetaSeleccionada.buscarRecursos(opcionBusqueda, criterioBusqueda); // Llama al método sobrecargado de búsqueda de clase carpeta
+                    break;
+                case 3: // Cargar Recurso
+                    if (usuarioActual instanceof Profesor) {
+                        System.out.println("¿Desea cargar un solo recurso o una lista de recursos?");
+                        System.out.println("1. Un solo recurso");
+                        System.out.println("2. Lista de recursos");
+                        int opcionRecurso = scanner.nextInt();
+                        scanner.nextLine(); // limpiar el buffer
+
+                        if (opcionRecurso == 1) {
+                            Recurso recurso = Recurso.crearRecurso(); // Método para crear un recurso
+                            if (recurso != null) {
+                                carpetaSeleccionada.agregarRecurso(recurso); // Llama al método sobrecargado de clase carpeta
+                            } else {
+                                System.out.println("Error al crear el recurso.");
+                            }
+                        } else if (opcionRecurso == 2) {
+                            List<Recurso> listaRecursos = Carpeta.crearListaRecursos();  
+                            if (listaRecursos != null && !listaRecursos.isEmpty()) {
+                                carpetaSeleccionada.agregarRecurso(listaRecursos); // Llama al método sobrecargado de clase carpeta
+                            } else {
+                                System.out.println("Error al crear la lista de recursos.");
+                            }
+                        } else {
+                            System.out.println("Opción no válida.");
+                        }
+                    } else {
+                        System.out.println("Opción no válida.");
+                    }
+                    break;
+                case 4: // Eliminar recurso
+                    if (usuarioActual instanceof Profesor){
+                        System.out.println("Ingrese el título del recurso a eliminar:");
+                        String tituloEliminar = scanner.nextLine();
+                        carpetaSeleccionada.eliminarRecurso(tituloEliminar);
+                    }else{
+                        System.out.println("Opción no válida.");
+                    }
+                    break;
+                case 5:// Cambiar nombre de carpeta
+                    if (usuarioActual instanceof Profesor){
+                        System.out.println("Ingrese el nuevo nombre de la carpeta: \n");
+                        String nuevoTitulo = scanner.nextLine();
+                        carpetaSeleccionada.actualizarNombre(nuevoTitulo);
+                    }else{
+                        System.out.println("Opción no válida."); 
+                    }
+                    break;
+                case 6: // Mover recurso a otra carpeta
+                    if (usuarioActual instanceof Profesor){
+                        System.out.println("Ingrese el título del recurso a mover:");
+                        String tituloMover = scanner.nextLine();
+
+                        System.out.println("Seleccione la carpeta destino para mover el recurso:\n"); // Ya tenemos acceso a las carpetas del curso
+                        for (int i = 0; i < carpetas.size(); i++) { // Se recorren las carpetas
+                            if (!carpetas.get(i).equals(carpetaSeleccionada)) { // Se verifica el nombre
+                                System.out.println((i + 1) + ". " + carpetas.get(i).getNombre());
+                            }
+                        }
+                        int opcionDestino = scanner.nextInt();
+                        scanner.nextLine(); // Limpiar el buffer
+                        if (opcionDestino < 1 || opcionDestino > carpetas.size() || carpetas.get(opcionDestino - 1).equals(carpetaSeleccionada)) {
+                            System.out.println("Opción inválida.");
+                            break;
+                        }
+                        Carpeta carpetaDestino = carpetas.get(opcionDestino - 1);
+                        carpetaSeleccionada.moverRecurso(tituloMover, carpetaDestino);
+                    }else{
+                        System.out.println("Opción no válida."); 
+                    }
+                    break;
+                case 0:
+                    System.out.println("Volviendo al menú del curso...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+                    break;
+            }
+        }while(opcion != 0);
+    }
+    // -------------------------------------------------- SUBMENU ----------------------------------
+   // Método para la configuración del usuario
+   private void configurarUsuario() {
+    System.out.println("\n--- Configuración ---");
+    System.out.println("1. Cambiar nombre");
+    System.out.println("2. Cambiar correo electrónico");
+    System.out.println("3. Cambiar contraseña");
+    System.out.println("0. Regresar al menú principal");
+    System.out.print("Seleccione una opción: ");
+    
+    int opcion = scanner.nextInt();
+    scanner.nextLine(); // Limpiar el buffer del scanner
+
+    switch (opcion) {
+        case 1:
+            System.out.print("Ingrese el nuevo nombre: ");
+            String nuevoNombre = scanner.nextLine();
+            usuarioActual.setNombre(nuevoNombre);
+            break;
+        case 2:
+            System.out.print("Ingrese el nuevo correo electrónico: ");
+            String nuevoCorreo = scanner.nextLine();
+            usuarioActual.setEmail(nuevoCorreo);
+            break;
+        case 3:
+            cambiarContraseña();
+        case 0:
+            System.out.println("Volviendo al Menú Principal...");
+            break;
+        default:
+            System.out.println("Opción no válida.");
+            break;
+    }
+}
 }
