@@ -58,7 +58,7 @@ public class Curso {
             return;
         }
         carpetas.add(nuevaCarpeta);
-        System.out.println("Carpeta '" + nuevaCarpeta.getNombre() + " (" + nuevaCarpeta.getId() + ")' agregada al curso: " + this.getNombre() + ".\n");
+        System.out.println("Carpeta '" + nuevaCarpeta.getNombre() + " (" + nuevaCarpeta.getId() + ")' agregada al curso: " + this.getNombre() + ".");
     }
     // Método para eliminar una carpeta del curso (SOBRECARGADO)
     public void eliminarCarpeta(int idCarpeta) {
@@ -88,36 +88,33 @@ public class Curso {
     }
     // Método para agregar un recurso a una carpeta específica (SOBRECARGADO)
     public void cargarRecurso(String nombreCarpeta, Recurso recurso) {
-        if (nombreCarpeta == null || recurso == null) {
+        if (recurso == null || nombreCarpeta == null) {
             System.out.println("Error: El nombre de la carpeta o el recurso no pueden ser null.");
             return;
         }
-        for (Carpeta carpeta : carpetas) {
-            if (carpeta.getNombre().equals(nombreCarpeta)) {
-                carpeta.agregarRecurso(recurso);
-                System.out.println("Recurso '" + recurso.getTitulo() + "' agregado a la carpeta '" + nombreCarpeta + "'.");
-                return;
-            }
+        Carpeta carpeta = buscarCarpeta(nombreCarpeta);
+        if (carpeta != null) {
+            carpeta.agregarRecurso(recurso);
+            System.out.println("Recurso '" + recurso.getTitulo() + "' agregado a la carpeta '" + nombreCarpeta + "'.");
+        } else {
+            System.out.println("Error: No se encontró la carpeta con el nombre '" + nombreCarpeta + "'.");
         }
-        System.out.println("Error: No se encontró la carpeta con el nombre '" + nombreCarpeta + "'.");
     }
-
     // Método para agregar una lista de recursos a una carpeta específica (SOBRECARGADO)
     public void cargarRecurso(String nombreCarpeta, List<Recurso> recursos) {
-        if (nombreCarpeta == null || recursos == null || recursos.isEmpty()) {
+        if (recursos == null || recursos.isEmpty() || nombreCarpeta == null) {
             System.out.println("Error: El nombre de la carpeta o la lista de recursos no pueden ser null o vacíos.");
             return;
         }
-        for (Carpeta carpeta : carpetas) {
-            if (carpeta.getNombre().equals(nombreCarpeta)) {
-                for (Recurso recurso : recursos) {
-                    carpeta.agregarRecurso(recurso);
-                }
-                System.out.println("Se agregaron " + recursos.size() + " recursos a la carpeta '" + nombreCarpeta + "'.");
-                return;
+        Carpeta carpeta = buscarCarpeta(nombreCarpeta);
+        if (carpeta != null) {
+            for (Recurso recurso : recursos) {
+                carpeta.agregarRecurso(recurso);
             }
+            System.out.println("Se agregaron " + recursos.size() + " recursos a la carpeta '" + nombreCarpeta + "'.");
+        } else {
+            System.out.println("Error: No se encontró la carpeta con el nombre '" + nombreCarpeta + "'.");
         }
-        System.out.println("Error: No se encontró la carpeta con el nombre '" + nombreCarpeta + "'.");
     }
     // Método para agregar un recurso a una carpeta específica por ID (SOBRECARGADO)
     public void cargarRecurso(int idCarpeta, Recurso recurso) {
@@ -125,32 +122,35 @@ public class Curso {
             System.out.println("Error: El recurso no puede ser null.");
             return;
         }
-        for (Carpeta carpeta : carpetas) {
-            if (carpeta.getId() == idCarpeta) {
-                carpeta.agregarRecurso(recurso);
-                System.out.println("Recurso '" + recurso.getTitulo() + "' agregado a la carpeta con ID '" + idCarpeta + "'.");
-                return;
-            }
+        Carpeta carpeta = buscarCarpeta(idCarpeta);
+        if (carpeta != null) {
+            carpeta.agregarRecurso(recurso);
+            System.out.println("Recurso '" + recurso.getTitulo() + "' agregado a la carpeta con ID '" + idCarpeta + "'.");
+        } else {
+            System.out.println("Error: No se encontró la carpeta con el ID '" + idCarpeta + "'.");
         }
-        System.out.println("Error: No se encontró la carpeta con el ID '" + idCarpeta + "'.");
     }
-
     // Método para agregar una lista de recursos a una carpeta específica por ID (SOBRECARGADO)
     public void cargarRecurso(int idCarpeta, List<Recurso> recursos) {
         if (recursos == null || recursos.isEmpty()) {
             System.out.println("Error: La lista de recursos no puede ser null o vacía.");
             return;
         }
-        for (Carpeta carpeta : carpetas) {
-            if (carpeta.getId() == idCarpeta) {
-                for (Recurso recurso : recursos) {
-                    carpeta.agregarRecurso(recurso);
-                }
-                System.out.println("Se agregaron " + recursos.size() + " recursos a la carpeta con ID '" + idCarpeta + "'.");
-                return;
+        Carpeta carpeta = buscarCarpeta(idCarpeta);
+        if (carpeta != null) {
+            for (Recurso recurso : recursos) {
+                carpeta.agregarRecurso(recurso);
             }
+            System.out.println("Se agregaron " + recursos.size() + " recursos a la carpeta con ID '" + idCarpeta + "'.");
+        } else {
+            System.out.println("Error: No se encontró la carpeta con el ID '" + idCarpeta + "'.");
         }
-        System.out.println("Error: No se encontró la carpeta con el ID '" + idCarpeta + "'.");
+    }
+    public void buscarRecursos(int opcionBusqueda, String criterioBusqueda){
+        // Iterar sobre las carpetas del curso y buscar recursos
+        for (Carpeta carpeta : this.getCarpetas()) {
+            carpeta.buscarRecursos(opcionBusqueda, criterioBusqueda);
+        }
     }
     // Método para buscar una carpeta por nombre (SOBRECARGADO)
     public Carpeta buscarCarpeta(String nombre) {
@@ -167,7 +167,6 @@ public class Curso {
         System.out.println("Error: No se encontró ninguna carpeta con el nombre '" + nombre + "'.");
         return null;
     }
-
     // Método sobrecargado para buscar una carpeta por ID (SOBRECARGADO)
     public Carpeta buscarCarpeta(int id) {
         for (Carpeta carpeta : carpetas) {
@@ -200,16 +199,6 @@ public class Curso {
             }
         }
     }
-    // Método para mostrar todos los estudiantes encontrados
-    public void mostrarEstudiantesInscritos() {
-        if (estudiantes.isEmpty()) {
-            System.out.println("No se encontraron estudiantes que coincidan con los criterios de búsqueda.");
-        } else {
-     	   for (Estudiante estudiante : estudiantes){
-                	System.out.println(estudiante.toString());
-            }
-        }
-    }
     // Método para modificar la descripción del curso
     public void actualizarDescripcion(String nuevaDescripcion) {
         if (nuevaDescripcion == null || nuevaDescripcion.isEmpty()) {
@@ -223,7 +212,7 @@ public class Curso {
     public void agregarEstudiante(Estudiante estudiante) {
         if (estudiante != null && !estudiantes.contains(estudiante)){
            estudiantes.add(estudiante);
-           numEstudiantes++;
+           this.numEstudiantes++;
         } else {
            System.out.println("Advertencia: No se puede agregar un estudiante null.");
         }
@@ -237,6 +226,7 @@ public class Curso {
        boolean eliminada = estudiantes.removeIf(estudiante -> nombreEstudiante.equals(estudiante.getNombre()));
        if (eliminada) {
            System.out.println("Estudiante '" + nombreEstudiante + "' eliminad@ del curso: "+ this.getNombre() + ".\n");
+           this.numEstudiantes--;
        } else {
            System.out.println("Error: No se encontró al estudiante con el nombre '" + nombreEstudiante + "'.");
        }
@@ -244,10 +234,14 @@ public class Curso {
    }
    // Método para eliminar un estudiante del curso por id. (SOBRECARGADO)
    public void eliminarEstudiante(int id) {
+        if (id < 0) {
+            System.out.println("Error: El id no puede ser negativo.");
+            return;
+        }
 	    for (Estudiante estudiante : estudiantes) {
 	        if (estudiante.getId() == id) {
 	            estudiantes.remove(estudiante);
-	            numEstudiantes--;
+	            this.numEstudiantes--;
 	            System.out.println("Estudiante eliminado correctamente.");
 	        }
 	    }
@@ -279,6 +273,17 @@ public class Curso {
 	    }
 	    return nombresEstudiantes;
 	}
+    // Método para mostrar todos los estudiantes encontrados
+    public void mostrarEstudiantesInscritos() {
+        if (estudiantes.isEmpty()) {
+            System.out.println("No se encontraron estudiantes que coincidan con los criterios de búsqueda.");
+        } else {
+            System.out.println("\nEstudiantes Inscritos ("+ this.numEstudiantes + "): \n");
+     	   for (Estudiante estudiante : estudiantes){
+                	System.out.println(estudiante.toString());
+            }
+        }
+    }
    
    // Metodo para asignar o cambiar el profesor encargado del curso
    public void asignarProfesor(Profesor nuevoProfesor) {
