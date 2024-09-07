@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Carpeta {
@@ -50,22 +51,41 @@ public class Carpeta {
         }
     }
     // Método para listar todos los recursos de la carpeta
-    public List<String> listarRecursos() {
-    	List<String> listaRecursos = new ArrayList<>();
-    	if (!recursos.isEmpty()) {
-	        for (Recurso recurso : recursos.values()) {
-	            listaRecursos.add(recurso.getTitulo());
-	        }
-        } else {
+    public List<Recurso> listarRecursos() {
+        // Convertir la colección de valores del mapa a una lista
+        List<Recurso> listaRecursos = new ArrayList<>(recursos.values());
+        if (listaRecursos.isEmpty()) {
             System.out.println("No hay recursos en la carpeta '" + nombre + "'.");
+        } else {
+            // Imprimir la información de cada recurso
+            System.out.println("Recursos encontrados: \n");
+            for (Recurso recurso : listaRecursos) {
+                System.out.println(recurso.toString());
+            }
         }
-    	return listaRecursos;
+        return listaRecursos; // Devuelve la lista de recursos si es necesario para otros usos
+    }
+     // Método para poblar lista de recursos
+     public static List<Recurso> crearListaRecursos() {
+        // Implementación para crear una lista de recursos
+        List<Recurso> listaRecursos = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        String opcion;
+        do {
+            Recurso recurso = Recurso.crearRecurso(); // Puedes reutilizar el método crearRecurso()
+            if (recurso != null) {
+                listaRecursos.add(recurso);
+            }
+            System.out.println("¿Desea agregar otro recurso? (s/n)");
+            opcion = scanner.nextLine();
+        } while (opcion.equalsIgnoreCase("s"));
+        return listaRecursos;
     }
     // Método para agregar un recurso a la carpeta (SOBRECARGADO)
     public void agregarRecurso(Recurso recurso) {
          if (recurso != null && recurso.getTitulo() != null) {
             recursos.put(recurso.getTitulo(), recurso);
-            System.out.println("Recurso agregado: " + recurso.getTitulo());
+            System.out.println("Recurso '"+ recurso.getTitulo() + "' agregado a '" + this.getNombre() + "'." );
          } else {
              System.out.println("Advertencia: No se puede agregar un recurso null o sin título.");
          }
@@ -94,26 +114,30 @@ public class Carpeta {
             System.out.println("Error: No se puede eliminar. El título es null o no existe en la carpeta.");
         }
     }
-    // Método para obtener un recurso por su título
-    public Recurso obtenerRecurso(String titulo) {
-         if (titulo != null && !titulo.trim().isEmpty()) {
-             return recursos.get(titulo);
-         } else {
-              System.out.println("Advertencia: El título no puede ser null o vacío.");
-            return null;
-         }
-    }
     // Método para mover un recurso de una carpeta a otra
     public boolean moverRecurso(String titulo, Carpeta destino) {
+        if (titulo == null || destino == null) {
+            System.out.println("Error: El título o la carpeta destino son nulos.");
+            return false;
+        }
         if (!recursos.containsKey(titulo)) {
             System.out.println("Error: El recurso no existe en la carpeta actual.");
             return false;
         }
         Recurso recurso = recursos.remove(titulo);
         destino.agregarRecurso(recurso);
-        System.out.println("Recurso movido correctamente.");
+        System.out.println("Recurso movido correctamente a la carpeta: " + destino.getNombre());
         return true;
     }
+    // Método para obtener un recurso por su título
+    public Recurso obtenerRecurso(String titulo) {
+        if (titulo != null && !titulo.trim().isEmpty()) {
+            return recursos.get(titulo);
+        } else {
+             System.out.println("Advertencia: El título no puede ser null o vacío.");
+           return null;
+        }
+   }
     // Método para buscar recursos por autor
     public List<Recurso> buscarPorAutor(String autor) {
         if (autor == null) {
@@ -143,6 +167,36 @@ public class Carpeta {
         return recursos.values().stream()
                 .filter(recurso -> fecha.equals(recurso.getFecha()))
                 .collect(Collectors.toList());
+    }
+    // Método para buscar recursos por nombre
+    public List<Recurso> buscarPorNombre(String nombre) {
+        if (nombre == null) {
+            System.out.println("Error: El nombre no puede ser null.");
+            return new ArrayList<>();
+        }
+        return recursos.values().stream()
+                .filter(recurso -> nombre.equals(recurso.getTitulo()))
+                .collect(Collectors.toList());
+    }
+    // Método para buscar una carpeta por nombre (SOBRECARGADO)
+    public void buscarRecursos(int opcionBusqueda, String criterioBusqueda){
+        List<Recurso> recursosEncontrados = new ArrayList<>();
+        switch(opcionBusqueda) {
+            case 1:
+                recursosEncontrados.addAll(this.buscarPorFecha(criterioBusqueda));
+                break;
+            case 2:
+                recursosEncontrados.addAll(this.buscarPorCategoria(criterioBusqueda));
+                break;
+            case 3:
+                recursosEncontrados.addAll(this.buscarPorAutor(criterioBusqueda));
+                break;
+            case 4:
+                recursosEncontrados.addAll(this.buscarPorNombre(criterioBusqueda));
+                break;
+            }
+
+        this.mostrarRecursos(recursosEncontrados); // Mostrar los recursos encontrados
     }
     // Método para mostrar todos los recursos encontrados
     public void mostrarRecursos(List<Recurso> listaRecursos) {
