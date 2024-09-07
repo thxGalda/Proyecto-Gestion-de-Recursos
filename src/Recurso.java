@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Recurso {
     // Atributos privados
     private String titulo;
@@ -62,21 +64,71 @@ public class Recurso {
                 ", Visibilidad=" + (esVisible ? "Visible" : "Oculto") +
                 '}';
     }
+    public int compareTo(Recurso otro) {
+        return this.titulo.compareTo(otro.getTitulo());
+    }
+
+    public boolean compararPorTitulo(Recurso otro) {
+        return this.titulo.equals(otro.getTitulo());
+    }
+
+    public boolean esMismoAutor(Recurso otro) {
+        return this.autor.equals(otro.getAutor());
+    }
+    // Metodo para crear objeto recurso
+    public static Recurso crearRecurso() { // Static para permitir invocarlo sin crear una instancia de clase Recurso
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el título del recurso:");
+        String titulo = scanner.nextLine();
+
+        System.out.println("Ingrese el formato del recurso (ej. PDF, Video, etc.):");
+        String formato = scanner.nextLine();
+
+        System.out.println("Ingrese el autor del recurso (opcional):");
+        String autor = scanner.nextLine();
+
+        System.out.println("Ingrese la categoría del recurso (opcional):");
+        String categoria = scanner.nextLine();
+
+        System.out.println("Ingrese la fecha del recurso (opcional):");
+        String fecha = scanner.nextLine();
+
+        System.out.println("Ingrese el curso al que pertenece el recurso (opcional):");
+        String curso = scanner.nextLine();
+
+        System.out.println("¿Es el recurso visible para estudiantes? (true/false) (opcional):");
+        String esVisibleStr = scanner.nextLine();
+        Boolean esVisible = esVisibleStr.isEmpty() ? null : Boolean.parseBoolean(esVisibleStr);
+
+        // Lógica para seleccionar el constructor adecuado
+        if (!curso.isEmpty() && esVisible != null) {
+            return new Recurso(titulo, autor.isEmpty() ? null : autor,
+                    categoria.isEmpty() ? null : categoria,
+                    fecha.isEmpty() ? null : fecha,
+                    formato.isEmpty() ? null : formato,
+                    curso, esVisible);
+        } else if (!curso.isEmpty()) {
+            return new Recurso(titulo, autor.isEmpty() ? null : autor,
+                    categoria.isEmpty() ? null : categoria,
+                    fecha.isEmpty() ? null : fecha,
+                    formato.isEmpty() ? null : formato);
+        } else if (!categoria.isEmpty()) {
+            return new Recurso(titulo, autor.isEmpty() ? null : autor,
+                    fecha.isEmpty() ? null : fecha,
+                    formato.isEmpty() ? null : formato);
+        } else if (!autor.isEmpty()) {
+            return new Recurso(titulo, autor.isEmpty() ? null : autor,
+                    formato.isEmpty() ? null : formato);
+        } else {
+            return new Recurso(titulo, formato);
+        }
+    }
 
     // Metodo para cambiar la visibilidad del recurso, ocultar o mostra
     public void cambiarVisibilidad(boolean esVisible) {
         setEsVisible(esVisible);
         System.out.println("Visibilidad del recurso actualizada.");
-    }
-
-    // Metodo para comparar dos recursos por título
-    public boolean compararPorTitulo(Recurso otro) {
-        return this.titulo.equals(otro.getTitulo());
-    }
-
-    // Metodo para verificar si dos recursos tienen el mismo autor
-    public boolean esMismoAutor(Recurso otro) {
-        return this.autor.equals(otro.getAutor());
     }
 
     // Metodo para actualizar titulo
@@ -88,7 +140,6 @@ public class Recurso {
             System.out.println("Título actualizado correctamente.");
         }
     }
-
     // Metodo para actualizar autor
     public void actualizarAutor(String nuevoAutor) {
         if (nuevoAutor == null || nuevoAutor.isEmpty()) {
@@ -98,7 +149,6 @@ public class Recurso {
             System.out.println("Autor actualizado correctamente.");
         }
     }
-
     // Metodo para actualizar fecha
     public void actualizarFecha(String nuevaFecha) {
         if (nuevaFecha == null || nuevaFecha.isEmpty()) {
@@ -108,16 +158,17 @@ public class Recurso {
             System.out.println("Fecha actualizada correctamente.");
         }
     }
-
-    // Metodo para actualizar categoria
     public void actualizarCategoria(String nuevaCategoria) {
-        if (nuevaCategoria == null || nuevaCategoria.isEmpty()) {
-            System.out.println("Error: La fecha no puede ser null o vacía.");
+        if (nuevaCategoria == null || nuevaCategoria.trim().isEmpty()) {
+            System.out.println("Error: La categoría no puede ser null o vacía.");
         } else {
             setCategoria(nuevaCategoria);
-            System.out.println("Fecha actualizada correctamente.");
+            System.out.println("Categoría actualizada correctamente.");
         }
     }
+    //
+    // Setters y Getters
+    //
     public String getTitulo() {
         return titulo;
     }
