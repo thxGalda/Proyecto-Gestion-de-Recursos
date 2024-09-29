@@ -1,3 +1,4 @@
+package paqueteMain;
 import java.util.List;
 public class Profesor extends Usuario {
     // Atributos privados

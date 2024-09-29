@@ -1,3 +1,4 @@
+package paqueteMain;
 import java.util.Scanner;
 
 public class Recurso {

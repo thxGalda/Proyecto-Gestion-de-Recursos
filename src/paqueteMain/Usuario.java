@@ -1,3 +1,4 @@
+package paqueteMain;
 public class Usuario {
     // Atributos privados
     private String nombre;

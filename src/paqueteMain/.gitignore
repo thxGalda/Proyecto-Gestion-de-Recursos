@@ -1,0 +1,16 @@
+/Carpeta.class
+/Curso.class
+/Estudiante.class
+/Main.class
+/Menu.class
+/Profesor.class
+/Recurso.class
+/Usuario.class
+/excepcionAccesoNoAutorizado.class
+/excepcionArchivoInvalido.class
+/excepcionContrasena.class
+/excepcionCursoCompleto.class
+/excepcionDuplicacionRecurso.class
+/excepcionFormatoString.class
+/excepcionInicializacionFallida.class
+/excepcionRecursoNoEncontrado.class

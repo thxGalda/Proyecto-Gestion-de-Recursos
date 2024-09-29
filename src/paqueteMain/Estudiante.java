@@ -1,3 +1,4 @@
+package paqueteMain;
 public class Estudiante extends Usuario {
     // Atributos privados
     private int paralelo;
