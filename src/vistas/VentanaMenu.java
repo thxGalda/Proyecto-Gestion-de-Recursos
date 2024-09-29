@@ -1,194 +1,105 @@
+// Ventana hub de todos los paneles y submenus
+
 package vistas;
+import paqueteMain.Usuario;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
 public class VentanaMenu implements ActionListener{
-
 	private JFrame frame;
-	private JTextField textField;
-	private JLabel label;
-	private JPasswordField passwordField;
-	private JPanel panel;
-	private JButton button;
-	private JCheckBox checkbox;
-	private JMenuBar menuBar;
-	private JMenu fileMenu;
-	private JMenuItem newMenuItem;
-	private JMenuItem saveMenuItem;
-	private JMenuItem exitMenuItem;
-	
-	int count = 0;
-	/**
-	 * Create the application.
-	 */
+    private CardLayout cardLayout;
+    private JPanel panelContenedor; // Panel principal con CardLayout
+
+    // Menú
+    private JMenuBar menuBar;
+    private JMenu fileMenu;
+    private JMenuItem loginMenuItem, saveMenuItem, exitMenuItem, cambiarContraseñaMenuItem;
+    private Usuario usuarioActual;
+
 	public VentanaMenu() {
+		// Simulación de un usuario existente para pruebas
+        usuarioActual = new Usuario("Ignacio Araya", "21273283-1"); 
+
+        // Establecer una contraseña de prueba
+        usuarioActual.setContrasena("1234");
+
 		initialize();
 		
 	}
 	public void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Sistema de Gestión de Recursos Educativos");
+		frame.setSize(400, 300);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setSize(800, 500);
-		frame.setLocationRelativeTo(null);
-		frame.setLayout(new BorderLayout(10, 10));
-		frame.setTitle("Aula Virtual");
-		//frame.pack();
-		/*frame.getContentPane().add(txtEstaEsUna, BorderLayout.CENTER);
-		txtEstaEsUna.setColumns(10);
-		*/
+
 		// Cambiar fuente para menu e item de menu
 		Font f = new Font("Roboto", Font.PLAIN, 20);
 		UIManager.put("Menu.font", f);
 		UIManager.put("MenuItem.font", f);
-		UIManager.put("CheckBoxMenuItem.font", f);
-		UIManager.put("RadioButtonMenuItem.font", f);
+		
+		//--------------------------------------------------- MENU BARRA LATERAL
 		
 		menuBar = new JMenuBar();
-		fileMenu = new JMenu("File");
-		fileMenu.setMnemonic(KeyEvent.VK_F);
-		
-		
-		newMenuItem = new JMenuItem("New...");
-		//ImageIcon icon = new ImageIcon("images/check.png"); // agregar iconos
-		//newMenuItem.setIcon(icon);
-		newMenuItem.setIconTextGap(10);
-		newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-		newMenuItem.addActionListener(this);
-		
-		saveMenuItem = new JMenuItem("Save");
-		saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
-		saveMenuItem.addActionListener(this);
-		
-		exitMenuItem = new JMenuItem("Exit");
-		exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
-		exitMenuItem.addActionListener(this);
-		
-		fileMenu.add(newMenuItem);
-		fileMenu.add(saveMenuItem);
-		fileMenu.add(new JRadioButtonMenuItem("RadioButton"));
-		fileMenu.add(new JCheckBoxMenuItem("Checkbox"));
-		fileMenu.add(new JMenu("Submenu"));
-		fileMenu.addSeparator();
-		fileMenu.add(exitMenuItem);
-		
-		menuBar.add(fileMenu);
-		frame.setJMenuBar(menuBar);
-		
-		
-		
-		FlowLayout layout = new FlowLayout();
-		layout.setAlignment(FlowLayout.LEFT);
-		layout.setHgap(10);
-		layout.setVgap(10); // alternativa FlowLayout(FlowLayout.CENTER, 10, 20) // centrado, distancia de 10px, altura 20px
-		
-		panel = new JPanel(); // contenedor para otros componentes
-		panel.setBorder(BorderFactory.createEmptyBorder());
-		panel.setLayout(layout);
-		panel.setBackground(Color.GRAY);
-		
-		textField = createTextField("");
-		checkbox = createCheckBox("Check Box");
-		label = createLabel("Enter password");
-		passwordField = new JPasswordField(10);
-		passwordField.setText("hwa27a7ia"); // contraseña default
-		passwordField.setEchoChar('.');
-		
-		
-		//button = createButton("Save"); // utiliza 2 action listeners
-		button = new JButton("Check");
-		//button.addActionListener(this);
-		button.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				char[] pf = passwordField.getPassword();
-				String value = new String(pf);
-				System.out.println("Password: " + value);
-			}
-		});
-	
-		frame.setLayout(layout);
-		frame.add(label);
-		frame.add(passwordField);
-		frame.add(button);
-		panel.add(checkbox);
-		
-		frame.add(panel, BorderLayout.NORTH);
+        fileMenu = new JMenu("File");
 
-	}
-	
-	private JButton createButton(String text) {
-		JButton btn = new JButton(text);
-		//Image printIcon = new ImageIcon(this.getClass().getResource("/docx.png")).getImage(); // agregar iconos
-		// btn.setIcon(printIcon); 
-		btn.setToolTipText("Este es un boton");
-		btn.setFont(new Font("Roboto", Font.PLAIN, 12));
-		btn.setMargin(new Insets(10,10, 10, 10));
-		btn.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btn.setHorizontalTextPosition(SwingConstants.CENTER);
-		btn.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				count++;
-				label.setText("Contador: "+ count);
-			}
-		});
-		return btn;
-	}
-	private JLabel createLabel(String text) {
-		JLabel lbl = new JLabel(text);
-		lbl.setForeground(Color.BLACK); // se puede agregar icono tambien
-		lbl.setFont(new Font("Roboto", Font.BOLD, 12));
-		lbl.setVerticalTextPosition(SwingConstants.BOTTOM);
-		lbl.setHorizontalTextPosition(SwingConstants.CENTER);
-		return lbl;
-	}
-	private JTextField createTextField(String text) {
-		JTextField txtFld = new JTextField(10);
-		txtFld.setText(text);
-		txtFld.setFont(new Font("Roboto", Font.BOLD, 24));
-		txtFld.setForeground(Color.WHITE);
-		txtFld.setBackground(Color.GRAY);
-		txtFld.setMargin(new Insets(5,10, 5, 10));
-		txtFld.setColumns(10);
-		txtFld.setToolTipText("Ingresa un texto");
-		txtFld.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				label.setText(txtFld.getText());
-			}
-		});
-		return txtFld;
-	}
-	private JCheckBox createCheckBox(String text) {
-		JCheckBox chkbx = new JCheckBox();
-		chkbx.setText(text);
-		chkbx.setFont(new Font("Roboto", Font.BOLD, 24));
-		chkbx.setForeground(Color.WHITE);
-		chkbx.setBackground(Color.GRAY);
-		chkbx.setMnemonic(KeyEvent.VK_C);
-		chkbx.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Selected!");
+        loginMenuItem = new JMenuItem("Login");
+        saveMenuItem = new JMenuItem("Save");
+        exitMenuItem = new JMenuItem("Exit");
+        cambiarContraseñaMenuItem = new JMenuItem("Cambiar Contraseña"); 
 
-			}
-		});
-		return chkbx;
+        loginMenuItem.addActionListener(this);
+        saveMenuItem.addActionListener(this);
+        exitMenuItem.addActionListener(this);
+        cambiarContraseñaMenuItem.addActionListener(this); 
+
+        fileMenu.add(loginMenuItem);
+        fileMenu.add(saveMenuItem);
+        fileMenu.add(cambiarContraseñaMenuItem); 
+        fileMenu.addSeparator();
+        fileMenu.add(exitMenuItem);
+        menuBar.add(fileMenu);
+
+        frame.setJMenuBar(menuBar);
+        
+        // Panel principal con CardLayout
+        panelContenedor = new JPanel();
+        cardLayout = new CardLayout();
+        panelContenedor.setLayout(cardLayout);
+
+        // Añadir submenús al CardLayout
+        panelContenedor.add(new VentanaLogin(), "Login"); // Panel Login
+        panelContenedor.add(new JPanel(), "Save"); // Panel vacío para "Save", se puede implementar después
+        panelContenedor.add(new VentanaContrasena(usuarioActual.getContrasena()), "CambiarContraseña"); // Panel de cambio de contraseña
+
+        // Añadir el panel principal al frame
+        frame.add(panelContenedor);
+
+        // Configurar posición y visibilidad
+        frame.setLocationRelativeTo(null); // Centrar ventana
+        frame.setVisible(true);
 	}
-	
+	//
+	// Acciones
+	//
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() instanceof JMenuItem) {
-			JMenuItem item = (JMenuItem) e.getSource();
-			String text = item.getText();
-			System.out.println(text);
-		}
-	}
-	
-	public void mostrar() {
-		frame.setVisible(true);
-	}
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginMenuItem) {
+            // Cambiar al submenú de login
+            cardLayout.show(panelContenedor, "Login");
+        } else if (e.getSource() == saveMenuItem) {
+            // Cambiar al submenú de save
+            cardLayout.show(panelContenedor, "Save");
+        } else if (e.getSource() == exitMenuItem) {
+            System.exit(0); // Salir de la aplicación
+        } else if (e.getSource() == cambiarContraseñaMenuItem) {
+            // Cambiar al submenú de cambiar contraseña
+            cardLayout.show(panelContenedor, "CambiarContraseña");
+        }
+    }
+
+	 public static void main(String[] args) {
+	        SwingUtilities.invokeLater(() -> new VentanaMenu());
+	    }
 
 }
 
