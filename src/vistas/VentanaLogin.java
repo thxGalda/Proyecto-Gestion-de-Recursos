@@ -2,12 +2,17 @@ package vistas;
 
 import java.awt.*;
 import javax.swing.*;
+import paqueteMain.Usuario;
+import paqueteMain.Estudiante;
+import paqueteMain.Profesor;
+
 import java.awt.event.*;
 
 public class VentanaLogin extends JPanel implements ActionListener {
-    
+
     private CardLayout cardLayout;
     private JPanel cardsPanel;
+    private MainApp mainApp;
 
     // Componentes de la pantalla de bienvenida
     private JPanel panelBienvenida;
@@ -18,10 +23,15 @@ public class VentanaLogin extends JPanel implements ActionListener {
     private JTextField nombreField, rutField, correoField, paraleloField, departamentoField;
     private JComboBox<String> tipoUsuarioBox;
     private JButton btnEnviar;
+    
+    // Panel de contraseña
+    private Usuario usuarioActual;
 
     // Constructor adaptado a JPanel
-    public VentanaLogin() {
-        setLayout(new BorderLayout());  // Cambiar el layout del JPanel
+    public VentanaLogin(MainApp mainApp, Usuario usuarioActual) {
+        this.mainApp = mainApp;
+        this.usuarioActual = usuarioActual;
+        setLayout(new BorderLayout());
         cardLayout = new CardLayout();
         cardsPanel = new JPanel(cardLayout);
 
@@ -40,14 +50,14 @@ public class VentanaLogin extends JPanel implements ActionListener {
 
     // Método para crear la pantalla de bienvenida
     private void crearPantallaBienvenida() {
-        panelBienvenida = new JPanel(new BorderLayout());
-        JLabel labelBienvenida = new JLabel("Bienvenido al Sistema de Gestión de Recursos Educativos", JLabel.CENTER);
-        labelBienvenida.setFont(new Font("Roboto", Font.BOLD, 14));
+        panelBienvenida = new JPanel();
+        panelBienvenida.setLayout(new BorderLayout());
+        JLabel bienvenidaLabel = new JLabel("Bienvenido al Sistema de Gestión de Recursos Virtuales", JLabel.CENTER);
+        bienvenidaLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        btnIniciar = new JButton("Iniciar Sesión");
+        btnIniciar.addActionListener(e -> cardLayout.show(cardsPanel, "Formulario"));
 
-        btnIniciar = new JButton("Iniciar");
-        btnIniciar.addActionListener(e -> mostrarFormulario());
-
-        panelBienvenida.add(labelBienvenida, BorderLayout.CENTER);
+        panelBienvenida.add(bienvenidaLabel, BorderLayout.CENTER);
         panelBienvenida.add(btnIniciar, BorderLayout.SOUTH);
     }
 
@@ -69,7 +79,7 @@ public class VentanaLogin extends JPanel implements ActionListener {
 
         // Botón para enviar los datos
         btnEnviar = new JButton("Enviar");
-        btnEnviar.addActionListener(this);
+        btnEnviar.addActionListener(this);  // Al presionar enviar, se ejecuta actionPerformed
 
         // Agregar componentes al formulario
         panelFormulario.add(new JLabel("Nombre:"));
@@ -91,21 +101,14 @@ public class VentanaLogin extends JPanel implements ActionListener {
         toggleCampos();
     }
 
-    // Método para mostrar el formulario de ingreso de datos
-    private void mostrarFormulario() {
-        cardLayout.show(cardsPanel, "Formulario");
-    }
-
     // Método para mostrar/ocultar campos según el tipo de usuario seleccionado
     private void toggleCampos() {
         boolean esEstudiante = tipoUsuarioBox.getSelectedItem().equals("Estudiante");
         paraleloField.setEnabled(esEstudiante);
         departamentoField.setEnabled(!esEstudiante);
     }
-    //
-    // Acciones
-    //
 
+    // Acciones al presionar enviar
     @Override
     public void actionPerformed(ActionEvent e) {
         // Lógica para procesar los datos ingresados
@@ -114,14 +117,27 @@ public class VentanaLogin extends JPanel implements ActionListener {
         String correo = correoField.getText();
         String tipoUsuario = (String) tipoUsuarioBox.getSelectedItem();
 
-        if (tipoUsuario.equals("Estudiante")) {
-            String paralelo = paraleloField.getText();
-            System.out.println("Creando Estudiante: " + nombre + ", RUT: " + rut + ", Correo: " + correo + ", Paralelo: " + paralelo);
-            // Crear objeto Estudiante y procesar
-        } else if (tipoUsuario.equals("Profesor")) {
-            String departamento = departamentoField.getText();
-            System.out.println("Creando Profesor: " + nombre + ", RUT: " + rut + ", Correo: " + correo + ", Departamento: " + departamento);
-            // Crear objeto Profesor y procesar
+        try {
+            if (tipoUsuario.equals("Estudiante")) {
+                // Convertir paralelo a int
+                int paralelo = Integer.parseInt(paraleloField.getText());
+                System.out.println("Creando Estudiante: " + nombre + ", RUT: " + rut + ", Correo: " + correo + ", Paralelo: " + paralelo);
+                usuarioActual = new Estudiante(nombre, rut, correo, paralelo);
+            } else if (tipoUsuario.equals("Profesor")) {
+                // Convertir departamento a String
+                String departamento = departamentoField.getText();
+                System.out.println("Creando Profesor: " + nombre + ", RUT: " + rut + ", Correo: " + correo + ", Departamento: " + departamento);
+                usuarioActual = new Profesor(nombre, rut, correo, departamento);
+            } else return;
+            
+            // Actualiza el usuario en MainApp
+            mainApp.setUsuarioActual(usuarioActual);
+            // Mostrar la ventana de contraseña pasando el usuario creado
+            mainApp.mostrarVentanaContrasena(usuarioActual);
+
+        } catch (NumberFormatException ex) {
+            // Mostrar un mensaje de error si no se puede convertir a número
+            JOptionPane.showMessageDialog(this, "Por favor ingresa un valor numérico válido en el campo correspondiente.", "Error de Formato", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

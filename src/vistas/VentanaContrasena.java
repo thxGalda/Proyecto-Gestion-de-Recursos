@@ -1,6 +1,9 @@
 package vistas;
 
 import javax.swing.*;
+
+import paqueteMain.Usuario;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -8,33 +11,45 @@ public class VentanaContrasena extends JPanel implements ActionListener {
     private JPasswordField contraseñaActualField;
     private JPasswordField nuevaContraseñaField;
     private JButton btnConfirmar;
+    private Usuario usuarioActual;
+    private MainApp mainApp;
 
     private String contraseñaActual; 
     private boolean tieneContraseñaEstablecida;  // Indica si el usuario ya tiene una contraseña establecida
 
-    public VentanaContrasena(String contraseñaActual) {
+    public VentanaContrasena(String contraseñaActual, Usuario usuarioActual, MainApp mainApp) {
         this.contraseñaActual = contraseñaActual;
         this.tieneContraseñaEstablecida = (contraseñaActual != null);
+        this.mainApp = mainApp;
+        this.usuarioActual = usuarioActual;
+        
+        if (usuarioActual != null) {
+        	// Configurar el layout
+            setLayout(new GridLayout(3, 2, 10, 10));
 
-        // Configurar el layout
-        setLayout(new GridLayout(3, 2, 10, 10));
+            // Si ya tiene contraseña establecida, mostrar campo para la contraseña actual
+            if (tieneContraseñaEstablecida) {
+                add(new JLabel("Ingrese la contraseña actual:"));
+                contraseñaActualField = new JPasswordField();
+                add(contraseñaActualField);
+            }
 
-        // Si ya tiene contraseña establecida, mostrar campo para la contraseña actual
-        if (tieneContraseñaEstablecida) {
-            add(new JLabel("Ingrese la contraseña actual:"));
-            contraseñaActualField = new JPasswordField();
-            add(contraseñaActualField);
+            // Mostrar campo para la nueva contraseña
+            add(new JLabel("Ingrese la nueva contraseña:"));
+            nuevaContraseñaField = new JPasswordField();
+            add(nuevaContraseñaField);
+
+            // Botón para confirmar el cambio de contraseña
+            btnConfirmar = new JButton("Confirmar");
+            btnConfirmar.addActionListener(this);
+            add(btnConfirmar);
+           
+        } else {
+            // Manejar el caso de usuario nulo
+
+            System.out.println("El usuario no está disponible.");
         }
 
-        // Mostrar campo para la nueva contraseña
-        add(new JLabel("Ingrese la nueva contraseña:"));
-        nuevaContraseñaField = new JPasswordField();
-        add(nuevaContraseñaField);
-
-        // Botón para confirmar el cambio de contraseña
-        btnConfirmar = new JButton("Confirmar");
-        btnConfirmar.addActionListener(this);
-        add(btnConfirmar);
     }
 
     @Override
@@ -48,7 +63,6 @@ public class VentanaContrasena extends JPanel implements ActionListener {
                     return;
                 }
             }
-
             // Establecer la nueva contraseña
             String nuevaContraseña = new String(nuevaContraseñaField.getPassword());
             if (nuevaContraseña.isEmpty()) {
@@ -61,6 +75,7 @@ public class VentanaContrasena extends JPanel implements ActionListener {
             JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
             // Aquí puedes hacer la conexión con el modelo o cerrar el panel
+            mainApp.loginCompleto(usuarioActual);
         }
     }
 }

@@ -17,20 +17,29 @@ public class Usuario {
         setContrasena(contrasena);
         this.permisoEspecial = permisoEspecial; // no es necesario verificar null para boolean
     }
-    // Constructor 2: Incluye atributos sin datos de permiso o seguridad
+    // Constructor 2: Usuario con nombre, rut, email y contraseña
+    public Usuario(String nombre, String rut, String email, String contrasena) {
+        setNombre(nombre);
+        setId(id);
+        setRut(rut);
+        setEmail(email);
+        setContrasena(contrasena);
+    }
+    
+    // Constructor 3: Incluye atributos sin datos de permiso o seguridad
     public Usuario(String nombre, int id, String rut, String email) { 
         setNombre(nombre);
         setId(id);
         setRut(rut);
         setEmail(email);
     }
-    // Constructor 3: Incluye atributos sin datos de permiso o seguridad e identificacion
+    // Constructor 4: Incluye atributos sin datos de permiso o seguridad e identificacion
     public Usuario(String nombre, String rut, String email) {
         setNombre(nombre);
         setRut(rut);
         setEmail(email);
     }
-    // Constructor 4: Incluye solo atributos basicos
+    // Constructor 5: Incluye solo atributos basicos
     public Usuario(String nombre, String rut) {
         setNombre(nombre);
         setRut(rut);

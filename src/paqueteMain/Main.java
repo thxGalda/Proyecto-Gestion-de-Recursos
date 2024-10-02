@@ -1,4 +1,10 @@
 package paqueteMain;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -12,6 +18,10 @@ public class Main {
         menu.iniciar();
     }
     public static void inicializarCursos(Menu menu) {
+    	List<Profesor> profesores = new ArrayList<>();
+        List<Curso> cursos = new ArrayList<>();
+        List<Carpeta> carpetas = new ArrayList<>();
+        List<Recurso> recursos = new ArrayList<>();
         // Profesores
         Profesor profesorMatematica = new Profesor("Dr. Juan Pérez", "12345678-9", "juan.perez@universidad.edu", "Matemáticas");
         Profesor profesorFisica = new Profesor("Dr. Laura Gómez", "98765432-1", "laura.gomez@universidad.edu", "Física");
@@ -91,69 +101,58 @@ public class Main {
         Recurso recurso10_3 = new Recurso("Guía 3", "PPTX");
 
         // Añadir recursos a las carpetas
-        carpeta1.agregarRecurso(recurso1_1);
-        carpeta1.agregarRecurso(recurso1_2);
-        carpeta1.agregarRecurso(recurso1_3);
-
-        carpeta2.agregarRecurso(recurso2_1);
-        carpeta2.agregarRecurso(recurso2_2);
-        carpeta2.agregarRecurso(recurso2_3);
-
-        carpeta3.agregarRecurso(recurso3_1);
-        carpeta3.agregarRecurso(recurso3_2);
-        carpeta3.agregarRecurso(recurso3_3);
-
-        carpeta4.agregarRecurso(recurso4_1);
-        carpeta4.agregarRecurso(recurso4_2);
-        carpeta4.agregarRecurso(recurso4_3);
-
-        carpeta5.agregarRecurso(recurso5_1);
-        carpeta5.agregarRecurso(recurso5_2);
-        carpeta5.agregarRecurso(recurso5_3);
-
-        carpeta6.agregarRecurso(recurso6_1);
-        carpeta6.agregarRecurso(recurso6_2);
-        carpeta6.agregarRecurso(recurso6_3);
-
-        carpeta7.agregarRecurso(recurso7_1);
-        carpeta7.agregarRecurso(recurso7_2);
-        carpeta7.agregarRecurso(recurso7_3);
-
-        carpeta8.agregarRecurso(recurso8_1);
-        carpeta8.agregarRecurso(recurso8_2);
-        carpeta8.agregarRecurso(recurso8_3);
-
-        carpeta9.agregarRecurso(recurso9_1);
-        carpeta9.agregarRecurso(recurso9_2);
-        carpeta9.agregarRecurso(recurso9_3);
-
-        carpeta10.agregarRecurso(recurso10_1);
-        carpeta10.agregarRecurso(recurso10_2);
-        carpeta10.agregarRecurso(recurso10_3);
-		
-		// Asignar carpetas a cursos
-        cursoMatematica.agregarCarpeta(carpeta1);
-        cursoMatematica.agregarCarpeta(carpeta2);
-        cursoMatematica.agregarCarpeta(carpeta3);
-        cursoFisica.agregarCarpeta(carpeta4);
-        cursoFisica.agregarCarpeta(carpeta5);
-        cursoFisica.agregarCarpeta(carpeta6);
-        cursoFisica.agregarCarpeta(carpeta7);
-        cursoProgramacion.agregarCarpeta(carpeta8);
-        cursoProgramacion.agregarCarpeta(carpeta9);
-        cursoProgramacion.agregarCarpeta(carpeta10);
-
-        // Asignar estudiantes a cursos
-        cursoMatematica.agregarEstudiante(estudiante1);
-        cursoMatematica.agregarEstudiante(estudiante2);
-        cursoFisica.agregarEstudiante(estudiante3);
-        cursoFisica.agregarEstudiante(estudiante4);
-        cursoProgramacion.agregarEstudiante(estudiante5);
+        saveProfesoresToCSV(profesores);
+        saveCursosToCSV(cursos);
+        saveCarpetasToCSV(carpetas);
+        saveRecursosToCSV(recursos);
 
         // Agregar cursos al menú
         menu.agregarCurso(cursoMatematica);
         menu.agregarCurso(cursoFisica);
         menu.agregarCurso(cursoProgramacion);
+    }
+    public static void saveProfesoresToCSV(List<Profesor> profesores) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("profesores.csv"))) {
+            writer.write("Nombre,RUT,Email,Asignatura\n");
+            for (Profesor p : profesores) {
+                writer.write(p.nombre + "," + p.rut + "," + p.email + "," + p.asignatura + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveCursosToCSV(List<Curso> cursos) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("cursos.csv"))) {
+            writer.write("Nombre,Descripcion,Profesor\n");
+            for (Curso c : cursos) {
+                writer.write(c.nombre + "," + c.descripcion + "," + c.profesor.nombre + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveCarpetasToCSV(List<Carpeta> carpetas) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("carpetas.csv"))) {
+            writer.write("Nombre,Codigo,Habilitada\n");
+            for (Carpeta c : carpetas) {
+                writer.write(c.nombre + "," + c.codigo + "," + c.habilitada + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveRecursosToCSV(List<Recurso> recursos) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("recursos.csv"))) {
+            writer.write("Nombre,Autor,Materia,Fecha,Tipo,Carpeta,Habilitado\n");
+            for (Recurso r : recursos) {
+                writer.write(r.nombre + "," + r.autor + "," + r.materia + "," + r.fecha + "," + r.tipo + "," + r.carpeta + "," + r.habilitado + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
