@@ -302,20 +302,16 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         String rutEstudiante = campoRut.getText();
         String correoEstudiante = campoCorreo.getText();
         int paraleloEstudiante;
-
+        
         try {
             paraleloEstudiante = Integer.parseInt(campoParalelo.getText());
-
             // Generar un ID aleatorio para el estudiante
             int idEstudiante = generarIdUsuario(); // Método que debes tener implementado
-
             // Crear el nuevo estudiante
             Estudiante nuevoEstudiante = new Estudiante(nombreEstudiante, idEstudiante, rutEstudiante, correoEstudiante, paraleloEstudiante);
             curso.agregarEstudiante(nuevoEstudiante); // Asumiendo que curso es el objeto que gestiona los estudiantes
-
             // Mostrar confirmación
             JOptionPane.showMessageDialog(panelAgregarEstudiante, "Estudiante agregado exitosamente.");
-            
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(panelAgregarEstudiante, "Por favor ingrese un número válido para el paralelo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -326,29 +322,120 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
     return panelAgregarEstudiante; // Retornar el panel para añadirlo al CardLayout
 }
     private JPanel crearPanelEliminarEstudiante() {
-    	JPanel panelEliminarEstudiante = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Eliminar Estudiante", JLabel.CENTER);
-        JButton btnEliminar = new JButton("Eliminar Estudiante");
+    JPanel panelEliminarEstudiante = new JPanel(new GridLayout(3, 2, 10, 10)); // Usamos GridLayout para organizar los campos
+    panelEliminarEstudiante.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        panelEliminarEstudiante.add(label, BorderLayout.NORTH);
-        panelEliminarEstudiante.add(btnEliminar, BorderLayout.SOUTH);
+    // Etiqueta y campo de texto para ingresar el nombre o ID del estudiante
+    JLabel labelEliminar = new JLabel("Nombre o ID del Estudiante:");
+    JTextField campoEliminar = new JTextField(20);
 
-        btnEliminar.addActionListener(e -> eliminarEstudiante());
+    // Botones para eliminar y regresar
+    JButton btnEliminar = new JButton("Eliminar Estudiante");
+    JButton btnBack = new JButton("Regresar");
 
-        return panelEliminarEstudiante; // Retornar el panel para añadirlo al CardLayout
-    }
+    // Agregar todos los componentes al panel
+    panelEliminarEstudiante.add(labelEliminar);
+    panelEliminarEstudiante.add(campoEliminar);
+    panelEliminarEstudiante.add(btnEliminar);
+    panelEliminarEstudiante.add(btnBack);
+
+    // Acción del botón eliminar estudiante
+    btnEliminar.addActionListener(e -> {
+        String entradaEliminarEstudiante = campoEliminar.getText();
+
+        // Intentar eliminar por ID o nombre
+        try {
+            int idEstudianteEliminar = Integer.parseInt(entradaEliminarEstudiante);
+            curso.eliminarEstudiante(idEstudianteEliminar); // Eliminar por ID
+            JOptionPane.showMessageDialog(panelEliminarEstudiante, "Estudiante con ID " + idEstudianteEliminar + " eliminado.");
+        } catch (NumberFormatException ex) {
+            curso.eliminarEstudiante(entradaEliminarEstudiante); // Eliminar por nombre
+            JOptionPane.showMessageDialog(panelEliminarEstudiante, "Estudiante con nombre " + entradaEliminarEstudiante + " eliminado.");
+        }
+    });
+
+    // Acción del botón regresar
+    btnBack.addActionListener(this);
+
+    return panelEliminarEstudiante; // Retornar el panel para añadirlo al CardLayout
+}
+
     private JPanel crearPanelCargarRecurso() {
-    	JPanel panelCargarRecurso = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Cargar Recurso", JLabel.CENTER);
-        JButton btnCargar = new JButton("Cargar Recurso");
+    JPanel panelCargarRecurso = new JPanel(new GridLayout(5, 2, 10, 10)); // Usamos GridLayout para organizar los componentes
+    panelCargarRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        panelCargarRecurso.add(label, BorderLayout.NORTH);
-        panelCargarRecurso.add(btnCargar, BorderLayout.SOUTH);
+    // Etiqueta y campo para seleccionar la opción de cargar un solo recurso o una lista
+    JLabel labelOpcion = new JLabel("Seleccione una opción:");
+    String[] opciones = {"Un solo recurso", "Lista de recursos"};
+    JComboBox<String> comboBoxOpcion = new JComboBox<>(opciones);
 
-        btnCargar.addActionListener(e -> cargarRecurso());
+    // Etiqueta y campo de texto para ingresar el nombre o ID de la carpeta
+    JLabel labelCarpeta = new JLabel("Nombre o ID de la Carpeta:");
+    JTextField campoCarpeta = new JTextField(20);
 
-        return panelCargarRecurso; // Retornar el panel para añadirlo al CardLayout
-    }
+    // Botón para cargar recurso(s)
+    JButton btnCargar = new JButton("Cargar Recurso(s)");
+    JButton btnBack = new JButton("Regresar");
+
+    // Agregar todos los componentes al panel
+    panelCargarRecurso.add(labelOpcion);
+    panelCargarRecurso.add(comboBoxOpcion);
+    panelCargarRecurso.add(labelCarpeta);
+    panelCargarRecurso.add(campoCarpeta);
+    panelCargarRecurso.add(btnCargar);
+    panelCargarRecurso.add(btnBack);
+
+    // Acción del botón para cargar recurso(s)
+    btnCargar.addActionListener(e -> {
+        String entradaCarpeta = campoCarpeta.getText();
+        int opcionSeleccionada = comboBoxOpcion.getSelectedIndex(); // 0 = Un solo recurso, 1 = Lista de recursos
+
+        try {
+            int idCarpeta = Integer.parseInt(entradaCarpeta); // Intentar convertir la entrada a un número (ID)
+
+            if (opcionSeleccionada == 0) { // Un solo recurso
+                Recurso recurso = Recurso.crearRecurso(); // Método para crear un recurso
+                if (recurso != null) {
+                    curso.cargarRecurso(idCarpeta, recurso); // Llama al método de la clase Curso
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Recurso cargado en la carpeta con ID " + idCarpeta);
+                } else {
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear el recurso.");
+                }
+            } else { // Lista de recursos
+                List<Recurso> listaRecursos = Carpeta.crearListaRecursos(); // Método para crear una lista de recursos
+                if (listaRecursos != null && !listaRecursos.isEmpty()) {
+                    curso.cargarRecurso(idCarpeta, listaRecursos); // Llama al método de la clase Curso
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Lista de recursos cargada en la carpeta con ID " + idCarpeta);
+                } else {
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear la lista de recursos.");
+                }
+            }
+        } catch (NumberFormatException ex) { // Si no es un número, tratar como nombre de carpeta
+            if (opcionSeleccionada == 0) { // Un solo recurso
+                Recurso recurso = Recurso.crearRecurso(); // Método para crear un recurso
+                if (recurso != null) {
+                    curso.cargarRecurso(entradaCarpeta, recurso); // Llama al método de la clase Curso
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Recurso cargado en la carpeta " + entradaCarpeta);
+                } else {
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear el recurso.");
+                }
+            } else { // Lista de recursos
+                List<Recurso> listaRecursos = Carpeta.crearListaRecursos(); // Método para crear una lista de recursos
+                if (listaRecursos != null && !listaRecursos.isEmpty()) {
+                    curso.cargarRecurso(entradaCarpeta, listaRecursos); // Llama al método de la clase Curso
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Lista de recursos cargada en la carpeta " + entradaCarpeta);
+                } else {
+                    JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear la lista de recursos.");
+                }
+            }
+        }
+    });
+
+    // Acción del botón regresar
+    btnBack.addActionListener(this);
+
+    return panelCargarRecurso; // Retornar el panel para añadirlo al CardLayout
+}
     //
     // Métodos de acción para cada botón
     //
