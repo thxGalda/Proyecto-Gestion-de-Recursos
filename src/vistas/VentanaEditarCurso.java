@@ -179,53 +179,152 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         
        return panelProfesor;// Retornar el panel para añadirlo al CardLayout
     }
-    private JPanel crearPanelAgregarCarpeta() {
-        JPanel panelAgregarCarpeta = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Agregar Carpeta", JLabel.CENTER);
+       private JPanel crearPanelAgregarCarpeta() {
+        JPanel panelAgregarCarpeta = new JPanel(new GridLayout(4, 2)); // Usamos GridLayout para organizar el formulario
+        panelAgregarCarpeta.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    
+        // Etiquetas y campos de texto para nombre, ID y visibilidad de la carpeta
+        JLabel labelNombre = new JLabel("Nombre de la Carpeta:");
+        JTextField campoNombre = new JTextField(20);
+        
+        JLabel labelID = new JLabel("ID de la Carpeta:");
+        JTextField campoID = new JTextField(20);
+        
+        JLabel labelEsPublica = new JLabel("¿Es pública? (true/false):");
+        JTextField campoEsPublica = new JTextField(20);
+    
+        // Botón para agregar la carpeta
         JButton btnAgregar = new JButton("Agregar Carpeta");
         JButton btnBack = new JButton("Regresar");
-
-        panelAgregarCarpeta.add(label, BorderLayout.NORTH);
-        panelAgregarCarpeta.add(btnAgregar, BorderLayout.SOUTH);
-        panelAgregarCarpeta.add(btnBack, BorderLayout.SOUTH);
-
-
-        btnAgregar.addActionListener(e -> agregarCarpeta());
+    
+        // Agregar componentes al panel
+        panelAgregarCarpeta.add(labelNombre);
+        panelAgregarCarpeta.add(campoNombre);
+        panelAgregarCarpeta.add(labelID);
+        panelAgregarCarpeta.add(campoID);
+        panelAgregarCarpeta.add(labelEsPublica);
+        panelAgregarCarpeta.add(campoEsPublica);
+        panelAgregarCarpeta.add(btnAgregar);
+        panelAgregarCarpeta.add(btnBack);
+    
+        // Acción del botón agregar carpeta
+        btnAgregar.addActionListener(e -> {
+            String nombreCarpeta = campoNombre.getText();
+            int idCarpeta = Integer.parseInt(campoID.getText());
+            boolean esPublica = Boolean.parseBoolean(campoEsPublica.getText());
+    
+            // Aquí puedes agregar lógica para crear y agregar la carpeta al sistema
+            Carpeta nuevaCarpeta = new Carpeta(nombreCarpeta, idCarpeta, esPublica);
+            sistema.agregarCarpeta(nuevaCarpeta); // Asumiendo que hay un sistema que gestiona carpetas
+    
+            JOptionPane.showMessageDialog(panelAgregarCarpeta, "Carpeta agregada con éxito.");
+        });
+    
+        // Acción del botón regresar
         btnBack.addActionListener(this);
-
+    
         return panelAgregarCarpeta; // Retornar el panel para añadirlo al CardLayout
     }
+
     private JPanel crearPanelEliminarCarpeta() {
-    	JPanel panelEliminarCarpeta = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Eliminar Carpeta", JLabel.CENTER);
-        JButton btnEliminar = new JButton("Eliminar Carpeta");
-        JButton btnBack = new JButton("Regresar");
+    JPanel panelEliminarCarpeta = new JPanel(new GridLayout(3, 1)); // Usamos GridLayout para organizar el formulario
+    panelEliminarCarpeta.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        panelEliminarCarpeta.add(label, BorderLayout.NORTH);
-        panelEliminarCarpeta.add(btnEliminar, BorderLayout.SOUTH);
-        panelEliminarCarpeta.add(btnBack, BorderLayout.SOUTH);
+    // Etiqueta y campo de texto para ingresar el nombre o ID de la carpeta a eliminar
+    JLabel labelEliminar = new JLabel("Ingrese el nombre o ID de la carpeta a eliminar:");
+    JTextField campoEliminar = new JTextField(20);
 
-        btnEliminar.addActionListener(e -> eliminarCarpeta());
-        btnBack.addActionListener(this);
+    // Botones para eliminar y regresar
+    JButton btnEliminar = new JButton("Eliminar Carpeta");
+    JButton btnBack = new JButton("Regresar");
 
-        return panelEliminarCarpeta;// Retornar el panel para añadirlo al CardLayout
-    }
+    // Agregar componentes al panel
+    panelEliminarCarpeta.add(labelEliminar);
+    panelEliminarCarpeta.add(campoEliminar);
+    panelEliminarCarpeta.add(btnEliminar);
+    panelEliminarCarpeta.add(btnBack);
+
+    // Acción del botón eliminar carpeta
+    btnEliminar.addActionListener(e -> {
+        String entradaEliminarCarpeta = campoEliminar.getText();
+        try {
+            // Intentar convertir la entrada a un número (eliminar por ID)
+            int idCarpetaEliminar = Integer.parseInt(entradaEliminarCarpeta);
+            curso.eliminarCarpeta(idCarpetaEliminar); // Asumiendo que "curso" es el objeto que gestiona las carpetas
+            JOptionPane.showMessageDialog(panelEliminarCarpeta, "Carpeta con ID " + idCarpetaEliminar + " eliminada.");
+        } catch (NumberFormatException ex) {
+            // Si no es un número, eliminar por nombre
+            curso.eliminarCarpeta(entradaEliminarCarpeta);
+            JOptionPane.showMessageDialog(panelEliminarCarpeta, "Carpeta con nombre '" + entradaEliminarCarpeta + "' eliminada.");
+        }
+    });
+    // Acción del botón regresar
+    btnBack.addActionListener(this);
+
+    return panelEliminarCarpeta; // Retornar el panel para añadirlo al CardLayout
+}
     private JPanel crearPanelAgregarEstudiante() {
-    	JPanel panelAgregarEstudiante = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Agregar Estudiante", JLabel.CENTER);
-        JButton btnAgregar = new JButton("Agregar Estudiante");
-        JButton btnBack = new JButton("Regresar");
+    JPanel panelAgregarEstudiante = new JPanel(new GridLayout(6, 2, 10, 10)); // Usamos GridLayout para organizar los campos
+    panelAgregarEstudiante.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        panelAgregarEstudiante.add(label, BorderLayout.NORTH);
-        panelAgregarEstudiante.add(btnAgregar, BorderLayout.SOUTH);
-        panelAgregarEstudiante.add(btnBack, BorderLayout.SOUTH);
+    // Etiquetas y campos de texto para cada dato del estudiante
+    JLabel labelNombre = new JLabel("Nombre del Estudiante:");
+    JTextField campoNombre = new JTextField(20);
+    
+    JLabel labelRut = new JLabel("RUT del Estudiante:");
+    JTextField campoRut = new JTextField(20);
+    
+    JLabel labelCorreo = new JLabel("Correo Electrónico:");
+    JTextField campoCorreo = new JTextField(20);
+    
+    JLabel labelParalelo = new JLabel("Paralelo:");
+    JTextField campoParalelo = new JTextField(5);
 
+    // Botones para agregar y regresar
+    JButton btnAgregar = new JButton("Agregar Estudiante");
+    JButton btnBack = new JButton("Regresar");
 
-        btnAgregar.addActionListener(e -> agregarEstudiante());
-        btnBack.addActionListener(this);
+    // Agregar todos los componentes al panel
+    panelAgregarEstudiante.add(labelNombre);
+    panelAgregarEstudiante.add(campoNombre);
+    panelAgregarEstudiante.add(labelRut);
+    panelAgregarEstudiante.add(campoRut);
+    panelAgregarEstudiante.add(labelCorreo);
+    panelAgregarEstudiante.add(campoCorreo);
+    panelAgregarEstudiante.add(labelParalelo);
+    panelAgregarEstudiante.add(campoParalelo);
+    panelAgregarEstudiante.add(btnAgregar);
+    panelAgregarEstudiante.add(btnBack);
 
-        return panelAgregarEstudiante;// Retornar el panel para añadirlo al CardLayout
-    }
+    // Acción del botón agregar estudiante
+    btnAgregar.addActionListener(e -> {
+        String nombreEstudiante = campoNombre.getText();
+        String rutEstudiante = campoRut.getText();
+        String correoEstudiante = campoCorreo.getText();
+        int paraleloEstudiante;
+
+        try {
+            paraleloEstudiante = Integer.parseInt(campoParalelo.getText());
+
+            // Generar un ID aleatorio para el estudiante
+            int idEstudiante = generarIdUsuario(); // Método que debes tener implementado
+
+            // Crear el nuevo estudiante
+            Estudiante nuevoEstudiante = new Estudiante(nombreEstudiante, idEstudiante, rutEstudiante, correoEstudiante, paraleloEstudiante);
+            curso.agregarEstudiante(nuevoEstudiante); // Asumiendo que curso es el objeto que gestiona los estudiantes
+
+            // Mostrar confirmación
+            JOptionPane.showMessageDialog(panelAgregarEstudiante, "Estudiante agregado exitosamente.");
+            
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(panelAgregarEstudiante, "Por favor ingrese un número válido para el paralelo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    });
+
+    // Acción del botón regresar
+    btnBack.addActionListener(this);
+    return panelAgregarEstudiante; // Retornar el panel para añadirlo al CardLayout
+}
     private JPanel crearPanelEliminarEstudiante() {
     	JPanel panelEliminarEstudiante = new JPanel(new BorderLayout());
         JLabel label = new JLabel("Eliminar Estudiante", JLabel.CENTER);
