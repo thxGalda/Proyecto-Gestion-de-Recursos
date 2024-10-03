@@ -1,6 +1,6 @@
 package paqueteMain;
 public class excepcionFormatoString extends Exception {
-    excepcionFormatoString() {
-        super("Formato incorrecto, vuelva a ingresar");
+    excepcionFormatoString(msj) {
+        super(msj);
     }
 }
