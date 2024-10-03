@@ -1,6 +1,6 @@
 package paqueteMain;
 public class excepcionArchivoInvalido extends Exception {
-    excepcionArchivoInvalido() {
-        super("El archivo no es valido");
+    excepcionArchivoInvalido(msj) {
+        super(msj);
     }
 }
