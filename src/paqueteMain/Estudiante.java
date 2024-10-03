@@ -32,10 +32,23 @@ public class Estudiante extends Usuario {
     }
 
     // Metodos
-    @Override
-    public String toString() {
-        return super.toString() + "\nParalelo: " + paralelo + "\n";
-    }
+     @Override
+     public void mostrarInformacion() {
+     super.mostrarInformacion(); // Muestra información de Usuario
+     System.out.println("Paralelo: " + paralelo);
+     }
+     @Override
+     public boolean isPermisoEspecial() {
+     return false; // Estudiantes no tienen acceso especial por defecto
+     }
+     @Override
+     public boolean esIgual(Usuario otro) {
+     return super.esIgual(otro) && this.paralelo == ((Estudiante) otro).pa
+     }
+     @Override
+     public String getTipoUsuario() {
+     return "Estudiante";
+     }
     //
     // Setters y Getters
     //
