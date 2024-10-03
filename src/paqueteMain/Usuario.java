@@ -52,6 +52,28 @@ public class Usuario {
         return "Usuario: " + nombre + "\nID: " + id + "\nRUT: " + rut + "\nEmail: " + email + 
                "\nPermiso Especial: " + (permisoEspecial ? "Sí" : "No");
     }
+	public String getTipoUsuario() {
+ 	return "Usuario";
+ 	}
+	 // Método para mostrar la ficha personal del usuario
+	 public void mostrarInformacion() {
+	 System.out.println(this.toString());
+	 }
+	 // Método para comparar usuario
+	 public boolean esIgual(Usuario otro) {
+	 return this.id == otro.id; // Compara por ID
+	 }
+	 public void cambiarContrasena(String nuevaContrasena) {
+	 if (nuevaContrasena != null) {
+	 this.contrasena = nuevaContrasena;
+	 System.out.println("Contraseña establecida exitosamente!");
+	 }
+	 System.out.println("No se pudo cambiar la contraseña");
+	 }
+	 public boolean validarContrasena(String contrasena) {
+	 return this.contrasena.equals(contrasena);
+	 }
+	
     //
     // Setters y Getters
     //
