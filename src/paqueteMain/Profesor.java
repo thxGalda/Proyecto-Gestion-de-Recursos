@@ -3,6 +3,7 @@ import java.util.List;
 public class Profesor extends Usuario {
     // Atributos privados
     private List<Curso> cursosImpartidos;
+    private static CLAVE_SECRETA clave1234;
     private String departamento;
 
     // Constructor
@@ -33,6 +34,45 @@ public class Profesor extends Usuario {
     public Profesor(String nombre, String rut) {
         super(nombre, rut);
     }
+
+    // Metodos
+
+     @Override
+     public void mostrarInformacion() {
+     super.mostrarInformacion(); // Muestra información de Usuario
+     System.out.println("Departamento: " + departamento);
+     }
+     @Override
+     public boolean isPermisoEspecial() {
+     return true; // Profesores tienen acceso especial
+     }
+     @Override
+     public void cambiarContrasena(String nuevaContrasena) {
+         Scanner scanner = new Scanner(System.in);
+         // Pedir clave extra para verificar
+         String contrasenaExtra = scanner.nextLine();
+         
+         // Comparar la contraseña extra con la constante
+         
+         if (CLAVE_SECRETA.equals(contrasenaExtra)) {
+             super.cambiarContrasena(nuevaContrasena); // Llama al método de l
+         } else {
+             System.out.println("La clave es incorrecta. No se pudo cambiar la
+         }
+     }
+     @Override
+     public boolean esIgual(Usuario otro) {
+     // Comparar si son profesores (puedes añadir más criterios)
+     return super.esIgual(otro) && this.departamento.equals(((Profesor) otr
+     }
+     @Override
+     public String getTipoUsuario() {
+     return "Profesor";
+     }
+    
+    //
+    // Setters y Getters
+    //
     public List<Curso> getCursosImpartidos() {
         return cursosImpartidos;
     }
@@ -43,9 +83,6 @@ public class Profesor extends Usuario {
             System.out.println("Advertencia: La lista de cursos impartidos no puede ser null.");
         }
     }
-    //
-    // Setters y Getters
-    //
     public String getDepartamento() {
         return departamento;
     }
