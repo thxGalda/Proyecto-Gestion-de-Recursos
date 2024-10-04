@@ -1,0 +1,177 @@
+﻿nombre;autor;curso;fecha;formato;carpeta;esVisible
+Presentación Curso;Dr. Juan Pérez;Matemática 1;25-07-2024;ppt;MAT 1001-A Ayudantía;true
+Cuadernillo Ejercicios;Dr. Juan Pérez;Matemática 1;01-08-2024;pdf;MAT 1001-A Ayudantía;true
+Material Repaso Certamen;Dr. Juan Pérez;Matemática 1;08-08-2024;pdf;MAT 1001-A Ayudantía;true
+Tip Taller 3;Dr. Juan Pérez;Matemática 1;15-08-2024;mp4;MAT 1001-A Ayudantía;true
+Preparación Control;Dr. Juan Pérez;Matemática 1;22-08-2024;pptx;MAT 1001-A Control;false
+Act. Decimas Control;Dr. Juan Pérez;Matemática 1;29-08-2024;pptx;MAT 1001-A Control;false
+Notas Control;Dr. Juan Pérez;Matemática 1;05-09-2024;xlsx;MAT 1001-A Control;true
+Revisión Control;Dr. Juan Pérez;Matemática 1;12-09-2024;pdf;MAT 1001-A Control;true
+Preparacíon Certamen;Dr. Juan Pérez;Matemática 1;19-09-2024;pptx;MAT 1001-A Certamen;true
+Act. Decimas Certamen;Dr. Juan Pérez;Matemática 1;26-09-2024;pptx;MAT 1001-A Certamen;true
+Notas Certamen;Dr. Juan Pérez;Matemática 1;03-10-2024;xlsx;MAT 1001-A Certamen;false
+Revisión Certamen;Dr. Juan Pérez;Matemática 1;10-10-2024;pdf;MAT 1001-A Certamen;false
+Taller 1;Prof. Taller Mat;Matemática 1;17-10-2024;pdf;MAT 1001-A Talleres;false
+Taller 2;Prof. Taller Mat;Matemática 1;24-10-2024;pdf;MAT 1001-A Talleres;true
+Taller 3;Prof. Taller Mat;Matemática 1;31-10-2024;pdf;MAT 1001-A Talleres;false
+Taller 4;Prof. Taller Mat;Matemática 1;07-11-2024;pdf;MAT 1001-A Talleres;false
+Presentación Curso;Prof. Laura Gómez;Física 2;26-07-2024;ppt;FIS 1002-2/A Ayudantía;false
+Ejercicio Caída Libre;Prof. Laura Gómez;Física 2;02-08-2024;pdf;FIS 1002-2/A Ayudantía;true
+Material Repaso Certamen;Prof. Laura Gómez;Física 2;09-08-2024;pdf;FIS 1002-2/A Ayudantía;true
+Certamen Semestre Pasado;Prof. Laura Gómez;Física 2;16-08-2024;mp4;FIS 1002-2/A Ayudantía;false
+Preparación Control;Prof. Laura Gómez;Física 2;23-08-2024;pptx;FIS 1002-2/A Control;true
+Act. Decimas Control;Prof. Laura Gómez;Física 2;30-08-2024;pptx;FIS 1002-2/A Control;true
+Notas Control;Prof. Laura Gómez;Física 2;06-09-2024;xlsx;FIS 1002-2/A Control;false
+Revisión Control;Prof. Laura Gómez;Física 2;13-09-2024;pdf;FIS 1002-2/A Control;true
+Preparacíon Certamen;Prof. Laura Gómez;Física 2;20-09-2024;pptx;FIS 1002-2/A Certamen;true
+Act. Decimas Certamen;Prof. Laura Gómez;Física 2;27-09-2024;pptx;FIS 1002-2/A Certamen;true
+Notas Certamen;Prof. Laura Gómez;Física 2;04-10-2024;xlsx;FIS 1002-2/A Certamen;false
+Revisión Certamen;Prof. Laura Gómez;Física 2;11-10-2024;pdf;FIS 1002-2/A Certamen;true
+Taller 1;Prof. Taller Fis;Física 2;18-10-2024;pdf;FIS 1002-2/A Talleres;true
+Taller 2;Prof. Taller Fis;Física 2;25-10-2024;pdf;FIS 1002-2/A Talleres;false
+Taller 3;Prof. Taller Fis;Física 2;01-11-2024;pdf;FIS 1002-2/A Talleres;false
+Taller 4;Prof. Taller Fis;Física 2;08-11-2024;pdf;FIS 1002-2/A Talleres;true
+Presentación Curso;Ing. Carlos Ruiz;Programación Avanzada;27-07-2024;ppt;ICI 2121-3 Ayudantía;true
+Ejercicio Tipo Cátedra;Ing. Carlos Ruiz;Programación Avanzada;03-08-2024;pdf;ICI 2121-3 Ayudantía;true
+Material Repaso Certamen;Ing. Carlos Ruiz;Programación Avanzada;10-08-2024;pdf;ICI 2121-3 Ayudantía;false
+Escritura de Archivos;Ing. Carlos Ruiz;Programación Avanzada;17-08-2024;mp4;ICI 2121-3 Ayudantía;false
+Preparación Control;Ing. Carlos Ruiz;Programación Avanzada;24-08-2024;pptx;ICI 2121-3 Control;true
+Act. Decimas Control;Ing. Carlos Ruiz;Programación Avanzada;31-08-2024;pptx;ICI 2121-3 Control;true
+Notas Control;Ing. Carlos Ruiz;Programación Avanzada;07-09-2024;xlsx;ICI 2121-3 Control;false
+Revisión Control;Ing. Carlos Ruiz;Programación Avanzada;14-09-2024;pdf;ICI 2121-3 Control;false
+Preparacíon Certamen;Ing. Carlos Ruiz;Programación Avanzada;21-09-2024;pptx;ICI 2121-3 Certamen;false
+Act. Decimas Certamen;Ing. Carlos Ruiz;Programación Avanzada;28-09-2024;pptx;ICI 2121-3 Certamen;false
+Notas Certamen;Ing. Carlos Ruiz;Programación Avanzada;05-10-2024;xlsx;ICI 2121-3 Certamen;true
+Revisión Certamen;Ing. Carlos Ruiz;Programación Avanzada;12-10-2024;pdf;ICI 2121-3 Certamen;false
+Taller 1;Prof. Taller Progra;Programación Avanzada;19-10-2024;pdf;ICI 2121-3 Talleres;true
+Taller 2;Prof. Taller Progra;Programación Avanzada;26-10-2024;pdf;ICI 2121-3 Talleres;true
+Taller 3;Prof. Taller Progra;Programación Avanzada;02-11-2024;pdf;ICI 2121-3 Talleres;true
+Taller 4;Prof. Taller Progra;Programación Avanzada;09-11-2024;pdf;ICI 2121-3 Talleres;true
+Presentación Curso;Dr. Marta López;Química;28-07-2024;ppt;QUI 1003-1 Ayudantía;false
+Equilibrio Quimico;Dr. Marta López;Química;04-08-2024;pdf;QUI 1003-1 Ayudantía;false
+Material Repaso Certamen;Dr. Marta López;Química;11-08-2024;pdf;QUI 1003-1 Ayudantía;true
+Estequimetría;Dr. Marta López;Química;18-08-2024;mp4;QUI 1003-1 Ayudantía;true
+Preparación Control;Dr. Marta López;Química;25-08-2024;pptx;QUI 1003-1 Control;true
+Act. Decimas Control;Dr. Marta López;Química;01-09-2024;pptx;QUI 1003-1 Control;true
+Notas Control;Dr. Marta López;Química;08-09-2024;xlsx;QUI 1003-1 Control;false
+Revisión Control;Dr. Marta López;Química;15-09-2024;pdf;QUI 1003-1 Control;false
+Preparacíon Certamen;Dr. Marta López;Química;22-09-2024;pptx;QUI 1003-1 Certamen;false
+Act. Decimas Certamen;Dr. Marta López;Química;29-09-2024;pptx;QUI 1003-1 Certamen;true
+Notas Certamen;Dr. Marta López;Química;06-10-2024;xlsx;QUI 1003-1 Certamen;false
+Revisión Certamen;Dr. Marta López;Química;13-10-2024;pdf;QUI 1003-1 Certamen;false
+Taller 1;Prof. Taller Química;Química;20-10-2024;pdf;QUI 1003-1 Talleres;false
+Taller 2;Prof. Taller Química;Química;27-10-2024;pdf;QUI 1003-1 Talleres;true
+Taller 3;Prof. Taller Química;Química;03-11-2024;pdf;QUI 1003-1 Talleres;true
+Taller 4;Prof. Taller Química;Química;10-11-2024;pdf;QUI 1003-1 Talleres;false
+Presentación Curso;Prof. José Ramírez;Álgebra Lineal;29-07-2024;ppt;ALJ 1009-1 Ayudantía;true
+Matriz Adjunta;Prof. José Ramírez;Álgebra Lineal;05-08-2024;pdf;ALJ 1009-1 Ayudantía;true
+Material Repaso Certamen;Prof. José Ramírez;Álgebra Lineal;12-08-2024;pdf;ALJ 1009-1 Ayudantía;false
+Animaciones Geogebra;Prof. José Ramírez;Álgebra Lineal;19-08-2024;mp4;ALJ 1009-1 Ayudantía;true
+Preparación Control;Prof. José Ramírez;Álgebra Lineal;26-08-2024;pptx;ALJ 1009-1 Control;true
+Act. Decimas Control;Prof. José Ramírez;Álgebra Lineal;02-09-2024;pptx;ALJ 1009-1 Control;true
+Notas Control;Prof. José Ramírez;Álgebra Lineal;09-09-2024;xlsx;ALJ 1009-1 Control;false
+Revisión Control;Prof. José Ramírez;Álgebra Lineal;16-09-2024;pdf;ALJ 1009-1 Control;true
+Preparacíon Certamen;Prof. José Ramírez;Álgebra Lineal;23-09-2024;pptx;ALJ 1009-1 Certamen;true
+Act. Decimas Certamen;Prof. José Ramírez;Álgebra Lineal;30-09-2024;pptx;ALJ 1009-1 Certamen;false
+Notas Certamen;Prof. José Ramírez;Álgebra Lineal;07-10-2024;xlsx;ALJ 1009-1 Certamen;false
+Revisión Certamen;Prof. José Ramírez;Álgebra Lineal;14-10-2024;pdf;ALJ 1009-1 Certamen;true
+Taller 1;Prof. Taller Álgebra;Álgebra Lineal;21-10-2024;pdf;ALJ 1009-1 Talleres;true
+Taller 2;Prof. Taller Álgebra;Álgebra Lineal;28-10-2024;pdf;ALJ 1009-1 Talleres;true
+Taller 3;Prof. Taller Álgebra;Álgebra Lineal;04-11-2024;pdf;ALJ 1009-1 Talleres;false
+Taller 4;Prof. Taller Álgebra;Álgebra Lineal;11-11-2024;pdf;ALJ 1009-1 Talleres;false
+Presentación Curso;Ing. Gabriela Torres;Termodinámica;30-07-2024;ppt;TER 1008-1 Ayudantía;true
+Energía Libre;Ing. Gabriela Torres;Termodinámica;06-08-2024;pdf;TER 1008-1 Ayudantía;true
+Material Repaso Certamen;Ing. Gabriela Torres;Termodinámica;13-08-2024;pdf;TER 1008-1 Ayudantía;false
+Transiciones de Fase;Ing. Gabriela Torres;Termodinámica;20-08-2024;mp4;TER 1008-1 Ayudantía;false
+Preparación Control;Ing. Gabriela Torres;Termodinámica;27-08-2024;pptx;TER 1008-1 Control;false
+Act. Decimas Control;Ing. Gabriela Torres;Termodinámica;03-09-2024;pptx;TER 1008-1 Control;false
+Notas Control;Ing. Gabriela Torres;Termodinámica;10-09-2024;xlsx;TER 1008-1 Control;true
+Revisión Control;Ing. Gabriela Torres;Termodinámica;17-09-2024;pdf;TER 1008-1 Control;false
+Preparacíon Certamen;Ing. Gabriela Torres;Termodinámica;24-09-2024;pptx;TER 1008-1 Certamen;true
+Act. Decimas Certamen;Ing. Gabriela Torres;Termodinámica;01-10-2024;pptx;TER 1008-1 Certamen;true
+Notas Certamen;Ing. Gabriela Torres;Termodinámica;08-10-2024;xlsx;TER 1008-1 Certamen;true
+Revisión Certamen;Ing. Gabriela Torres;Termodinámica;15-10-2024;pdf;TER 1008-1 Certamen;true
+Taller 1;Prof. Taller Termo;Termodinámica;22-10-2024;pdf;TER 1008-1 Talleres;false
+Taller 2;Prof. Taller Termo;Termodinámica;29-10-2024;pdf;TER 1008-1 Talleres;false
+Taller 3;Prof. Taller Termo;Termodinámica;05-11-2024;pdf;TER 1008-1 Talleres;true
+Taller 4;Prof. Taller Termo;Termodinámica;12-11-2024;pdf;TER 1008-1 Talleres;true
+Presentación Curso;Ing. Valentina Soto;Robótica;31-07-2024;ppt;ROB 1004-1 Ayudantía;true
+Control de Robots;Ing. Valentina Soto;Robótica;07-08-2024;pdf;ROB 1004-1 Ayudantía;true
+Material Repaso Certamen;Ing. Valentina Soto;Robótica;14-08-2024;pdf;ROB 1004-1 Ayudantía;false
+Robotica  Colaborativa ;Ing. Valentina Soto;Robótica;21-08-2024;mp4;ROB 1004-1 Ayudantía;false
+Preparación Control;Ing. Valentina Soto;Robótica;28-08-2024;pptx;ROB 1004-1 Control;false
+Act. Decimas Control;Ing. Valentina Soto;Robótica;04-09-2024;pptx;ROB 1004-1 Control;true
+Notas Control;Ing. Valentina Soto;Robótica;11-09-2024;xlsx;ROB 1004-1 Control;false
+Revisión Control;Ing. Valentina Soto;Robótica;18-09-2024;pdf;ROB 1004-1 Control;false
+Preparacíon Certamen;Ing. Valentina Soto;Robótica;25-09-2024;pptx;ROB 1004-1 Certamen;false
+Act. Decimas Certamen;Ing. Valentina Soto;Robótica;02-10-2024;pptx;ROB 1004-1 Certamen;true
+Notas Certamen;Ing. Valentina Soto;Robótica;09-10-2024;xlsx;ROB 1004-1 Certamen;true
+Revisión Certamen;Ing. Valentina Soto;Robótica;16-10-2024;pdf;ROB 1004-1 Certamen;false
+Taller 1;Prof. Taller Robótica;Robótica;23-10-2024;pdf;ROB 1004-1 Talleres;true
+Taller 2;Prof. Taller Robótica;Robótica;30-10-2024;pdf;ROB 1004-1 Talleres;true
+Taller 3;Prof. Taller Robótica;Robótica;06-11-2024;pdf;ROB 1004-1 Talleres;false
+Taller 4;Prof. Taller Robótica;Robótica;13-11-2024;pdf;ROB 1004-1 Talleres;true
+Presentación Curso;Ing. Patricia Ortega;Estática;01-08-2024;ppt;EST 1007-1 Ayudantía;true
+Equilibrio de Particulas;Ing. Patricia Ortega;Estática;08-08-2024;pdf;EST 1007-1 Ayudantía;true
+Material Repaso Certamen;Ing. Patricia Ortega;Estática;15-08-2024;pdf;EST 1007-1 Ayudantía;false
+Centros de Gravedad;Ing. Patricia Ortega;Estática;22-08-2024;mp4;EST 1007-1 Ayudantía;true
+Preparación Control;Ing. Patricia Ortega;Estática;29-08-2024;pptx;EST 1007-1 Control;true
+Act. Decimas Control;Ing. Patricia Ortega;Estática;05-09-2024;pptx;EST 1007-1 Control;false
+Notas Control;Ing. Patricia Ortega;Estática;12-09-2024;xlsx;EST 1007-1 Control;false
+Revisión Control;Ing. Patricia Ortega;Estática;19-09-2024;pdf;EST 1007-1 Control;true
+Preparacíon Certamen;Ing. Patricia Ortega;Estática;26-09-2024;pptx;EST 1007-1 Certamen;true
+Act. Decimas Certamen;Ing. Patricia Ortega;Estática;03-10-2024;pptx;EST 1007-1 Certamen;true
+Notas Certamen;Ing. Patricia Ortega;Estática;10-10-2024;xlsx;EST 1007-1 Certamen;false
+Revisión Certamen;Ing. Patricia Ortega;Estática;17-10-2024;pdf;EST 1007-1 Certamen;false
+Taller 1;Prof. Taller Estática;Estática;24-10-2024;pdf;EST 1007-1 Talleres;true
+Taller 2;Prof. Taller Estática;Estática;31-10-2024;pdf;EST 1007-1 Talleres;true
+Taller 3;Prof. Taller Estática;Estática;07-11-2024;pdf;EST 1007-1 Talleres;false
+Taller 4;Prof. Taller Estática;Estática;14-11-2024;pdf;EST 1007-1 Talleres;false
+Presentación Curso;Dr. Andrés Silva;Electromagnetismo;02-08-2024;ppt;ELM 1006-1 Ayudantía;false
+Ley de Coulomb;Dr. Andrés Silva;Electromagnetismo;09-08-2024;pdf;ELM 1006-1 Ayudantía;false
+Material Repaso Certamen;Dr. Andrés Silva;Electromagnetismo;16-08-2024;pdf;ELM 1006-1 Ayudantía;true
+Magnetismo en la Materia;Dr. Andrés Silva;Electromagnetismo;23-08-2024;mp4;ELM 1006-1 Ayudantía;false
+Preparación Control;Dr. Andrés Silva;Electromagnetismo;30-08-2024;pptx;ELM 1006-1 Control;true
+Act. Decimas Control;Dr. Andrés Silva;Electromagnetismo;06-09-2024;pptx;ELM 1006-1 Control;true
+Notas Control;Dr. Andrés Silva;Electromagnetismo;13-09-2024;xlsx;ELM 1006-1 Control;true
+Revisión Control;Dr. Andrés Silva;Electromagnetismo;20-09-2024;pdf;ELM 1006-1 Control;true
+Preparacíon Certamen;Dr. Andrés Silva;Electromagnetismo;27-09-2024;pptx;ELM 1006-1 Certamen;false
+Act. Decimas Certamen;Dr. Andrés Silva;Electromagnetismo;04-10-2024;pptx;ELM 1006-1 Certamen;false
+Notas Certamen;Dr. Andrés Silva;Electromagnetismo;11-10-2024;xlsx;ELM 1006-1 Certamen;true
+Revisión Certamen;Dr. Andrés Silva;Electromagnetismo;18-10-2024;pdf;ELM 1006-1 Certamen;true
+Taller 1;Prof. Taller Electro;Electromagnetismo;25-10-2024;pdf;ELM 1006-1 Talleres;true
+Taller 2;Prof. Taller Electro;Electromagnetismo;01-11-2024;pdf;ELM 1006-1 Talleres;true
+Taller 3;Prof. Taller Electro;Electromagnetismo;08-11-2024;pdf;ELM 1006-1 Talleres;false
+Taller 4;Prof. Taller Electro;Electromagnetismo;15-11-2024;pdf;ELM 1006-1 Talleres;false
+Presentación Curso;Ing. Clara Fernández;Mecánica de Fluidos;03-08-2024;ppt;MEC 1010-1 Ayudantía;false
+Propiedades de los Fluidos;Ing. Clara Fernández;Mecánica de Fluidos;10-08-2024;pdf;MEC 1010-1 Ayudantía;true
+Material Repaso Certamen;Ing. Clara Fernández;Mecánica de Fluidos;17-08-2024;pdf;MEC 1010-1 Ayudantía;false
+Cavitación;Ing. Clara Fernández;Mecánica de Fluidos;24-08-2024;mp4;MEC 1010-1 Ayudantía;false
+Preparación Control;Ing. Clara Fernández;Mecánica de Fluidos;31-08-2024;pptx;MEC 1010-1 Control;false
+Act. Decimas Control;Ing. Clara Fernández;Mecánica de Fluidos;07-09-2024;pptx;MEC 1010-1 Control;true
+Notas Control;Ing. Clara Fernández;Mecánica de Fluidos;14-09-2024;xlsx;MEC 1010-1 Control;true
+Revisión Control;Ing. Clara Fernández;Mecánica de Fluidos;21-09-2024;pdf;MEC 1010-1 Control;false
+Preparacíon Certamen;Ing. Clara Fernández;Mecánica de Fluidos;28-09-2024;pptx;MEC 1010-1 Certamen;true
+Act. Decimas Certamen;Ing. Clara Fernández;Mecánica de Fluidos;05-10-2024;pptx;MEC 1010-1 Certamen;true
+Notas Certamen;Ing. Clara Fernández;Mecánica de Fluidos;12-10-2024;xlsx;MEC 1010-1 Certamen;false
+Revisión Certamen;Ing. Clara Fernández;Mecánica de Fluidos;19-10-2024;pdf;MEC 1010-1 Certamen;true
+Taller 1;Prof. Taller MecFluidos;Mecánica de Fluidos;26-10-2024;pdf;MEC 1010-1 Talleres;true
+Taller 2;Prof. Taller MecFluidos;Mecánica de Fluidos;02-11-2024;pdf;MEC 1010-1 Talleres;true
+Taller 3;Prof. Taller MecFluidos;Mecánica de Fluidos;09-11-2024;pdf;MEC 1010-1 Talleres;false
+Taller 4;Prof. Taller MecFluidos;Mecánica de Fluidos;16-11-2024;pdf;MEC 1010-1 Talleres;true
+Presentación Curso;Prof. Roberto Fuentes;Dibujo Técnico;04-08-2024;ppt;DIB 1005-1 Ayudantía;true
+Vistas Ortográficas;Prof. Roberto Fuentes;Dibujo Técnico;11-08-2024;pdf;DIB 1005-1 Ayudantía;false
+Material Repaso Certamen;Prof. Roberto Fuentes;Dibujo Técnico;18-08-2024;pdf;DIB 1005-1 Ayudantía;false
+Planificación del Proyecto;Prof. Roberto Fuentes;Dibujo Técnico;25-08-2024;mp4;DIB 1005-1 Ayudantía;true
+Preparación Control;Prof. Roberto Fuentes;Dibujo Técnico;01-09-2024;pptx;DIB 1005-1 Control;true
+Act. Decimas Control;Prof. Roberto Fuentes;Dibujo Técnico;08-09-2024;pptx;DIB 1005-1 Control;true
+Notas Control;Prof. Roberto Fuentes;Dibujo Técnico;15-09-2024;xlsx;DIB 1005-1 Control;false
+Revisión Control;Prof. Roberto Fuentes;Dibujo Técnico;22-09-2024;pdf;DIB 1005-1 Control;false
+Preparacíon Certamen;Prof. Roberto Fuentes;Dibujo Técnico;29-09-2024;pptx;DIB 1005-1 Certamen;true
+Act. Decimas Certamen;Prof. Roberto Fuentes;Dibujo Técnico;06-10-2024;pptx;DIB 1005-1 Certamen;true
+Notas Certamen;Prof. Roberto Fuentes;Dibujo Técnico;13-10-2024;xlsx;DIB 1005-1 Certamen;false
+Revisión Certamen;Prof. Roberto Fuentes;Dibujo Técnico;20-10-2024;pdf;DIB 1005-1 Certamen;false
+Taller 1;Prof. Taller DibujoTec;Dibujo Técnico;27-10-2024;pdf;DIB 1005-1 Talleres;false
+Taller 2;Prof. Taller DibujoTec;Dibujo Técnico;03-11-2024;pdf;DIB 1005-1 Talleres;false
+Taller 3;Prof. Taller DibujoTec;Dibujo Técnico;10-11-2024;pdf;DIB 1005-1 Talleres;true
+Taller 4;Prof. Taller DibujoTec;Dibujo Técnico;17-11-2024;pdf;DIB 1005-1 Talleres;false
