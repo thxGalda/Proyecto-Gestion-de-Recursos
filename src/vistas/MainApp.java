@@ -164,7 +164,14 @@ public class MainApp {
     public void crearPanelCarpeta(int cursoId, int carpetaId) {
         // Crear la clave única para la ventana de la carpeta
     	Curso curso = new Curso("Curso", cursoId);  // Retorna un curso simulado por ahora;
-    	Carpeta carpeta = new Carpeta("Carpeta", carpetaId);  // Retorna una carpeta simulado por ahora;
+    	// Crear carpetas si no existen
+        if (curso.getCarpetas().isEmpty()) {
+            curso.agregarCarpeta(new Carpeta("Carpeta 1", 1001));
+            curso.agregarCarpeta(new Carpeta("Carpeta 2", 1002));
+            curso.agregarCarpeta(new Carpeta("Carpeta 3", 2121));
+        }
+        // Crear una carpeta simulada por ahora (usar una ya existente del curso si es necesario)
+        Carpeta carpeta = new Carpeta("Carpeta", carpetaId);
         String panelKey = "SubMenuCarpeta" + cursoId + "_" + carpetaId;
         
         // Verificar si ya se ha creado la ventana para esta carpeta

@@ -18,11 +18,13 @@ public class VentanaMenuPrincipal extends JPanel implements ActionListener {
     private JMenu menuPrincipal;
     private JMenuItem configMenuItem, fichaMenuItem, revisarMenuItem, modificarMenuItem, salirMenuItem;
     private Usuario usuarioActual;
+    private boolean revisarCurso;
 
     // Constructor que acepta la instancia de MainApp y el usuario
     public VentanaMenuPrincipal(MainApp mainApp, Usuario usuario) {
         this.mainApp = mainApp;  // Guardar referencia a MainApp
         this.usuarioActual = usuario;  // Guardar el usuario actual
+        this.revisarCurso = true;
         initialize();  // Inicializar el contenido
     }
 
@@ -33,7 +35,7 @@ public class VentanaMenuPrincipal extends JPanel implements ActionListener {
 
         configMenuItem = new JMenuItem("Configuración");
         fichaMenuItem = new JMenuItem("Ficha Personal");
-        revisarMenuItem = new JMenuItem("Revisar Cursos");
+        revisarMenuItem = new JMenuItem("Revisar Curso");
         modificarMenuItem = new JMenuItem("Modificar Curso");
         salirMenuItem = new JMenuItem("Salir");
 
@@ -65,15 +67,16 @@ public class VentanaMenuPrincipal extends JPanel implements ActionListener {
         // Crear los paneles de ficha personal y configuración
         JPanel panelFichaPersonal = crearPanelFichaPersonal();
         JPanel panelConfiguracion = crearPanelConfiguracion();
+        // Crear dos instancias del panel de selección de curso
+        JPanel panelRevisarCurso = crearPanelSeleccionCurso(true);
+        JPanel panelEditarCurso = crearPanelSeleccionCurso(false);
 
         // Añadir los paneles al CardLayout
         
         panelContenedor.add(panelFichaPersonal, "Ficha Personal");
         panelContenedor.add(panelConfiguracion, "Configuración");
-
-        // Placeholder para revisar y modificar cursos (por implementar)
-        panelContenedor.add(new JLabel("Revisar Cursos (Por implementar)"), "Revisar Cursos");
-        panelContenedor.add(new JLabel("Modificar Curso (Por implementar)"), "Modificar Curso");
+        panelContenedor.add(panelRevisarCurso, "Revisar Curso");
+        panelContenedor.add(panelEditarCurso, "Editar Curso");
 
         // Añadir el panel de contenido al panel principal
         setLayout(new BorderLayout());
@@ -100,6 +103,7 @@ public class VentanaMenuPrincipal extends JPanel implements ActionListener {
             JLabel departamentoLabel = new JLabel("Departamento: " + profesor.getDepartamento());
             panelFicha.add(departamentoLabel);
         }
+        
 
         return panelFicha; // Retornar el panel para añadirlo al CardLayout
     }
@@ -135,6 +139,58 @@ public class VentanaMenuPrincipal extends JPanel implements ActionListener {
 
         return panelConfig;
     }
+    
+    private JPanel crearPanelSeleccionCurso(boolean esRevisar) {
+        // Crear el panel principal
+        JPanel panelSeleccionCurso = new JPanel(new BorderLayout());
+        panelSeleccionCurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Crear el panel superior con la selección de cursos
+        JPanel cursoPanel = new JPanel(new FlowLayout());
+        cursoPanel.add(new JLabel(esRevisar ? "Seleccione el curso a revisar:" : "Seleccione el curso a editar:"));
+        
+        // Crear una nueva instancia del ComboBox para cada panel
+        JComboBox<String> cursoComboBox = new JComboBox<>(new String[]{"1001", "1002", "2121"}); // IDs de curso de ejemplo
+        cursoPanel.add(cursoComboBox);
+
+        // Agregar el panel al layout
+        panelSeleccionCurso.add(cursoPanel, BorderLayout.NORTH);
+
+        // Crear el botón para confirmar la selección
+        JButton confirmarBtn = new JButton("Confirmar selección");
+        confirmarBtn.addActionListener(e -> {
+            String cursoSeleccionado = (String) cursoComboBox.getSelectedItem();
+            System.out.println("Curso seleccionado: " + cursoSeleccionado); // Imprimir el valor seleccionado
+
+            // Convertir el curso seleccionado a un ID (asumido como Integer)
+            int idCurso = Integer.parseInt(cursoSeleccionado);
+
+            // Determinar si se trata de revisar o modificar el curso
+            if (esRevisar) {
+                System.out.println("Paso: Seleccion Curso, llamada a metodo mostrar SubmenuCurso con id: " + idCurso);
+                mainApp.mostrarVentanaSubmenuCurso(idCurso); // Mostrar la ventana de revisión
+            } else {
+                System.out.println("Paso: Seleccion Curso, llamada a metodo mostrar editarCurso con id: " + idCurso);
+                mainApp.mostrarVentanaEditarCurso(idCurso); // Mostrar la ventana de edición
+            }
+        });
+
+        // Crear el botón para volver al menú principal
+        JButton volverBtn = new JButton("Volver al Menú Principal");
+        volverBtn.addActionListener(e -> mainApp.mostrarVentana("MenuPrincipal"));
+
+        // Crear el panel inferior con los botones
+        JPanel botonesPanel = new JPanel(new FlowLayout());
+        botonesPanel.add(confirmarBtn);
+        botonesPanel.add(volverBtn);
+
+        // Agregar el panel de botones al layout principal
+        panelSeleccionCurso.add(botonesPanel, BorderLayout.SOUTH);
+
+        return panelSeleccionCurso; // Retornar el panel para integrarlo en la ventana principal
+    }
+    
+    
 
     // Método que gestiona las acciones del menú
     @Override
@@ -146,11 +202,13 @@ public class VentanaMenuPrincipal extends JPanel implements ActionListener {
             // Mostrar la ficha personal
             cardLayout.show(panelContenedor, "Ficha Personal");
         } else if (e.getSource() == revisarMenuItem) {
-            // Mostrar la pantalla de revisión de cursos
-            cardLayout.show(panelContenedor, "Revisar Cursos");
+            // Marcar que se va a revisar un curso
+            revisarCurso = true;  // Variable global para identificar la acción
+            cardLayout.show(panelContenedor, "Revisar Curso");
         } else if (e.getSource() == modificarMenuItem && usuarioActual instanceof Profesor) {
-            // Mostrar la pantalla para modificar curso (solo para profesores)
-        	mainApp.mostrarMenuEditarCurso();
+            // Marcar que se va a modificar un curso
+            revisarCurso = false;  // Variable global para identificar la acción
+            cardLayout.show(panelContenedor, "Editar Curso");
         } else if (e.getSource() == salirMenuItem) {
             // Cerrar la aplicación
             System.exit(0);
