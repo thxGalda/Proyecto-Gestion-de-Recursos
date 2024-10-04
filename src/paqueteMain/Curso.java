@@ -7,6 +7,7 @@ import java.util.List;
 public class Curso {
     // Atributos privados
     private String nombre;
+    private int id;
     private String descripcion;
     private List<Carpeta> carpetas;
     private Profesor profesor;
@@ -14,8 +15,9 @@ public class Curso {
     private List<Estudiante> estudiantes;
 
     // Constructor
-    public Curso(String nombre, String descripcion, Profesor profesor, List<Carpeta> carpetas, List<Estudiante> estudiantes, int numEstudiantes) {
+    public Curso(String nombre, int id, String descripcion, Profesor profesor, List<Carpeta> carpetas, List<Estudiante> estudiantes, int numEstudiantes) {
         setNombre(nombre);
+        setId(id);
         setDescripcion(descripcion);
         setProfesor(profesor);
         this.carpetas = new ArrayList<>();
@@ -23,8 +25,9 @@ public class Curso {
         setNumEstudiantes(numEstudiantes); 
     }
     // Constructor 2: Sin carpetas de recursos
-    public Curso(String nombre, String descripcion, Profesor profesor, List<Estudiante> estudiantes, int numEstudiantes) {
+    public Curso(String nombre, int id, String descripcion, Profesor profesor, List<Estudiante> estudiantes, int numEstudiantes) {
         setNombre(nombre);
+        setId(id);
         setDescripcion(descripcion);
         setProfesor(profesor);
         this.carpetas = carpetas != null ? carpetas : new ArrayList<>();
@@ -32,8 +35,9 @@ public class Curso {
         setNumEstudiantes(numEstudiantes); 
     }
  // Constructor 3: Sin lista inicial de estudiantes
-    public Curso(String nombre, String descripcion, Profesor profesor) {
+    public Curso(String nombre, int id, String descripcion, Profesor profesor) {
         setNombre(nombre);
+        setId(id);
         setDescripcion(descripcion);
         setProfesor(profesor);
         this.carpetas = carpetas != null ? carpetas : new ArrayList<>();
@@ -41,9 +45,19 @@ public class Curso {
         this.numEstudiantes = 0; // Inicialmente no hay estudiantes inscritos
     }
     // Constructor 4: Sin profesor asignado
-    public Curso(String nombre, String descripcion) {
+    public Curso(String nombre, int id, String descripcion) {
         setNombre(nombre);
+        setId(id);
         setDescripcion(descripcion);
+        this.carpetas = carpetas != null ? carpetas : new ArrayList<>();
+        this.estudiantes = estudiantes != null ? estudiantes : new ArrayList<>();
+        this.numEstudiantes = 0;
+        this.profesor = null; // Profesor no asignado
+    }
+    // Constructor 5: Solo datos basicos
+    public Curso(String nombre, int id) {
+        setNombre(nombre);
+        setId(id);
         this.carpetas = carpetas != null ? carpetas : new ArrayList<>();
         this.estudiantes = estudiantes != null ? estudiantes : new ArrayList<>();
         this.numEstudiantes = 0;
@@ -292,7 +306,8 @@ public class Curso {
 	        System.out.println("Error: El profesor no puede ser null.");
 	    } else {
 	        this.profesor = nuevoProfesor;
-	        System.out.println("Profesor asignado correctamente.");
+	        System.out.println("Nuevo Profesor : " + profesor.toString());
+	        System.out.println("Profesor de "+ this.nombre + " asignado correctamente.");
 	    }
 	}
    //
@@ -318,6 +333,16 @@ public class Curso {
 	        System.out.println("Advertencia: La descripción del curso no puede ser null o vacía.");
 	    }
 	}
+	public int getId() {
+	    return id;
+	}
+	public void setId(int id) {
+        if (id >= 0) { // Asumiendo que el id no puede ser negativo
+           this.id = id;
+        } else {
+           System.out.println("Advertencia: El id debe ser un número positivo.");
+        }
+   }
 	public List<Carpeta> getCarpetas() {
 	    return carpetas;
 	}
