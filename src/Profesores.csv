@@ -1,0 +1,12 @@
+﻿nombre;id;rut;email;contrasena;permisoEspecial;especialidad
+Dr. Juan Pérez;1;16.909.702;juanperez@profesor.com;JuanP123!;true;Matemáticas
+Prof. Laura Gómez;2;14.705.555;lauragomez@profesor.com;LauraG456@;true;Física
+Ing. Carlos Ruiz;3;17.978.170;carlosruiz@profesor.com;CarlosR789#;true;Programación
+Dr. Marta López;4;13.832.925;martalopez@profesor.com;MartaL321$;true;Química
+Prof. José Ramírez;5;12.941.825;joseramirez@profesor.com;JoseR!987;true;Álgebra
+Ing. Gabriela Torres;6;14.868.036;gabrielatorres@profesor.com;GabrielaT654&;true;Termodinámica
+Ing. Valentina Soto;7;12.554.229;valentinasoto@profesor.com;ValentinaS123%;true;Robótica
+Ing. Patricia Ortega;8;17.182.113;patriciaortega@profesor.com;PatriciaO456^;true;Estática
+Dr. Andrés Silva;9;17.474.514;andressilva@profesor.com;AndresS789*;true;Electromagnetismo
+Ing. Clara Fernández;10;14.005.016;clarafernandez@profesor.com;ClaraF321(;true;Mecánica de Fluidos
+Prof. Roberto Fuentes;11;16.027.180;robertofuentes@profesor.com;RobertoF987);true;Dibujo Técnico
