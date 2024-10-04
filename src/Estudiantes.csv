@@ -1,0 +1,101 @@
+﻿nombre;id;rut;email;contrasena;permisoEspecial;cursos;paralelo
+Juan Pérez;12;21.345.678-9;juan.perez@estudiante.com;Ju@nP3r3z!;false;Matemática 1, Física 2, Química, Robótica, Dibujo Técnico, Álgebra Lineal, Termodinámica;1
+María López;13;21.567.890-1;maria.lopez@estudiante.com;M@r!aL0p3z22;false;Programación Avanzada, Álgebra Lineal, Robótica, Química, Física 2;2
+Carlos García;14;21.789.012-3;carlos.garcia@estudiante.com;C@rl0sG4rc!a;false;Estática, Electromagnetismo, Química, Matemática 1, Física 2, Dibujo Técnico, Robótica;3
+Ana Rodríguez;15;22.001.234-5;ana.rodriguez@estudiante.com;An@R0dr!gue7;false;Física 2, Robótica, Programación Avanzada, Álgebra Lineal, Dibujo Técnico, Química;2
+José Martínez;16;22.123.456-7;jose.martinez@estudiante.com;J0s3M@rt!n3z;false;Química, Álgebra Lineal, Estática, Electromagnetismo, Robótica, Dibujo Técnico, Termodinámica;1
+Laura Sánchez;17;22.345.678-9;laura.sanchez@estudiante.com;L@ur@S4nch3z;false;Robótica, Electromagnetismo, Termodinámica, Dibujo Técnico, Física 2, Química;3
+David González;18;22.567.890-0;david.gonzalez@estudiante.com;D@vidG0nz@l3z;false;Física 2, Matemática 1, Álgebra Lineal, Química, Robótica, Dibujo Técnico;2
+Carmen Díaz;19;22.789.012-2;carmen.diaz@estudiante.com;C@rm3nD!az88;false;Programación Avanzada, Estática, Robótica, Dibujo Técnico, Química;1
+Javier Morales;20;23.001.234-4;javier.morales@estudiante.com;J@v!erM0r4l3s;false;Dibujo Técnico, Electromagnetismo, Química, Matemática 1, Física 2;3
+Paula Hernández;21;23.123.456-6;paula.hernandez@estudiante.com;P@ul@H3rn@nd3z;false;Matemática 1, Física 2, Robótica, Dibujo Técnico, Estática;1
+Luis Torres;22;23.345.678-8;luis.torres@estudiante.com;L#u1sT0rr3s;false;Álgebra Lineal, Química, Programación Avanzada, Electromagnetismo, Dibujo Técnico, Termodinámica;2
+Sofia Romero;23;23.567.890-1;sofia.romero@estudiante.com;S0f!@R0m3r0;false;Física 2, Química, Matemática 1, Robótica, Estática;3
+Miguel Ruiz;24;23.789.012-3;miguel.ruiz@estudiante.com;M!gu3lRuiZ#;false;Programación Avanzada, Dibujo Técnico, Álgebra Lineal, Robótica, Termodinámica;2
+Elena Jiménez;25;21.890.123-4;elena.jimenez@estudiante.com;El3n@J!m3n3z;false;Química, Estática, Electromagnetismo, Dibujo Técnico, Física 2;1
+Andrés Castro;26;21.234.567-8;andres.castro@estudiante.com;@ndr3sC@str0;false;Matemática 1, Física 2, Robótica, Dibujo Técnico, Química, Álgebra Lineal;3
+Teresa Ortega;27;22.678.901-0;teresa.ortega@estudiante.com;T3r3s@0rt3g@;false;Álgebra Lineal, Programación Avanzada, Estática, Robótica, Química, Termodinámica;2
+Fernando Vargas;28;22.890.123-2;fernando.vargas@estudiante.com;F3rn@nd0V@rg@s;false;Física 2, Electromagnetismo, Química, Dibujo Técnico, Robótica;1
+Isabel Mendoza;29;22.234.567-8;isabel.mendoza@estudiante.com;Is@b3lM3nd0z4;false;Química, Matemática 1, Estática, Dibujo Técnico, Álgebra Lineal, Robótica;3
+Sergio Castillo;30;22.678.901-3;sergio.castillo@estudiante.com;S3rg!0C@st!llo;false;Programación Avanzada, Robótica, Termodinámica, Álgebra Lineal, Dibujo Técnico, Química;1
+Marta Ruiz;31;22.890.123-6;marta.ruiz@estudiante.com;M@rt@RuiZ!23;false;Estática, Física 2, Química, Dibujo Técnico, Robótica;2
+Guillermo Silva;32;23.456.789-1;guillermo.silva@estudiante.com;Gu!ll3rm0S!lv@;false;Matemática 1, Programación Avanzada, Termodinámica, Robótica, Electromagnetismo;3
+Lucia Ramírez;33;23.678.901-3;lucia.ramirez@estudiante.com;L@c!@R@m!r3z;false;Álgebra Lineal, Química, Física 2, Robótica, Dibujo Técnico;2
+Alberto Morales;34;21.345.678-0;alberto.morales@estudiante.com;@lb3rt0M0r4l3s;false;Física 2, Electromagnetismo, Dibujo Técnico, Termodinámica, Robótica;1
+Victoria Jiménez;35;21.567.890-5;victoria.jimenez@estudiante.com;V!ct0r!@J!m3n3z;false;Química, Robótica, Matemática 1, Estática, Dibujo Técnico;3
+Felipe Paredes;36;21.789.012-1;felipe.paredes@estudiante.com;F3l!p3P@r3d3s;false;Programación Avanzada, Dibujo Técnico, Álgebra Lineal, Electromagnetismo, Química, Robótica;2
+Valeria Aguirre;37;22.001.234-7;valeria.aguirre@estudiante.com;V@l3r!@Agu!rr3;false;Robótica, Estática, Física 2, Dibujo Técnico, Álgebra Lineal;1
+Pablo Ríos;38;22.123.456-0;pablo.rios@estudiante.com;P@bl0R!0s77;false;Matemática 1, Química, Programación Avanzada, Dibujo Técnico, Física 2;3
+Gabriela Soto;39;22.345.678-5;gabriela.soto@estudiante.com;G@bri3l@S0t0;false;Álgebra Lineal, Robótica, Electromagnetismo, Estática, Química, Dibujo Técnico;1
+Diego Guerrero;40;22.567.890-9;diego.guerrero@estudiante.com;D!3g0G!u3rr3r0;false;Estática, Física 2, Robótica, Dibujo Técnico;2
+Natalia Salazar;41;22.789.012-4;natalia.salazar@estudiante.com;N@t@l!@S@l@z4r;false;Matemática 1, Química, Programación Avanzada, Dibujo Técnico, Álgebra Lineal;3
+Marco Cordero;42;23.001.234-6;marco.cordero@estudiante.com;M@rc0C0rd3r0;false;Robótica, Electromagnetismo, Termodinámica, Álgebra Lineal, Química, Dibujo Técnico;2
+Claudia León;43;23.123.456-8;claudia.leon@estudiante.com;Cl@ud!@L3on3;false;Física 2, Estática, Dibujo Técnico, Matemática 1;1
+Rodrigo Peña;44;23.345.678-0;rodrigo.pena@estudiante.com;R0dr!g0P3n@;false;Programación Avanzada, Química, Robótica, Dibujo Técnico, Física 2;3
+Beatriz Medina;45;23.567.890-3;beatriz.medina@estudiante.com;B3@tr!zM3d!n@;false;Álgebra Lineal, Estática, Electromagnetismo, Robótica, Dibujo Técnico;2
+Rubén Acosta;46;23.789.012-5;ruben.acosta@estudiante.com;Rub3n@C0st@23;false;Química, Matemática 1, Física 2, Dibujo Técnico, Robótica;1
+Patricia Vega;47;21.890.124-6;patricia.vega@estudiante.com;P@tr!c!@V3g4;false;Robótica, Programación Avanzada, Estática, Termodinámica, Química;3
+Ricardo Salinas;48;21.234.568-1;ricardo.salinas@estudiante.com;R!c@rd0S@l!n4s;false;Estática, Física 2, Química, Dibujo Técnico, Álgebra Lineal;1
+Carolina Ruiz;49;22.678.902-2;carolina.ruiz@estudiante.com;C@r0l!n@R!uZ;false;Matemática 1, Electromagnetismo, Robótica, Dibujo Técnico, Física 2;2
+Daniel Castillo;50;22.890.124-4;daniel.castillo@estudiante.com;D@ni3lC@st!ll0;false;Programación Avanzada, Álgebra Lineal, Química, Estática, Robótica;3
+Mariana Muñoz;51;22.234.568-7;mariana.munoz@estudiante.com;M@r!@n4M!uñ0z;false;Física 2, Dibujo Técnico, Química, Robótica, Electromagnetismo;2
+Eduardo León;52;22.678.902-9;eduardo.leon@estudiante.com;3du@rd0L3on;false;Química, Matemática 1, Programación Avanzada, Estática, Dibujo Técnico;1
+Angela Castillo;53;22.890.124-3;angela.castillo@estudiante.com;@ng3l@C@st!ll0;false;Robótica, Electromagnetismo, Física 2, Dibujo Técnico, Química;3
+Felipe Serrano;54;23.456.790-0;felipe.serrano@estudiante.com;F3l!peS3rr@no;false;Álgebra Lineal, Química, Matemática 1, Robótica, Dibujo Técnico;2
+Vanessa Cortés;55;23.678.902-6;vanessa.cortes@estudiante.com;V@n3ss@C0rt3s;false;Estática, Programación Avanzada, Dibujo Técnico, Química;1
+Iván Romero;56;21.345.679-5;ivan.romero@estudiante.com;!v@N.R0m3r0;false;Matemática 1, Robótica, Termodinámica, Dibujo Técnico, Química;3
+Susana Guerra;57;21.567.891-7;susana.guerra@estudiante.com;Su$an@GueRr@;false;Física 2, Estática, Química, Dibujo Técnico, Robótica;1
+Joaquín Cordero;58;21.789.013-2;joaquin.cordero@estudiante.com;J0aq!nC0rd3r0;false;Programación Avanzada, Álgebra Lineal, Robótica, Termodinámica, Química;2
+Ana Beltrán;59;22.001.235-9;ana.beltran@estudiante.com;An@B3ltr@n!;false;Química, Matemática 1, Física 2, Robótica, Dibujo Técnico;3
+Mauricio López;60;22.123.457-4;mauricio.lopez@estudiante.com;M@ur!c!0L0p3z;false;Estática, Electromagnetismo, Dibujo Técnico, Química, Álgebra Lineal;2
+Leticia Castro;61;22.345.679-1;leticia.castro@estudiante.com;L3t!c!@C@str0;false;Robótica, Programación Avanzada, Estática, Dibujo Técnico, Química;1
+Raúl Aguirre;62;22.567.891-2;raul.aguirre@estudiante.com;R@ul.Agu!rr3;false;Matemática 1, Física 2, Química, Dibujo Técnico, Álgebra Lineal;3
+Jimena Marín;63;22.789.013-8;jimena.marin@estudiante.com;J!m3n4M@r!n;false;Programación Avanzada, Estática, Robótica, Dibujo Técnico, Química;2
+Octavio Figueroa;64;23.001.235-6;octavio.figueroa@estudiante.com;0ct@v!0F!gu3r0;false;Álgebra Lineal, Química, Electromagnetismo, Robótica, Termodinámica;1
+Teresa Soto;65;23.123.457-2;teresa.soto@estudiante.com;T3r3s@S0t0!;false;Física 2, Matemática 1, Química, Dibujo Técnico, Robótica;3
+César Morales;66;23.345.679-8;cesar.morales@estudiante.com;C3s@rM0r@l3s;false;Robótica, Estática, Programación Avanzada, Dibujo Técnico, Química;1
+Estefanía Guzmán;67;23.567.891-0;estefania.guzman@estudiante.com;Est3f@ni@Guzm@n;false;Matemática 1, Termodinámica, Química, Dibujo Técnico, Física 2;2
+Antonio Rivas;68;23.789.013-4;antonio.rivas@estudiante.com;@nt0n!0R!v@s;false;Electromagnetismo, Robótica, Álgebra Lineal, Dibujo Técnico, Química;3
+Elena Castro;69;21.890.125-3;elena.castro@estudiante.com;El3n@C@str0;false;Física 2, Química, Estática, Robótica, Dibujo Técnico;2
+Victor Morales;70;21.234.569-9;victor.morales@estudiante.com;V!ct0rM0r4l3s;false;Programación Avanzada, Matemática 1, Dibujo Técnico, Robótica, Electromagnetismo;1
+Kassandra Espinoza;71;22.678.903-5;kassandra.espinoza@estudiante.com;K@ss@ndr@Esp!n0z@;false;Química, Estática, Robótica, Álgebra Lineal, Dibujo Técnico;3
+Gastón Medina;72;22.890.125-1;gaston.medina@estudiante.com;G@st0nM3d!n@;false;Física 2, Robótica, Programación Avanzada, Dibujo Técnico, Química;2
+Renata Torres;73;22.234.569-6;renata.torres@estudiante.com;R3n@t@T0rr3s;false;Matemática 1, Química, Estática, Electromagnetismo, Dibujo Técnico;1
+Hugo Jiménez;74;22.678.903-0;hugo.jimenez@estudiante.com;H!g0J!m3n3z;false;Robótica, Dibujo Técnico, Álgebra Lineal, Química, Termodinámica;3
+Fabiola Morales;75;22.890.125-9;fabiola.morales@estudiante.com;F@b!0l@M0r4l3s;false;Física 2, Programación Avanzada, Estática, Dibujo Técnico, Robótica;1
+Samuel Alvarado;76;23.456.791-3;samuel.alvarado@estudiante.com;S@mu3l@lv@r@d0;false;Química, Matemática 1, Robótica, Electromagnetismo, Dibujo Técnico;2
+Ariadna Ruiz;77;23.678.903-5;ariadna.ruiz@estudiante.com;@ri@dn@Ru!z;false;Estática, Dibujo Técnico, Termodinámica, Química, Álgebra Lineal;3
+Oscar Calderón;78;21.345.680-2;oscar.calderon@estudiante.com;0sc@r.C@ld3r0;false;Matemática 1, Robótica, Programación Avanzada, Dibujo Técnico, Física 2;2
+Renata Flores;79;21.567.892-4;renata.flores@estudiante.com;R3n@t@F!0r3s;false;Química, Estática, Electromagnetismo, Dibujo Técnico, Robótica;1
+Nicolás Rojas;80;21.789.014-5;nicolas.rojas@estudiante.com;N!c0l@sR0j@s;false;Física 2, Programación Avanzada, Química, Robótica, Dibujo Técnico;3
+Valentina Cabrera;81;22.001.236-8;valentina.cabrera@estudiante.com;V@l3nt!n@C@br3r@;false;Matemática 1, Química, Dibujo Técnico, Estática, Robótica;2
+Esteban Salas;82;22.123.458-3;esteban.salas@estudiante.com;Est3b@nS@l@s;false;Robótica, Programación Avanzada, Física 2, Dibujo Técnico, Química;1
+Julia Herrera;83;22.345.680-1;julia.herrera@estudiante.com;J#l!@H3rr3r@;false;Química, Matemática 1, Electromagnetismo, Dibujo Técnico, Robótica;3
+Alan Soto;84;22.567.892-6;alan.soto@estudiante.com;@l@nS0t0;false;Estática, Física 2, Programación Avanzada, Dibujo Técnico, Química;1
+María Luisa Serrano;85;22.789.014-7;maria.luisa.serrano@estudiante.com;M@r!@Lu!s@S3rr@n0;false;Química, Matemática 1, Robótica, Dibujo Técnico, Electromagnetismo;2
+Leonel Bravo;86;23.001.236-0;leonel.bravo@estudiante.com;L3on3lBr@v0;false;Álgebra Lineal, Estática, Termodinámica, Dibujo Técnico, Robótica;3
+Araceli Martínez;87;23.123.458-5;araceli.martinez@estudiante.com;@r@c3l!M@rt!n3z;false;Física 2, Programación Avanzada, Química, Robótica, Dibujo Técnico;2
+Martín Vargas;88;23.345.680-2;martin.vargas@estudiante.com;M@rt!nV@rg@s;false;Robótica, Matemática 1, Electromagnetismo, Dibujo Técnico, Química;1
+Patricia Castillo;89;23.567.892-8;patricia.castillo@estudiante.com;P@tr!c!@C@st!ll0;false;Estática, Química, Dibujo Técnico, Álgebra Lineal, Programación Avanzada;3
+Esteban Ortega;90;23.789.014-1;esteban.ortega@estudiante.com;Est3b@n0rt3g@;false;Programación Avanzada, Robótica, Matemática 1, Dibujo Técnico, Física 2;2
+Lucía López;91;21.890.126-3;lucia.lopez@estudiante.com;L@c!@L0p3z;false;Química, Estática, Física 2, Robótica, Dibujo Técnico;1
+Fernando Guzmán;92;21.234.570-2;fernando.guzman@estudiante.com;F3rn@nd0G!zm@n;false;Álgebra Lineal, Programación Avanzada, Química, Dibujo Técnico, Robótica;3
+Ana Clara Medina;93;22.678.904-7;ana.clara.medina@estudiante.com;An@Cl@r@M3d!n@;false;Matemática 1, Dibujo Técnico, Estática, Química, Electromagnetismo;1
+Santiago Morales;94;22.890.126-8;santiago.morales@estudiante.com;S@nt!@g0M0r@l3s;false;Física 2, Robótica, Termodinámica, Dibujo Técnico, Química;2
+Selene Reyes;95;22.234.570-0;selene.reyes@estudiante.com;S3l3n3R3y3s;false;Química, Estática, Programación Avanzada, Dibujo Técnico, Álgebra Lineal;3
+Rodrigo Castro;96;22.678.904-4;rodrigo.castro@estudiante.com;R0dr!g0C@str0;false;Robótica, Matemática 1, Física 2, Dibujo Técnico, Química;2
+Aurora Salinas;97;22.890.126-9;aurora.salinas@estudiante.com;A!r0r@S@l!n@;false;Estática, Programación Avanzada, Electromagnetismo, Robótica, Dibujo Técnico;1
+Miguel Ángel Torres;98;23.456.792-6;miguel.angel.torres@estudiante.com;M!gU3l4ng3lT0rr3s;false;Química, Dibujo Técnico, Matemática 1, Estática, Física 2;3
+Mónica Córdova;99;23.678.904-3;monica.cordova@estudiante.com;M0n!c@C0rd0v4;false;Robótica, Programación Avanzada, Dibujo Técnico, Química, Electromagnetismo;2
+Alberto Silva;100;21.345.681-7;alberto.silva@estudiante.com;@lb3rt0S!lv@;false;Estática, Química, Matemática 1, Robótica, Dibujo Técnico;1
+Gabriela Paredes;101;21.567.893-0;gabriela.paredes@estudiante.com;G@br!3lP@r3d3s;false;Física 2, Robótica, Programación Avanzada, Química, Dibujo Técnico;3
+Gabriel Orozco;102;21.789.015-9;gabriel.orozco@estudiante.com;G@br!3l0r0zc0;false;Matemática 1, Dibujo Técnico, Estática, Química, Robótica;1
+Eva Carrillo;103;22.001.237-4;eva.carrillo@estudiante.com;Ev@C@rr!ll0;false;Electromagnetismo, Química, Robótica, Álgebra Lineal, Dibujo Técnico;2
+Ramiro Calderón;104;22.123.459-1;ramiro.calderon@estudiante.com;R@m!r0C@ld3r0;false;Programación Avanzada, Estática, Dibujo Técnico, Física 2, Química;3
+Tamara Mena;105;22.345.681-2;tamara.mena@estudiante.com;T@m@r@M3n@;false;Robótica, Dibujo Técnico, Estática, Química, Matemática 1;2
+Gonzalo Romero;106;22.567.893-5;gonzalo.romero@estudiante.com;G0nz@l0R0m3r0;false;Química, Robótica, Programación Avanzada, Dibujo Técnico, Física 2;1
+Luciana Vega;107;22.789.015-7;luciana.vega@estudiante.com;L@c!@N@v3g@;false;Estática, Matemática 1, Dibujo Técnico, Química, Robótica;3
+Sebastián González;108;23.001.237-8;sebastian.gonzalez@estudiante.com;S3b@st!@nG0nz@l3z;false;Física 2, Robótica, Química, Programación Avanzada, Dibujo Técnico;2
+Martina Lira;109;23.123.459-4;martina.lira@estudiante.com;M@rt!n4L!r@;false;Dibujo Técnico, Estática, Robótica, Química, Física 2;1
+Salvador Castillo;110;23.345.681-0;salvador.castillo@estudiante.com;S@lv@d0rC@st!ll0;false;Matemática 1, Programación Avanzada, Química, Dibujo Técnico, Robótica;3
+Patricia Jiménez;111;23.567.893-2;patricia.jimenez@estudiante.com;P@tr!c!@J!m3n3z;false;Química, Estática, Dibujo Técnico, Robótica, Matemática 1;2
