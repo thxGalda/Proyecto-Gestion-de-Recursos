@@ -1,19 +1,19 @@
 package vistas;
 
-import paqueteMain.Usuario;
-import paqueteMain.Profesor;
-import paqueteMain.Curso;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class VentanaEditarCurso extends JPanel implements ActionListener{
+
+import controladores.*;
+import modelo.Curso;
+
+import java.awt.*;
+
+
+public class VentanaEditarCurso extends JPanel{
     private CardLayout cardLayout;
     private JPanel panelContenedor; // Panel principal con CardLayout
-
-    private JTextArea descripcionArea;
+    private CursoController controlador;
+    private Curso curso;
     
     // Menú
     private JMenuBar menuBar;
@@ -21,20 +21,23 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
     private JMenuItem regresarMenuItem, salirMenuItem;
     private JMenuItem descripcionMenuItem, asignarProfesorMenuItem, agregarCarpetaMenuItem, eliminarCarpetaMenuItem;
     private JMenuItem agregarEstudianteMenuItem, eliminarEstudianteMenuItem, cargarRecursoMenuItem;
+    
+    // Componentes
+    private JTextArea descripcionArea;
+    private JComboBox<String> comboBoxOpcion;
+    private JTextField nombreField, rutField, emailField, especialidadField, campoNombre, campoID, campoEsPublica, campoEliminar, campoNombreEstudiante, campoRutEstudiante, campoCorreoEstudiante, campoParalelo, campoEliminarEstudiante, campoCarpeta;
+    private JTextField campoTitulo, campoFormato, campoAutor, campoCategoria, campoFecha, campoCurso, campoVisibilidad;
+    private JButton btnActualizar, btnAsignarProfesor, btnEliminar, btnAgregarCarpeta, btnEliminarCarpeta, btnAgregarEstudiante, btnCargar, btnEliminarEstudiante, btnBack;
 
-    private MainApp mainApp;
-    private Profesor profesorActual;
-    private Usuario usuarioActual;
-    private Curso curso;
     
     // Constructor
-    public VentanaEditarCurso(MainApp mainApp, Curso curso) {
-        this.mainApp = mainApp;  // Guardar referencia a MainApp
-        this.curso = curso;
+    public VentanaEditarCurso(CursoController controlador, Curso curso) {
+        this.controlador = controlador;  
+        this.curso = curso; // Objeto curso para identificar a cual curso le pertenece ventana
         initialize();  // Inicializar el contenido
     }
 
-    private void initialize() {
+    public void initialize() {
     	// Menú Barra
     	
     	setLayout(new BorderLayout());
@@ -59,15 +62,6 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         salirMenuItem = new JMenuItem("Salir");
         
         // Listeners
-        descripcionMenuItem.addActionListener(this);
-        asignarProfesorMenuItem.addActionListener(this);
-        agregarCarpetaMenuItem.addActionListener(this);
-        eliminarCarpetaMenuItem.addActionListener(this);
-        agregarEstudianteMenuItem.addActionListener(this);
-        eliminarEstudianteMenuItem.addActionListener(this);
-        cargarRecursoMenuItem.addActionListener(this);
-        regresarMenuItem.addActionListener(this);
-        salirMenuItem.addActionListener(e -> System.exit(0));
 
         // Añadir items al menú
         menuEditarCurso.add(descripcionMenuItem);
@@ -79,6 +73,7 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         menuEditarCurso.add(cargarRecursoMenuItem);
         menuEditarCurso.addSeparator();
         menuEditarCurso.add(regresarMenuItem);
+        menuEditarCurso.add(salirMenuItem);
 
         menuBar.add(menuEditarCurso);
        
@@ -117,36 +112,33 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
     // PANELES
     //
     private JPanel crearPanelDescripcion() {
-    	 JPanel panelDescripcion = new JPanel(new GridLayout(7, 2, 10, 10)); // Utiliza);
-    	 panelDescripcion.add(new JLabel("Panel de Descripción del Curso"));
-         JLabel label = new JLabel("Descripción del Curso", JLabel.CENTER);
-         descripcionArea = new JTextArea(5, 20);
-         JButton btnActualizar = new JButton("Actualizar");
-         JButton btnBack = new JButton("Regresar a Menú Principal");
+        JPanel panelDescripcion = new JPanel(new GridLayout(7, 2, 10, 10));
+        panelDescripcion.add(new JLabel("Panel de Descripción del Curso"));
+        JLabel label = new JLabel("Descripción del Curso", JLabel.CENTER);
+        descripcionArea = new JTextArea(5, 20);
+        btnActualizar = new JButton("Actualizar");
+        btnBack = new JButton("Regresar a Menú Principal");
 
-         panelDescripcion.add(label, BorderLayout.NORTH);
-         panelDescripcion.add(new JScrollPane(descripcionArea), BorderLayout.CENTER);
-         panelDescripcion.add(btnActualizar, BorderLayout.SOUTH);
-         panelDescripcion.add(btnBack);
+        panelDescripcion.add(label, BorderLayout.NORTH);
+        panelDescripcion.add(new JScrollPane(descripcionArea), BorderLayout.CENTER);
+        panelDescripcion.add(btnActualizar, BorderLayout.SOUTH);
+        panelDescripcion.add(btnBack);
 
-         btnActualizar.addActionListener(e -> actualizarDescripcion());
-         btnBack.addActionListener(this);
-
-         return panelDescripcion; // Retornar el panel para añadirlo al CardLayout
+        return panelDescripcion;
     }
     private JPanel crearPanelAsignarProfesor() {
     	JPanel panelProfesor = new JPanel(new GridLayout(7, 2, 10, 10)); // Utiliza GridLayout para organizar los campos
     	panelProfesor.add(new JLabel("Panel de Asignar Profesor del Curso"));
         
         // Campos de texto para los datos del profesor
-        JTextField nombreField = new JTextField(20);
-        JTextField rutField = new JTextField(20);
-        JTextField emailField = new JTextField(20);
-        JTextField especialidadField = new JTextField(20);
+        nombreField = new JTextField(20);
+        rutField = new JTextField(20);
+        emailField = new JTextField(20);
+        especialidadField = new JTextField(20);
 
         // Botón para asignar el profesor
-        JButton btnAsignar = new JButton("Asignar");
-        JButton btnBack = new JButton("Regresar a Menú Principal");
+        btnAsignarProfesor = new JButton("Asignar");
+        btnBack = new JButton("Regresar a Menú Principal");
         
         // Agregar los componentes al panel
         //panelProfesor.add(label, BorderLayout.NORTH);
@@ -159,12 +151,8 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         panelProfesor.add(new JLabel("Especialidad del Profesor:"));
         panelProfesor.add(especialidadField);
         panelProfesor.add(new JLabel()); // Espacio vacío
-        panelProfesor.add(btnAsignar, BorderLayout.SOUTH); // Botón en la última fila
+        panelProfesor.add(btnAsignarProfesor, BorderLayout.SOUTH); // Botón en la última fila
         panelProfesor.add(btnBack, BorderLayout.SOUTH); // Botón en la última fila
-
-        // Añadir el ActionListener al botón
-        btnAsignar.addActionListener(e -> asignarProfesor(nombreField.getText(), rutField.getText(), emailField.getText(), especialidadField.getText()));
-        btnBack.addActionListener(this);
         
        return panelProfesor;// Retornar el panel para añadirlo al CardLayout
     }
@@ -174,17 +162,17 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
     
         // Etiquetas y campos de texto para nombre, ID y visibilidad de la carpeta
         JLabel labelNombre = new JLabel("Nombre de la Carpeta:");
-        JTextField campoNombre = new JTextField(20);
+        campoNombre = new JTextField(20);
         
         JLabel labelID = new JLabel("ID de la Carpeta:");
-        JTextField campoID = new JTextField(20);
+        campoID = new JTextField(20);
         
         JLabel labelEsPublica = new JLabel("¿Es pública? (true/false):");
-        JTextField campoEsPublica = new JTextField(20);
+        campoEsPublica = new JTextField(20);
     
         // Botón para agregar la carpeta
-        JButton btnAgregar = new JButton("Agregar Carpeta");
-        JButton btnBack = new JButton("Regresar a Menú Principal");
+        btnAgregarCarpeta = new JButton("Agregar Carpeta");
+        btnBack = new JButton("Regresar a Menú Principal");
     
         // Agregar componentes al panel
         panelAgregarCarpeta.add(labelNombre);
@@ -193,22 +181,9 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         panelAgregarCarpeta.add(campoID);
         panelAgregarCarpeta.add(labelEsPublica);
         panelAgregarCarpeta.add(campoEsPublica);
-        panelAgregarCarpeta.add(btnAgregar);
+        panelAgregarCarpeta.add(btnAgregarCarpeta);
         panelAgregarCarpeta.add(btnBack);
-    
-        // Acción del botón agregar carpeta
-        btnAgregar.addActionListener(e -> {
-            String nombreCarpeta = campoNombre.getText();
-            int idCarpeta = Integer.parseInt(campoID.getText());
-            boolean esPublica = Boolean.parseBoolean(campoEsPublica.getText());
-    
-            // Aquí puedes agregar lógica para crear y agregar la carpeta al sistema
-    
-            JOptionPane.showMessageDialog(panelAgregarCarpeta, "Carpeta agregada con éxito.");
-        });
-    
-        // Acción del botón regresar
-        btnBack.addActionListener(this);
+   
     
         return panelAgregarCarpeta; // Retornar el panel para añadirlo al CardLayout
     }
@@ -218,16 +193,16 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
 
         // Etiqueta y campo de texto para ingresar el nombre o ID de la carpeta a eliminar
         JLabel labelEliminar = new JLabel("Ingrese el nombre o ID de la carpeta a eliminar:");
-        JTextField campoEliminar = new JTextField(20);
+        campoEliminar = new JTextField(20);
 
         // Botones para eliminar y regresar
-        JButton btnEliminar = new JButton("Eliminar Carpeta");
-        JButton btnBack = new JButton("Regresar a Menú Principal");
+        btnEliminarCarpeta = new JButton("Eliminar Carpeta");
+        btnBack = new JButton("Regresar a Menú Principal");
 
         // Agregar componentes al panel
         panelEliminarCarpeta.add(labelEliminar);
         panelEliminarCarpeta.add(campoEliminar);
-        panelEliminarCarpeta.add(btnEliminar);
+        panelEliminarCarpeta.add(btnEliminarCarpeta);
         panelEliminarCarpeta.add(btnBack);
 
         // Acción del botón eliminar carpeta
@@ -244,8 +219,6 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
                 JOptionPane.showMessageDialog(panelEliminarCarpeta, "Carpeta con nombre '" + entradaEliminarCarpeta + "' eliminada.");
             }
         });
-        // Acción del botón regresar
-        btnBack.addActionListener(this);
 
         return panelEliminarCarpeta; // Retornar el panel para añadirlo al CardLayout
     }
@@ -255,55 +228,33 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
 
         // Etiquetas y campos de texto para cada dato del estudiante
         JLabel labelNombre = new JLabel("Nombre del Estudiante:");
-        JTextField campoNombre = new JTextField(20);
+        campoNombre = new JTextField(20);
         
         JLabel labelRut = new JLabel("RUT del Estudiante:");
-        JTextField campoRut = new JTextField(20);
+        campoRutEstudiante = new JTextField(20);
         
         JLabel labelCorreo = new JLabel("Correo Electrónico:");
-        JTextField campoCorreo = new JTextField(20);
+        campoCorreoEstudiante = new JTextField(20);
         
         JLabel labelParalelo = new JLabel("Paralelo:");
-        JTextField campoParalelo = new JTextField(5);
+        campoParalelo = new JTextField(5);
 
         // Botones para agregar y regresar
-        JButton btnAgregar = new JButton("Agregar Estudiante");
-        JButton btnBack = new JButton("Regresar a Menú Principal");
+        btnAgregarEstudiante = new JButton("Agregar Estudiante");
+        btnBack = new JButton("Regresar a Menú Principal");
 
         // Agregar todos los componentes al panel
         panelAgregarEstudiante.add(labelNombre);
         panelAgregarEstudiante.add(campoNombre);
         panelAgregarEstudiante.add(labelRut);
-        panelAgregarEstudiante.add(campoRut);
+        panelAgregarEstudiante.add(campoRutEstudiante);
         panelAgregarEstudiante.add(labelCorreo);
-        panelAgregarEstudiante.add(campoCorreo);
+        panelAgregarEstudiante.add(campoCorreoEstudiante);
         panelAgregarEstudiante.add(labelParalelo);
         panelAgregarEstudiante.add(campoParalelo);
-        panelAgregarEstudiante.add(btnAgregar);
+        panelAgregarEstudiante.add(btnAgregarEstudiante);
         panelAgregarEstudiante.add(btnBack);
 
-        // Acción del botón agregar estudiante
-        btnAgregar.addActionListener(e -> {
-            String nombreEstudiante = campoNombre.getText();
-            String rutEstudiante = campoRut.getText();
-            String correoEstudiante = campoCorreo.getText();
-            int paraleloEstudiante;
-            
-            try {
-                paraleloEstudiante = Integer.parseInt(campoParalelo.getText());
-                // Generar un ID aleatorio para el estudiante
-                
-                // Crear el nuevo estudiante
-                
-                // Mostrar confirmación
-                JOptionPane.showMessageDialog(panelAgregarEstudiante, "Estudiante agregado exitosamente.");
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(panelAgregarEstudiante, "Por favor ingrese un número válido para el paralelo.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        // Acción del botón regresar
-        btnBack.addActionListener(this);
         return panelAgregarEstudiante; // Retornar el panel para añadirlo al CardLayout
     }
     private JPanel crearPanelEliminarEstudiante() {
@@ -312,16 +263,16 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
 
         // Etiqueta y campo de texto para ingresar el nombre o ID del estudiante
         JLabel labelEliminar = new JLabel("Nombre o ID del Estudiante:");
-        JTextField campoEliminar = new JTextField(20);
+        campoEliminar = new JTextField(20);
 
         // Botones para eliminar y regresar
-        JButton btnEliminar = new JButton("Eliminar Estudiante");
-        JButton btnBack = new JButton("Regresar a Menú Principal");
+        btnEliminarEstudiante = new JButton("Eliminar Estudiante");
+        btnBack = new JButton("Regresar a Menú Principal");
 
         // Agregar todos los componentes al panel
         panelEliminarEstudiante.add(labelEliminar);
         panelEliminarEstudiante.add(campoEliminar);
-        panelEliminarEstudiante.add(btnEliminar);
+        panelEliminarEstudiante.add(btnEliminarEstudiante);
         panelEliminarEstudiante.add(btnBack);
 
         // Acción del botón eliminar estudiante
@@ -339,25 +290,45 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
             }
         });
 
-        // Acción del botón regresar
-        btnBack.addActionListener(this);
 
         return panelEliminarEstudiante; // Retornar el panel para añadirlo al CardLayout
     }
     private JPanel crearPanelCargarRecurso() {
-        JPanel panelCargarRecurso = new JPanel(new GridLayout(5, 2, 10, 10)); // Usamos GridLayout para organizar los componentes
+        JPanel panelCargarRecurso = new JPanel(new GridLayout(7, 2, 10, 10)); // Usamos GridLayout para organizar los componentes
         panelCargarRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Etiqueta y campo para seleccionar la opción de cargar un solo recurso o una lista
         JLabel labelOpcion = new JLabel("Seleccione una opción:");
         String[] opciones = {"Un solo recurso", "Lista de recursos"};
-        JComboBox<String> comboBoxOpcion = new JComboBox<>(opciones);
+        comboBoxOpcion = new JComboBox<>(opciones);
 
         // Etiqueta y campo de texto para ingresar el nombre o ID de la carpeta
         JLabel labelCarpeta = new JLabel("Nombre o ID de la Carpeta:");
         JTextField campoCarpeta = new JTextField(20);
 
-        // Botón para cargar recurso(s)
+        // Nuevos campos para detalles del recurso
+        JLabel labelTitulo = new JLabel("Título del Recurso:");
+        campoTitulo = new JTextField(20);
+
+        JLabel labelFormato = new JLabel("Formato del Recurso:");
+        campoFormato = new JTextField(20);
+
+        JLabel labelAutor = new JLabel("Autor del Recurso:");
+        campoAutor = new JTextField(20);
+
+        JLabel labelCategoria = new JLabel("Categoría del Recurso:");
+        campoCategoria = new JTextField(20);
+
+        JLabel labelFecha = new JLabel("Fecha de Creación:");
+        campoFecha = new JTextField(20);
+
+        JLabel labelCurso = new JLabel("Curso Relacionado:");
+        campoCurso = new JTextField(20);
+
+        JLabel labelVisibilidad = new JLabel("Visibilidad del Recurso:");
+        campoVisibilidad = new JTextField(20);
+
+        // Botones
         JButton btnCargar = new JButton("Cargar Recurso(s)");
         JButton btnBack = new JButton("Regresar a Menú Principal");
 
@@ -366,106 +337,196 @@ public class VentanaEditarCurso extends JPanel implements ActionListener{
         panelCargarRecurso.add(comboBoxOpcion);
         panelCargarRecurso.add(labelCarpeta);
         panelCargarRecurso.add(campoCarpeta);
+        panelCargarRecurso.add(labelTitulo);
+        panelCargarRecurso.add(campoTitulo);
+        panelCargarRecurso.add(labelFormato);
+        panelCargarRecurso.add(campoFormato);
+        panelCargarRecurso.add(labelAutor);
+        panelCargarRecurso.add(campoAutor);
+        panelCargarRecurso.add(labelCategoria);
+        panelCargarRecurso.add(campoCategoria);
+        panelCargarRecurso.add(labelFecha);
+        panelCargarRecurso.add(campoFecha);
+        panelCargarRecurso.add(labelCurso);
+        panelCargarRecurso.add(campoCurso);
+        panelCargarRecurso.add(labelVisibilidad);
+        panelCargarRecurso.add(campoVisibilidad);
         panelCargarRecurso.add(btnCargar);
         panelCargarRecurso.add(btnBack);
 
-        // Acción del botón para cargar recurso(s)
-        btnCargar.addActionListener(e -> {
-            String entradaCarpeta = campoCarpeta.getText();
-            int opcionSeleccionada = comboBoxOpcion.getSelectedIndex(); // 0 = Un solo recurso, 1 = Lista de recursos
-
-            try {
-                int idCarpeta = Integer.parseInt(entradaCarpeta); // Intentar convertir la entrada a un número (ID)
-
-                if (opcionSeleccionada == 0) { // Un solo recurso
-                    /* LOGICA PARA BUSCAR RECURSO Y AGREGAR UNO SI NO EXISTE
-                    if (recurso != null) {
-                        curso.cargarRecurso(idCarpeta, recurso); // Llama al método de la clase Curso
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Recurso cargado en la carpeta con ID " + idCarpeta);
-                    } else {
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear el recurso.");
-                    }
-                    */
-                } else { // Lista de recursos
-                	 /* LOGICA PARA BUSCAR RECURSOS Y AGREGAR SI NO EXISTEN
-                    if () {
-                        
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Lista de recursos cargada en la carpeta con ID " + idCarpeta);
-                    } else {
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear la lista de recursos.");
-                    }
-                    */
-                }
-            } catch (NumberFormatException ex) { // Si no es un número, tratar como nombre de carpeta
-                if (opcionSeleccionada == 0) { // Un solo recurso
-                	/* LOGICA PARA BUSCAR RECURSO Y AGREGAR UNO SI NO EXISTE
-                    if (recurso != null) {
-                        curso.cargarRecurso(entradaCarpeta, recurso); // Llama al método de la clase Curso
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Recurso cargado en la carpeta " + entradaCarpeta);
-                    } else {
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear el recurso.");
-                    }
-                    */
-                } else { // Lista de recursos
-                	/* LOGICA PARA BUSCAR RECURSOS Y AGREGAR SI NO EXISTEN
-                    List<Recurso> listaRecursos = Carpeta.crearListaRecursos(); // Método para crear una lista de recursos
-                    if (listaRecursos != null && !listaRecursos.isEmpty()) {
-                        curso.cargarRecurso(entradaCarpeta, listaRecursos); // Llama al método de la clase Curso
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Lista de recursos cargada en la carpeta " + entradaCarpeta);
-                    } else {
-                        JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear la lista de recursos.");
-                    }
-                    */
-                }
-            }
-        });
-
-        // Acción del botón regresar
-        btnBack.addActionListener(this);
-
         return panelCargarRecurso; // Retornar el panel para añadirlo al CardLayout
     }
-    //
-    // Métodos de acción para cada botón
-    //
-    private void actualizarDescripcion() {
-        String descripcion = descripcionArea.getText();
-        JOptionPane.showMessageDialog(this, "Descripción actualizada: " + descripcion);
-    }
-
-    // Método para manejar la asignación del profesor
-    private void asignarProfesor(String nombre, String rut, String email, String especialidad) {
-        // Crear nuevo objeto Profesor con los datos ingresados
-        Profesor nuevoProfesor = new Profesor(nombre, rut, email, especialidad);
-        // Asumir que tienes un método en el curso para asignar el profesor
-        //curso.asignarProfesor(nuevoProfesor);
-        JOptionPane.showMessageDialog(this, "Profesor asignado con éxito.");
-    }
-
     
- // Método que gestiona las acciones del menú
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    	if (e.getSource() == descripcionMenuItem) {
-            cardLayout.show(panelContenedor, "Descripción");
-        } else if (e.getSource() == asignarProfesorMenuItem) {
-            cardLayout.show(panelContenedor, "Asignar Profesor");
-        } else if (e.getSource() == agregarCarpetaMenuItem) {
-            cardLayout.show(panelContenedor, "Agregar Carpeta");
-        } else if (e.getSource() == eliminarCarpetaMenuItem) {
-            cardLayout.show(panelContenedor, "Eliminar Carpeta");
-        } else if (e.getSource() == agregarEstudianteMenuItem) {
-            cardLayout.show(panelContenedor, "Agregar Estudiante");
-        } else if (e.getSource() == eliminarEstudianteMenuItem) {
-            cardLayout.show(panelContenedor, "Eliminar Estudiante");
-        } else if (e.getSource() == cargarRecursoMenuItem) {
-            cardLayout.show(panelContenedor, "Cargar Recurso");
-        } else if (e.getSource() == regresarMenuItem) {
-        	mainApp.mostrarVentana("MenuPrincipal"); // Método en MainApp para volver al menú principal
-        }
-        else {
-        	mainApp.mostrarVentana("MenuPrincipal"); // Método en MainApp para volver al menú principal
-        }
+    
+    // Getters para los JMenuItems adicionales en VentanaEditarCurso
+    
+    public JMenuItem getDescripcionMenuItem() {
+        return descripcionMenuItem;
     }
+
+    public JMenuItem getAsignarProfesorMenuItem() {
+        return asignarProfesorMenuItem;
+    }
+
+    public JMenuItem getAgregarCarpetaMenuItem() {
+        return agregarCarpetaMenuItem;
+    }
+
+    public JMenuItem getEliminarCarpetaMenuItem() {
+        return eliminarCarpetaMenuItem;
+    }
+
+    public JMenuItem getAgregarEstudianteMenuItem() {
+        return agregarEstudianteMenuItem;
+    }
+
+    public JMenuItem getEliminarEstudianteMenuItem() {
+        return eliminarEstudianteMenuItem;
+    }
+
+    public JMenuItem getCargarRecursoMenuItem() {
+        return cargarRecursoMenuItem;
+    }
+    public JMenuItem getRegresarMenuItem() {
+        return regresarMenuItem;
+    }
+    public JMenuItem getSalirMenuItem() {
+        return salirMenuItem;
+    }
+
+    // Getters para acceder a los datos de los componentes
+    public String getDescripcion() {
+        return descripcionArea.getText();
+    }
+
+    public String getNombreProfesor() {
+        return nombreField.getText();
+    }
+
+    public String getRutProfesor() {
+        return rutField.getText();
+    }
+
+    public String getEmailProfesor() {
+        return emailField.getText();
+    }
+
+    public String getEspecialidadProfesor() {
+        return especialidadField.getText();
+    }
+
+    public String getNombreCarpeta() {
+        return campoNombre.getText();
+    }
+
+    public String getIDCarpeta() {
+        return campoID.getText();
+    }
+
+    public String getEsPublica() {
+        return campoEsPublica.getText();
+    }
+  
+
+    public String getNombreEliminar() {
+        return campoEliminar.getText();
+    }
+
+    public String getNombreEstudiante() {
+        return campoNombreEstudiante.getText();
+    }
+
+    public String getRutEstudiante() {
+        return campoRutEstudiante.getText();
+    }
+
+    public String getCorreoEstudiante() {
+        return campoCorreoEstudiante.getText();
+    }
+
+    public String getParaleloEstudiante() {
+        return campoParalelo.getText();
+    }
+
+    public String getNombreEliminarEstudiante() {
+        return campoEliminarEstudiante.getText();
+    }
+    
+    public String getOpcionSeleccionada() {
+        return (String) comboBoxOpcion.getSelectedItem();
+    }
+
+    public String getNombreCarpetaRecurso() {
+        return campoCarpeta.getText();
+    }
+    
+    public String getCampoTitulo() {
+        return campoTitulo.getText().trim();
+    }
+
+    public String getCampoFormato() {
+        return campoFormato.getText().trim();
+    }
+
+    public String getCampoAutor() {
+        return campoAutor.getText().trim();
+    }
+
+    public String getCampoCategoria() {
+        return campoCategoria.getText().trim();
+    }
+
+    public String getCampoFecha() {
+        return campoFecha.getText().trim();
+    }
+
+    public String getCampoCurso() {
+        return campoCurso.getText().trim();
+    }
+
+    public String getCampoVisibilidad() {
+        return campoVisibilidad.getText().trim();
+    }
+    
+    public JButton getActualizarButton() {
+        return btnActualizar;
+    }
+
+    public JButton getAsignarProfesorButton() {
+        return btnAsignarProfesor;
+    }
+
+    public JButton getEliminarButton() {
+        return btnEliminar;
+    }
+
+    public JButton getAgregarCarpetaButton() {
+        return btnAgregarCarpeta;
+    }
+
+    public JButton getEliminarCarpetaButton() {
+        return btnEliminarCarpeta;
+    }
+
+    public JButton getAgregarEstudianteButton() {
+        return btnAgregarEstudiante;
+    }
+
+    public JButton getEliminarEstudianteButton() {
+        return btnEliminarEstudiante;
+    }
+    
+    public JButton getCargarRecursoButton() {
+    	return btnCargar;
+    }
+
+    public JButton getBackButton() {
+        return btnBack;
+    }
+    // Método para mostrar un panel específico en el CardLayout
+    public void mostrarPanel(String nombrePanel) {
+        cardLayout.show(panelContenedor, nombrePanel);
+    }
+
     
 }

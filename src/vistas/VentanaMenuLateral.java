@@ -1,11 +1,12 @@
 package vistas;
 
-import paqueteMain.Usuario;
-import paqueteMain.Profesor;
-import paqueteMain.Estudiante;
-
 import java.awt.*;
 import javax.swing.*;
+
+import modelo.Estudiante;
+import modelo.Profesor;
+import modelo.Usuario;
+
 import java.awt.event.*;
 
 public class VentanaMenuLateral extends JPanel implements ActionListener {

@@ -1,30 +1,39 @@
 package vistas;
 
-import paqueteMain.Usuario;
-import paqueteMain.Profesor;
-import paqueteMain.Estudiante;
-import paqueteMain.Curso;
-
 import javax.swing.*;
+import controladores.*;
+
+import modelo.Curso;
+import modelo.Carpeta;
+import modelo.Estudiante;
+import modelo.Profesor;
+import modelo.Usuario;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaBusqueda extends JPanel implements ActionListener{
+public class VentanaBusqueda extends JPanel{
     private CardLayout cardLayout;
     private JPanel panelContenedor; // Panel principal con CardLayout
     private JMenuBar menuBar;
     private JMenu menuPrincipal;
     private JMenuItem salirMenuItem, regresarMenuItem, buscarRecursoMenuItem, buscarEstudianteMenuItem;
+    private JComboBox<String> comboOpciones;
+    private JTextField campoCriterio, campoBusqueda;
+    private JTextArea areaResultado;
+    private JButton btnBuscarEstudiante, btnBuscarRecurso, btnCambiarBusqueda;
 
-    private MainApp mainApp;
+    private CursoController controladorCurso;
+    private CarpetaController controladorCarpeta;
     private Curso curso;
     private boolean busquedaEstudiante;
+    private String panelActivo;
     
     // Constructor
-    public VentanaBusqueda(MainApp mainApp, Curso curso) {
-        this.mainApp = mainApp;  // Guardar referencia a MainApp
+    public VentanaBusqueda(Curso curso, CursoController controladorCurso) {
         this.curso = curso;
+        this.controladorCurso = controladorCurso; // Guardar el controlador de curso
         setName("VentanaBusqueda" + curso.getId());
         initialize();  // Inicializar el contenido
     }
@@ -37,31 +46,10 @@ public class VentanaBusqueda extends JPanel implements ActionListener{
         
         // Crear JMenuItems para cada opción
         
-        
         regresarMenuItem = new JMenuItem("Regresar");
         salirMenuItem = new JMenuItem("Salir");
         buscarEstudianteMenuItem = new JMenuItem("Buscar Estudiante");
         buscarRecursoMenuItem = new JMenuItem("Buscar Recurso");
-        
-        // Listeners del menú
-        regresarMenuItem.addActionListener(this);
-        salirMenuItem.addActionListener(this);
-
-        // Listeners para cambiar el tipo de búsqueda
-        // Listeners para cambiar entre tipos de búsqueda
-        buscarEstudianteMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cambiarTipoBusqueda(true);  // Cambia a búsqueda de estudiante
-            }
-        });
-
-        buscarRecursoMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cambiarTipoBusqueda(false);  // Cambia a búsqueda de recurso
-            }
-        });
-
-        
         // Añadir las opciones al menú
         menuPrincipal.add(buscarEstudianteMenuItem);
         menuPrincipal.add(buscarRecursoMenuItem);
@@ -73,97 +61,20 @@ public class VentanaBusqueda extends JPanel implements ActionListener{
         // Crear el layout y panel contenedor
         cardLayout = new CardLayout();
         panelContenedor = new JPanel(cardLayout);  // Panel donde cambiarán las vistas
-        
-        
-   
-
         // Crear y añadir los dos paneles (siempre presentes)
         panelContenedor.add(crearPanelBuscarEstudiante(), "BuscarEstudiante");
         panelContenedor.add(crearPanelBuscarRecurso(), "BuscarRecurso");
-
-
         // Configurar el layout principal
         this.add(menuBar, BorderLayout.NORTH);
         this.add(panelContenedor, BorderLayout.CENTER);
 
         // Mostrar por defecto el panel de buscar recurso (puedes cambiar esto si prefieres mostrar el de estudiantes primero)
         mostrarPanel("BuscarRecurso");
-        
     }
-    
-    
+
     //
     // PANELES
     //
-    
-    private JPanel crearPanelBuscarEstudiante() {
-        JPanel panel = new JPanel(new BorderLayout());
-
-        JLabel label = new JLabel("Buscar Estudiante (por nombre o ID):", JLabel.CENTER);
-        JTextField campoBusqueda = new JTextField(20);
-        JTextArea areaResultado = new JTextArea(5, 30);
-        areaResultado.setEditable(false);
-
-        JButton btnBuscar = new JButton("Buscar");
-        btnBuscar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String entrada = campoBusqueda.getText();
-                Estudiante estudiante = null;
-
-                try {
-                    int idEstudiante = Integer.parseInt(entrada);
-                    estudiante = curso.buscarEstudiante(idEstudiante); // Buscar por ID
-                } catch (NumberFormatException ex) {
-                    estudiante = curso.buscarEstudiante(entrada); // Buscar por nombre
-                }
-
-                if (estudiante != null) {
-                    areaResultado.setText("Estudiante encontrado: " + estudiante.toString());
-                } else {
-                    areaResultado.setText("Estudiante no encontrado.");
-                }
-            }
-        });
-
-        JButton btnCambiarBusqueda = new JButton("Cambiar a Buscar Recurso");
-        btnCambiarBusqueda.setPreferredSize(new Dimension(200, 30));
-        btnCambiarBusqueda.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cambiarTipoBusqueda(false); // Cambia a búsqueda de recurso
-            }
-        });
-
-        // Usar GridBagLayout para mayor control
-        JPanel panelBusqueda = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5); // Espacio entre componentes
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        panelBusqueda.add(new JLabel("Nombre o ID:"), gbc);
-
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        panelBusqueda.add(campoBusqueda, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 2; // Ocupa toda la fila
-        panelBusqueda.add(btnBuscar, gbc);
-
-        // Añadir el área de resultados al panel de búsqueda
-        gbc.gridy = 2; // Cambia la fila para colocar el área de resultados
-        gbc.gridwidth = 2; // Ocupa toda la fila
-        panelBusqueda.add(new JScrollPane(areaResultado), gbc); // Agregar el área de resultados
-
-
-        panel.add(label, BorderLayout.NORTH);
-        panel.add(btnCambiarBusqueda, BorderLayout.BEFORE_FIRST_LINE);
-        panel.add(panelBusqueda, BorderLayout.CENTER);
-        
-        return panel;
-    }
     
     private JPanel crearPanelBuscarRecurso() {
         JPanel panel = new JPanel(new BorderLayout());
@@ -171,34 +82,18 @@ public class VentanaBusqueda extends JPanel implements ActionListener{
         JLabel label = new JLabel("Buscar Recurso:", JLabel.CENTER);
 
         String[] opcionesBusqueda = {"Por fecha", "Por categoría", "Por autor", "Por nombre"};
-        JComboBox<String> comboOpciones = new JComboBox<>(opcionesBusqueda);
+        comboOpciones = new JComboBox<>(opcionesBusqueda);
 
-        JTextField campoCriterio = new JTextField(20);
-        JTextArea areaResultado = new JTextArea(5, 30);
+        campoCriterio = new JTextField(20);
+        areaResultado = new JTextArea(5, 30);
         areaResultado.setEditable(false);
 
-        JButton btnBuscar = new JButton("Buscar");
-        btnBuscar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int opcionSeleccionada = comboOpciones.getSelectedIndex() + 1;
-                String criterioBusqueda = campoCriterio.getText();
-
-                curso.buscarRecursos(opcionSeleccionada, criterioBusqueda);
-                areaResultado.setText("Resultados de búsqueda para la opción: " + opcionesBusqueda[opcionSeleccionada - 1] + "\n");
-            }
-        });
-
+        btnBuscarRecurso = new JButton("Buscar Recurso");
         // Botón para cambiar a búsqueda de estudiantes
-        JButton btnCambiarBusqueda = new JButton("Cambiar a Buscar Estudiante");
-        btnCambiarBusqueda.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cambiarTipoBusqueda(true);  // Cambia a búsqueda de estudiante
-            }
-        });
-        btnCambiarBusqueda.setPreferredSize(new Dimension(200, 30));  // Asegurar tamaño adecuado
+        btnCambiarBusqueda = new JButton("Cambiar a Buscar Estudiante");
+        btnCambiarBusqueda.setPreferredSize(new Dimension(200, 30));
 
-
-     // Usar GridBagLayout para ordenar los componentes
+        // Usar GridBagLayout para ordenar los componentes
         JPanel panelBusqueda = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); // Espacio entre componentes
@@ -229,44 +124,120 @@ public class VentanaBusqueda extends JPanel implements ActionListener{
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2; // Ocupa toda la fila
-        panelBusqueda.add(btnBuscar, gbc);
-        
-        // Añadir el área de resultados al panel de búsqueda
-        gbc.gridy = 2; // Cambia la fila para colocar el área de resultados
-        gbc.gridwidth = 2; // Ocupa toda la fila
-        panelBusqueda.add(new JScrollPane(areaResultado), gbc); // Agregar el área de resultados
-        
-        
+        panelBusqueda.add(btnBuscarRecurso, gbc);
+
+        // Añadir el área de resultados
+        gbc.gridy = 3;
+        panelBusqueda.add(new JScrollPane(areaResultado), gbc);
+
         panel.add(label, BorderLayout.NORTH);
-        panel.add(btnCambiarBusqueda, BorderLayout.BEFORE_FIRST_LINE);
         panel.add(panelBusqueda, BorderLayout.CENTER);
-        
+        panel.add(btnCambiarBusqueda, BorderLayout.SOUTH);
 
         return panel;
     }
-    //
-    // Acciones
-    //
-    @Override
-	public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == regresarMenuItem) {
-            mainApp.mostrarVentanaSubmenuCurso(this.curso.getId()); // Método en MainApp para volver al submenu curso
-        } else if (e.getSource() == salirMenuItem) {
-            System.exit(0);
-        }
+    
+    private JPanel crearPanelBuscarEstudiante() {
+        JPanel panel = new JPanel(new BorderLayout());
+
+        JLabel label = new JLabel("Buscar Estudiante (por nombre o por ID):", JLabel.CENTER);
+
+        campoCriterio = new JTextField(20);
+        areaResultado = new JTextArea(5, 30);
+        areaResultado.setEditable(false);
+
+        btnBuscarEstudiante = new JButton("Buscar Estudiante");
+        btnCambiarBusqueda = new JButton("Cambiar a Buscar Recurso");
+
+        JPanel panelBusqueda = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5); // Espacio entre componentes
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        // Añadir el campo de criterio de búsqueda
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panelBusqueda.add(new JLabel("Criterio de Búsqueda:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        panelBusqueda.add(campoCriterio, gbc);
+
+        // Añadir el botón de búsqueda
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2; // Ocupa toda la fila
+        panelBusqueda.add(btnBuscarEstudiante, gbc);
+
+        // Añadir el área de resultados
+        gbc.gridy = 2;
+        panelBusqueda.add(new JScrollPane(areaResultado), gbc);
+
+        panel.add(label, BorderLayout.NORTH);
+        panel.add(panelBusqueda, BorderLayout.CENTER);
+        panel.add(btnCambiarBusqueda, BorderLayout.SOUTH);
+
+        return panel;
     }
-    public void cambiarTipoBusqueda(boolean tipoBusqueda) {
-        this.busquedaEstudiante = tipoBusqueda;
-        
-        // Cambiar el panel que se muestra según el nuevo valor de `busquedaEstudiante`
-        if (busquedaEstudiante) {
-            mostrarPanel("BuscarEstudiante");
-        } else {
-            mostrarPanel("BuscarRecurso");
-        }
+    
+   
+    // Getters para los componentes que necesitarán listeners desde el controlador
+
+    public JMenuItem getSalirMenuItem() {
+        return salirMenuItem;
+    }
+
+    public JMenuItem getRegresarMenuItem() {
+        return regresarMenuItem;
+    }
+
+    public JMenuItem getBuscarEstudianteMenuItem() {
+        return buscarEstudianteMenuItem;
+    }
+
+    public JMenuItem getBuscarRecursoMenuItem() {
+        return buscarRecursoMenuItem;
+    }
+
+    public JComboBox<String> getComboOpciones() {
+        return comboOpciones;
+    }
+
+    public JTextField getCampoCriterio() {
+        return campoCriterio;
+    }
+
+    public JTextField getCampoBusqueda() {
+        return campoBusqueda;
+    }
+
+    public JTextArea getAreaResultado() {
+        return areaResultado;
+    }
+
+    public JButton getBtnBuscarEstudiante() {
+        return btnBuscarEstudiante;
+    }
+
+    public JButton getBtnBuscarRecurso() {
+        return btnBuscarRecurso;
+    }
+
+    public JButton getBtnCambiarBusqueda() {
+        return btnCambiarBusqueda;
+    }
+
+    public String getPanelActivo() {
+        // Asume que tienes un sistema para rastrear el panel visible, por ejemplo, con una variable activa
+        return panelActivo;  // Variable que almacena el nombre del panel actualmente visible
     }
     // Cambiar de panel
-    private void mostrarPanel(String nombrePanel) {
-        cardLayout.show(panelContenedor, nombrePanel);
+    public void mostrarPanel(String nombrePanel) {
+        CardLayout cl = (CardLayout) this.getLayout();
+        cl.show(this, nombrePanel);
+        panelActivo = nombrePanel;  // Actualiza el panel activo
+    }
+    public void setCarpetaController(CarpetaController carpetaController) {
+        this.controladorCarpeta = carpetaController;
     }
 }

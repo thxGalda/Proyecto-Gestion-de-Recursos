@@ -1,21 +1,24 @@
 package vistas;
 
-import paqueteMain.Usuario;
-import paqueteMain.Profesor;
-import paqueteMain.Curso;
 import java.util.List;
-import paqueteMain.Carpeta;
-import paqueteMain.Recurso;
-
+import controladores.CarpetaController;
 
 import javax.swing.*;
+
+import modelo.Carpeta;
+import modelo.Curso;
+import modelo.Profesor;
+import modelo.Recurso;
+import modelo.Usuario;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
+public class VentanaSubMenuCarpeta extends JPanel{
     private CardLayout cardLayout;
     private JPanel panelContenedor; // Panel principal con CardLayout
+    private JList<String> listaRecursos; // JList para mostrar los recursos
     
     // Menú
     private JMenuBar menuBar;
@@ -23,20 +26,26 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
     private JMenuItem regresarMenuItem, salirMenuItem;
     private JMenuItem cargarRecursosMenuItem, eliminarRecursosMenuItem, mostrarRecursosMenuItem, buscarRecursosMenuItem, cambiarNombreCarpetaMenuItem, moverRecursoMenuItem;
 
-    private MainApp mainApp;
+    private CarpetaController carpetaController; // Controlador para la carpeta
     private Curso curso;
     private Carpeta carpeta;
     
+    private JButton btnBack, btnMoverRecurso, btnCargar, btnEliminar, btnCambiarNombre;
+    private JTextField campoTitulo, campoFormato, campoAutor, campoFecha, campoCategoria, campoCurso, campoVisibilidad, campoNuevoNombre, campoTituloRecurso;
+    private JComboBox<String> comboBoxOpcion, comboCarpetas;
+
+    
     // Constructor
-    public VentanaSubMenuCarpeta(MainApp mainApp, Curso curso, Carpeta carpeta) {
-        this.mainApp = mainApp;  // Guardar referencia a MainApp
+    public VentanaSubMenuCarpeta(CarpetaController carpetaController, Curso curso, Carpeta carpeta) {
+    	this.carpetaController = carpetaController;  // Guardar referencia al CarpetaController
         this.curso = curso;
         this.carpeta = carpeta;
         initialize();  // Inicializar el contenido
+        carpetaController.configurarMenu(this);
     }
 
-    private void initialize() {
-    	// Menú Barra
+    public void initialize() {
+        // Menú Barra
         setLayout(new BorderLayout());
 
         JLabel cursoNombreLabel = new JLabel("Submenú de Carpeta: " + carpeta.getNombre() + " - " + carpeta.getId());
@@ -47,38 +56,23 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
         // Crear JMenuItems para cada opción
         mostrarRecursosMenuItem = new JMenuItem("Mostrar Recursos");
         buscarRecursosMenuItem = new JMenuItem("Buscar Recursos");
-
-        // Opciones para profesores
         cambiarNombreCarpetaMenuItem = new JMenuItem("Cambiar Nombre Carpeta");
         cargarRecursosMenuItem = new JMenuItem("Cargar Recursos");
         eliminarRecursosMenuItem = new JMenuItem("Eliminar Recurso");
         moverRecursoMenuItem = new JMenuItem("Mover Recurso");
-
         regresarMenuItem = new JMenuItem("Regresar");
         salirMenuItem = new JMenuItem("Salir");
-
-        // Listeners
-        mostrarRecursosMenuItem.addActionListener(this);
-        buscarRecursosMenuItem.addActionListener(this);
-        cambiarNombreCarpetaMenuItem.addActionListener(this);
-        cargarRecursosMenuItem.addActionListener(this);
-        eliminarRecursosMenuItem.addActionListener(this);
-        moverRecursoMenuItem.addActionListener(this);
-        regresarMenuItem.addActionListener(this);
-        salirMenuItem.addActionListener(e -> System.exit(0));
 
         // Añadir items al menú
         menuRevisarCurso.add(mostrarRecursosMenuItem);
         menuRevisarCurso.add(buscarRecursosMenuItem);
         menuRevisarCurso.addSeparator();
+        
+        menuRevisarCurso.add(cambiarNombreCarpetaMenuItem);
+        menuRevisarCurso.add(cargarRecursosMenuItem);
+        menuRevisarCurso.add(eliminarRecursosMenuItem);
+        menuRevisarCurso.add(moverRecursoMenuItem);
 
-        // Opciones solo visibles para profesores
-        if (mainApp.getUsuarioActual() instanceof Profesor) {
-            menuRevisarCurso.add(cambiarNombreCarpetaMenuItem);
-            menuRevisarCurso.add(cargarRecursosMenuItem);
-            menuRevisarCurso.add(eliminarRecursosMenuItem);
-            menuRevisarCurso.add(moverRecursoMenuItem);
-        }
 
         menuRevisarCurso.addSeparator();
         menuRevisarCurso.add(regresarMenuItem);
@@ -109,6 +103,21 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
         this.add(panelContenedor, BorderLayout.CENTER);
     }
     
+    public void activarOpcionesProfesor() {
+        cambiarNombreCarpetaMenuItem.setEnabled(true);
+        cargarRecursosMenuItem.setEnabled(true);
+        eliminarRecursosMenuItem.setEnabled(true);
+        moverRecursoMenuItem.setEnabled(true);
+    }
+
+    public void desactivarOpcionesProfesor() {
+        cambiarNombreCarpetaMenuItem.setEnabled(false);
+        cargarRecursosMenuItem.setEnabled(false);
+        eliminarRecursosMenuItem.setEnabled(false);
+        moverRecursoMenuItem.setEnabled(false);
+    }
+
+    
     //
     // PANELES
     //
@@ -117,74 +126,80 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
         JPanel panel = new JPanel(new BorderLayout()); // Utiliza BorderLayout para mejor control
         JLabel label = new JLabel("Mostrar Recursos - Aquí se mostrarán los recursos de la carpeta.");
         
-        // Crear una lista de recursos vacía para el ejemplo (luego puedes llenarla con datos reales)
-        String[] recursos = {}; // Este arreglo deberá ser dinámico y llenarse con los nombres de recursos.
+        // Crear la lista de recursos vacía (luego se llenará dinámicamente desde el controlador)
+        String[] recursos = {}; 
         
         // Crear el JList que contendrá los nombres de los recursos
-        JList<String> listaRecursos = new JList<>(recursos);
+        listaRecursos = new JList<>(recursos);
         
-        // Añadir la lista dentro de un JScrollPane para que tenga scroll si hay muchos elementos
+        // Añadir la lista dentro de un JScrollPane
         JScrollPane scrollPane = new JScrollPane(listaRecursos);
         
         // Botón para regresar
-        JButton btnBack = new JButton("Regresar al submenu de curso");
-        btnBack.addActionListener(e -> mainApp.mostrarVentanaSubmenuCurso(curso.getId()));
+        btnBack = new JButton("Regresar al submenu de curso");
         
         // Añadir los componentes al panel
-        
         panel.add(label, BorderLayout.NORTH);  // Etiqueta en la parte superior
-        panel.add(scrollPane, BorderLayout.CENTER);  // JScrollPane en el centro, ocupa el resto del espacio
-        panel.add(btnBack, BorderLayout.SOUTH);
-        
+        panel.add(scrollPane, BorderLayout.CENTER);  // JScrollPane en el centro
+        panel.add(btnBack, BorderLayout.SOUTH);  // Botón en la parte inferior
         
         return panel;
-}
+    }
 
     private JPanel crearPanelCargarRecurso() {
-    JPanel panelCargarRecurso = new JPanel(new GridLayout(4, 2, 10, 10)); // GridLayout ajustado
-    panelCargarRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    JPanel panelCargarRecurso = new JPanel(new GridLayout(4, 2, 10, 10)); // GridLayout ajustado
+	    panelCargarRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    
+	    // Crear y agregar los campos de texto
+        campoTitulo = new JTextField(20);
+        campoFormato = new JTextField(20);
+        campoAutor = new JTextField(20);
+        campoCategoria = new JTextField(20);
+        campoFecha = new JTextField(20);
+        campoCurso = new JTextField(20);
+        campoVisibilidad = new JTextField(20);
+	    // Etiquetas
+        JLabel labelTitulo = new JLabel("Título:");
+        JLabel labelFormato = new JLabel("Formato:");
+        JLabel labelAutor = new JLabel("Autor:");
+        JLabel labelCategoria = new JLabel("Categoría:");
+        JLabel labelFecha = new JLabel("Fecha:");
+        JLabel labelCurso = new JLabel("Curso relacionado:");
+        JLabel labelVisibilidad = new JLabel("Visibilidad:");
+	
+	    // Etiqueta y campo para seleccionar la opción de cargar un solo recurso o una lista
+	    JLabel labelOpcion = new JLabel("Seleccione una opción:");
+	    String[] opciones = {"Un solo recurso", "Lista de recursos"};
+	    comboBoxOpcion = new JComboBox<>(opciones);
+	
+	    // Botón para cargar recurso(s)
+	    btnCargar = new JButton("Cargar Recurso(s)");
+	    btnBack = new JButton("Regresar al submenu de curso");
+	
+	 // Agregar componentes al panel en orden
+	    panelCargarRecurso.add(labelTitulo);        // Fila 1, Columna 1: Etiqueta Título
+	    panelCargarRecurso.add(campoTitulo);        // Fila 1, Columna 2: Campo de texto Título
+	    panelCargarRecurso.add(labelFormato);       // Fila 2, Columna 1: Etiqueta Formato
+	    panelCargarRecurso.add(campoFormato);       // Fila 2, Columna 2: Campo de texto Formato
+	    panelCargarRecurso.add(labelAutor);         // Fila 3, Columna 1: Etiqueta Autor
+	    panelCargarRecurso.add(campoAutor);         // Fila 3, Columna 2: Campo de texto Autor
+	    panelCargarRecurso.add(labelCategoria);     // Fila 4, Columna 1: Etiqueta Categoría
+	    panelCargarRecurso.add(campoCategoria);     // Fila 4, Columna 2: Campo de texto Categoría
+	    panelCargarRecurso.add(labelFecha);         // Fila 5, Columna 1: Etiqueta Fecha
+	    panelCargarRecurso.add(campoFecha);         // Fila 5, Columna 2: Campo de texto Fecha
+	    panelCargarRecurso.add(labelCurso);         // Fila 6, Columna 1: Etiqueta Curso
+	    panelCargarRecurso.add(campoCurso);         // Fila 6, Columna 2: Campo de texto Curso
+	    panelCargarRecurso.add(labelVisibilidad);   // Fila 7, Columna 1: Etiqueta Visibilidad
+	    panelCargarRecurso.add(campoVisibilidad);   // Fila 7, Columna 2: Campo de texto Visibilidad
 
-    // Etiqueta y campo para seleccionar la opción de cargar un solo recurso o una lista
-    JLabel labelOpcion = new JLabel("Seleccione una opción:");
-    String[] opciones = {"Un solo recurso", "Lista de recursos"};
-    JComboBox<String> comboBoxOpcion = new JComboBox<>(opciones);
+	    // Agregar el ComboBox y el botón de acción
+	    panelCargarRecurso.add(labelOpcion);        // Fila 8, Columna 1: Etiqueta Opción
+	    panelCargarRecurso.add(comboBoxOpcion);     // Fila 8, Columna 2: ComboBox para seleccionar la opción
+	    panelCargarRecurso.add(btnCargar);          // Botón "Cargar Recurso(s)" (puede estar debajo si deseas más separación)
+	    panelCargarRecurso.add(btnBack);            // Botón "Regresar al submenu de curso"
 
-    // Botón para cargar recurso(s)
-    JButton btnCargar = new JButton("Cargar Recurso(s)");
-    JButton btnBack = new JButton("Regresar al submenu de curso");
-    btnBack.addActionListener(e -> mainApp.mostrarVentanaSubmenuCurso(curso.getId()));
-
-    // Agregar componentes al panel
-    panelCargarRecurso.add(labelOpcion);
-    panelCargarRecurso.add(comboBoxOpcion);
-    panelCargarRecurso.add(btnCargar);
-    panelCargarRecurso.add(btnBack);
-
-    // Acción del botón para cargar recurso(s)
-    btnCargar.addActionListener(e -> {
-        int opcionSeleccionada = comboBoxOpcion.getSelectedIndex(); // 0 = Un solo recurso, 1 = Lista de recursos
-
-        if (opcionSeleccionada == 0) { // Un solo recurso
-            Recurso recurso = Recurso.crearRecurso(); // Método para crear un recurso
-            if (recurso != null) {
-                this.carpeta.agregarRecurso(recurso); // Cargar el recurso directamente en la carpeta
-                JOptionPane.showMessageDialog(panelCargarRecurso, "Recurso cargado en la carpeta.");
-            } else {
-                JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear el recurso.");
-            }
-        } else { // Lista de recursos
-            List<Recurso> listaRecursos = Carpeta.crearListaRecursos(); // Método para crear una lista de recursos
-            if (listaRecursos != null && !listaRecursos.isEmpty()) {
-                this.carpeta.agregarRecurso(listaRecursos); // Cargar la lista de recursos en la carpeta
-                JOptionPane.showMessageDialog(panelCargarRecurso, "Lista de recursos cargada en la carpeta.");
-            } else {
-                JOptionPane.showMessageDialog(panelCargarRecurso, "Error al crear la lista de recursos.");
-            }
-        }
-    });
-
-    return panelCargarRecurso; // Retornar el panel para añadirlo al CardLayout
-}
+	    return panelCargarRecurso; // Retornar el panel completo para añadirlo al CardLayout
+    }
     private JPanel crearPanelEliminarRecurso() {
     JPanel panelEliminarRecurso = new JPanel(new GridLayout(3, 2, 10, 10)); // GridLayout para organizar los componentes
     panelEliminarRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -194,27 +209,14 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
     JTextField campoTitulo = new JTextField(20);
 
     // Botón para eliminar recurso
-    JButton btnEliminar = new JButton("Eliminar Recurso");
-    JButton btnBack = new JButton("Regresar al submenu de curso");
-    btnBack.addActionListener(e -> mainApp.mostrarVentanaSubmenuCurso(curso.getId()));
+    btnEliminar = new JButton("Eliminar Recurso");
+    btnBack = new JButton("Regresar al submenu de curso");
 
     // Agregar los componentes al panel
     panelEliminarRecurso.add(labelTitulo);
     panelEliminarRecurso.add(campoTitulo);
     panelEliminarRecurso.add(btnEliminar);
     panelEliminarRecurso.add(btnBack);
-
-    // Acción del botón para eliminar el recurso
-    btnEliminar.addActionListener(e -> {
-        String tituloEliminar = campoTitulo.getText();
-
-        if (!tituloEliminar.isEmpty()) {
-            this.carpeta.eliminarRecurso(tituloEliminar); // Método de Carpeta para eliminar recurso
-          
-        } else {
-            JOptionPane.showMessageDialog(panelEliminarRecurso, "Por favor, ingrese un título válido.");
-        }
-    });
 
     return panelEliminarRecurso; // Retornar el panel para añadirlo al CardLayout
 }
@@ -225,12 +227,11 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
 	
 	    // Etiqueta y campo de texto para ingresar el nuevo nombre de la carpeta
 	    JLabel labelNuevoNombre = new JLabel("Ingrese el nuevo nombre de la carpeta:");
-	    JTextField campoNuevoNombre = new JTextField(20);
+	    campoNuevoNombre = new JTextField(20);
 	
 	    // Botón para confirmar el cambio de nombre
-	    JButton btnCambiarNombre = new JButton("Cambiar Nombre");
-	    JButton btnBack = new JButton("Regresar al submenu de curso");
-        btnBack.addActionListener(e -> mainApp.mostrarVentanaSubmenuCurso(curso.getId()));
+	    btnCambiarNombre = new JButton("Cambiar Nombre");
+	    btnBack = new JButton("Regresar al submenu de curso");
 	
 	    // Agregar los componentes al panel
 	    panelCambiarNombreCarpeta.add(labelNuevoNombre);
@@ -238,106 +239,144 @@ public class VentanaSubMenuCarpeta extends JPanel implements ActionListener{
 	    panelCambiarNombreCarpeta.add(btnCambiarNombre);
 	    panelCambiarNombreCarpeta.add(btnBack);
 	
-	    // Acción del botón para cambiar el nombre de la carpeta
-	    btnCambiarNombre.addActionListener(e -> {
-	        String nuevoTitulo = campoNuevoNombre.getText();
-	
-	        if (!nuevoTitulo.isEmpty()) {
-	            this.carpeta.actualizarNombre(nuevoTitulo); // Método para cambiar el nombre de la carpeta
-	            JOptionPane.showMessageDialog(panelCambiarNombreCarpeta, "Nombre de la carpeta actualizado a: " + nuevoTitulo);
-	        } else {
-	            JOptionPane.showMessageDialog(panelCambiarNombreCarpeta, "Por favor, ingrese un nombre válido.");
-	        }
-	    });
-	
 	    return panelCambiarNombreCarpeta; // Retornar el panel para añadirlo al CardLayout
-}
-
-    private JPanel crearPanelMoverRecurso() {
-	    JPanel panelMoverRecurso = new JPanel(new GridLayout(4, 2, 10, 10)); // Usamos GridLayout para organizar los componentes
-	    panelMoverRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-	
-	    // Etiqueta y campo de texto para ingresar el título del recurso
-	    JLabel labelTituloRecurso = new JLabel("Ingrese el título del recurso a mover:");
-	    JTextField campoTituloRecurso = new JTextField(20);
-	
-	    // Etiqueta y JComboBox para seleccionar la carpeta destino
-	    JLabel labelCarpetaDestino = new JLabel("Seleccione la carpeta destino:");
-	    JComboBox<String> comboCarpetas = new JComboBox<>();
-	
-	    // Accedemos a la lista de carpetas del curso y llenamos el JComboBox (excepto la carpeta actual)
-	    List<Carpeta> carpetas = this.curso.getCarpetas(); // Obtenemos la lista de carpetas desde el curso
-	    for (Carpeta carpeta : carpetas) {
-	        if (!carpeta.equals(this.carpeta)) { // Excluir la carpeta seleccionada actual
-	            comboCarpetas.addItem(carpeta.getId() + " - " + carpeta.getNombre());
-	        }
-	    }
-	
-	    // Botón para mover el recurso
-	    JButton btnMoverRecurso = new JButton("Mover Recurso");
-	    JButton btnBack = new JButton("Regresar al submenu de curso");
-        btnBack.addActionListener(e -> mainApp.mostrarVentanaSubmenuCurso(curso.getId()));
-        
-	
-	    // Agregar los componentes al panel
-	    panelMoverRecurso.add(labelTituloRecurso);
-	    panelMoverRecurso.add(campoTituloRecurso);
-	    panelMoverRecurso.add(labelCarpetaDestino);
-	    panelMoverRecurso.add(comboCarpetas);
-	    panelMoverRecurso.add(btnMoverRecurso);
-	    panelMoverRecurso.add(btnBack);
-	    
-	    
-	
-	    // Acción del botón para mover el recurso
-	    btnMoverRecurso.addActionListener(e -> {
-	        String tituloRecurso = campoTituloRecurso.getText();
-	        int indexCarpetaDestino = comboCarpetas.getSelectedIndex();
-	
-	        if (!tituloRecurso.isEmpty() && indexCarpetaDestino >= 0) {
-	            Carpeta carpetaDestino = carpetas.get(indexCarpetaDestino);
-	
-	            // Mover recurso a la carpeta seleccionada
-	            boolean exito = this.carpeta.moverRecurso(tituloRecurso, carpetaDestino);
-	            if (exito) {
-	                JOptionPane.showMessageDialog(panelMoverRecurso, "Recurso '" + tituloRecurso + "' movido exitosamente a la carpeta: " + carpetaDestino.getNombre());
-	            } else {
-	                JOptionPane.showMessageDialog(panelMoverRecurso, "No se pudo mover el recurso. Verifique el título ingresado.");
-	            }
-	        } else {
-	            JOptionPane.showMessageDialog(panelMoverRecurso, "Por favor, ingrese un título válido y seleccione una carpeta destino.");
-	        }
-	    });
-	
-	    return panelMoverRecurso;
-	}
-
- 
-    
-    //
-    // Acciones
-    //
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == mostrarRecursosMenuItem) {
-            cardLayout.show(panelContenedor, "MostrarRecursos");
-        } else if (e.getSource() == buscarRecursosMenuItem) {
-             mainApp.mostrarVentanaBusqueda(curso); // Llamar al método en MainApp para mostrar la ventana de búsqueda
-        } else if (e.getSource() == cambiarNombreCarpetaMenuItem) {
-            cardLayout.show(panelContenedor, "CambiarNombreCarpeta");
-        } else if (e.getSource() == cargarRecursosMenuItem) {
-            cardLayout.show(panelContenedor, "CargarRecursos");
-        } else if (e.getSource() == eliminarRecursosMenuItem) {
-            cardLayout.show(panelContenedor, "EliminarRecurso");
-        } else if (e.getSource() == moverRecursoMenuItem) {
-            cardLayout.show(panelContenedor, "MoverRecurso");
-        } else if (e.getSource() == regresarMenuItem) {
-            mainApp.mostrarVentanaSubmenuCurso(this.curso.getId()); // Volver al submenú del curso
-        } else if (e.getSource() == salirMenuItem) {
-            // Cerrar la aplicación
-            System.exit(0);
-        }
     }
+
+ // Método para crear el panel de mover recurso
+    public JPanel crearPanelMoverRecurso() {
+        JPanel panelMoverRecurso = new JPanel(new GridLayout(4, 2, 10, 10)); // Usamos GridLayout para organizar los componentes
+        panelMoverRecurso.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Etiqueta y campo de texto para ingresar el título del recurso a mover
+        JLabel labelTituloRecurso = new JLabel("Ingrese el título del recurso a mover:");
+        campoTituloRecurso = new JTextField(20);
+
+        // Etiqueta y JComboBox para seleccionar la carpeta destino
+        JLabel labelCarpetaDestino = new JLabel("Seleccione la carpeta destino:");
+        comboCarpetas = new JComboBox<>();
+
+        // Botón para mover el recurso
+        btnMoverRecurso = new JButton("Mover Recurso");
+        JButton btnBack = new JButton("Regresar al submenu de curso");
+
+        // Agregar los componentes al panel
+        panelMoverRecurso.add(labelTituloRecurso);
+        panelMoverRecurso.add(campoTituloRecurso);
+        panelMoverRecurso.add(labelCarpetaDestino);
+        panelMoverRecurso.add(comboCarpetas);
+        panelMoverRecurso.add(btnMoverRecurso);
+        panelMoverRecurso.add(btnBack);
+
+        return panelMoverRecurso; // Retornar el panel para añadirlo al CardLayout
+    }
+    
+    public void mostrarPanel(String nombrePanel) {
+        cardLayout.show(panelContenedor, nombrePanel);
+    }
+
+    // Getters para los JMenuItems
+    public JMenuItem getMostrarRecursosMenuItem() {
+        return mostrarRecursosMenuItem;
+    }
+
+    public JMenuItem getBuscarRecursosMenuItem() {
+        return buscarRecursosMenuItem;
+    }
+
+    public JMenuItem getCambiarNombreCarpetaMenuItem() {
+        return cambiarNombreCarpetaMenuItem;
+    }
+
+    public JMenuItem getCargarRecursosMenuItem() {
+        return cargarRecursosMenuItem;
+    }
+
+    public JMenuItem getEliminarRecursosMenuItem() {
+        return eliminarRecursosMenuItem;
+    }
+
+    public JMenuItem getMoverRecursoMenuItem() {
+        return moverRecursoMenuItem;
+    }
+
+    public JMenuItem getRegresarMenuItem() {
+        return regresarMenuItem;
+    }
+
+    public JMenuItem getSalirMenuItem() {
+        return salirMenuItem;
+    }
+    
+    // Getter para obtener el JList
+    public JList<String> getListaRecursos() {
+        return listaRecursos;
+    }
+    
+    public JComboBox<String> getComboBoxOpcion() {
+        return comboBoxOpcion;
+    }
+    
+ // Getters para los campos de texto
+    public String getCampoTitulo() {
+        return campoTitulo.getText();
+    }
+
+    public String getCampoFormato() {
+        return campoFormato.getText();
+    }
+
+    public String getCampoAutor() {
+        return campoAutor.getText();
+    }
+
+    public String getCampoCategoria() {
+        return campoCategoria.getText();
+    }
+
+    public String getCampoFecha() {
+        return campoFecha.getText();
+    }
+
+    public String getCampoCurso() {
+        return campoCurso.getText();
+    }
+
+    public String getCampoVisibilidad() {
+        return campoVisibilidad.getText();
+    }
+    public String getCampoNuevoNombre() {
+        return campoNuevoNombre.getText();
+    }
+
+    public JButton getBtnCargar() {
+        return btnCargar;
+    }
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+    public JButton getBtnCambiarNombre() {
+        return btnCambiarNombre;
+    }
+    public JButton getBtnMoverRecurso() {
+        return btnMoverRecurso;
+    }
+    public JTextField getCampoTituloRecurso() {
+        return campoTituloRecurso;
+    }
+    public JComboBox<String> getComboCarpetas() {
+        return comboCarpetas;
+    }
+
+    // Getter para el botón "Regresar"
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    // Método para actualizar los recursos mostrados en el JList
+    public void actualizarListaRecursos(String[] recursos) {
+        listaRecursos.setListData(recursos);
+    }
+
+
 }
 

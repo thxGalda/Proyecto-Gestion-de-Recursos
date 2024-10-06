@@ -1,38 +1,40 @@
 package vistas;
 
-import paqueteMain.Usuario;
-import paqueteMain.Profesor;
-import paqueteMain.Curso;
-import paqueteMain.Carpeta;
 import java.util.List;
-
-
 import javax.swing.*;
+import controladores.*;
+import modelo.Curso;
+import modelo.Carpeta;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class VentanaSubMenuCurso extends JPanel implements ActionListener{
+
+public class VentanaSubMenuCurso extends JPanel{
     private CardLayout cardLayout;
     private JPanel panelContenedor; // Panel principal con CardLayout
+    private CursoController controlador;
+    private Curso curso;
     
     // Menú
     private JMenuBar menuBar;
     private JMenu menuRevisarCurso;
     private JMenuItem regresarMenuItem, salirMenuItem;
     private JMenuItem revisarCarpetasMenuItem, mostrarEstudiantesMenuItem, buscarEstudianteMenuItem, ordenarCarpetasMenuItem, buscarRecursosMenuItem;
+    private JComboBox<Integer> carpetaComboBox;
+    private JComboBox<String> comboBoxOrden;  
+    private JTextArea estudiantesArea, carpetasArea;
+    private JButton confirmarBtn, botonOrdenar, volverBtn;
+    
+    
 
-    private MainApp mainApp;
-    private Curso curso;
     
     // Constructor
-    public VentanaSubMenuCurso(MainApp mainApp, Curso curso) {
-        this.mainApp = mainApp;  // Guardar referencia a MainApp
+    public VentanaSubMenuCurso(CursoController controlador, Curso curso) {
+        this.controlador= controlador;  
         this.curso = curso;
         initialize();  // Inicializar el contenido
     }
 
-    private void initialize() {
+    public void initialize() {
     	// Menú Barra
     	 setLayout(new BorderLayout());
 
@@ -55,13 +57,6 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
         salirMenuItem = new JMenuItem("Salir");
 
         // Listeners
-        revisarCarpetasMenuItem.addActionListener(this);
-        mostrarEstudiantesMenuItem.addActionListener(this);
-        buscarEstudianteMenuItem.addActionListener(this);
-        ordenarCarpetasMenuItem.addActionListener(this);
-        buscarRecursosMenuItem.addActionListener(this);
-        regresarMenuItem.addActionListener(this);
-        salirMenuItem.addActionListener(e -> System.exit(0));
 
         // Añadir items al menú
         menuRevisarCurso.add(revisarCarpetasMenuItem);
@@ -104,39 +99,29 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
     //
     private JPanel crearPanelMostrarEstudiantes() {
         JPanel panel = new JPanel(new BorderLayout()); // Usamos BorderLayout para organizar mejor los elementos
-        
+
         // Etiqueta para el título
         JLabel label = new JLabel("Lista de Estudiantes:");
         label.setHorizontalAlignment(JLabel.CENTER);
-        
+
         // Área de texto para mostrar los nombres de los estudiantes
-        JTextArea estudiantesArea = new JTextArea(10, 30);
+        estudiantesArea = new JTextArea(10, 30);
         estudiantesArea.setEditable(false); // Hacemos el área de texto no editable
-        
-        // Obtenemos los nombres de los estudiantes inscritos y los mostramos
-        List<String> nombresEstudiantes = curso.obtenerEstudiantesInscritos();
-        if (nombresEstudiantes.isEmpty()) {
-            estudiantesArea.setText("No hay estudiantes inscritos.");
-        } else {
-            StringBuilder listaEstudiantes = new StringBuilder();
-            for (String nombre : nombresEstudiantes) {
-                listaEstudiantes.append(nombre).append("\n"); // Añadimos cada nombre a la lista
-            }
-            estudiantesArea.setText(listaEstudiantes.toString());
-        }
-        
+
+        // Obtenemos los nombres de los estudiantes inscritos a través del controlador
+        String listaEstudiantes = controlador.obtenerNombresEstudiantes();
+        estudiantesArea.setText(listaEstudiantes); // Configuramos el área de texto con la lista
+
         // Añadimos el área de texto a un JScrollPane para poder hacer scroll si hay muchos estudiantes
         JScrollPane scrollPane = new JScrollPane(estudiantesArea);
-        
-        // Agregar boton regresar
-        JButton volverBtn = new JButton("Volver al Menú Principal");
-        volverBtn.addActionListener(this);
-        
+
+        // Agregar botón regresar
+        volverBtn = new JButton("Volver al Menú Principal");
         // Añadimos los componentes al panel
         panel.add(label, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(volverBtn, BorderLayout.SOUTH);
-        
+
         return panel;
     }
     private JPanel crearPanelOrdenarCarpetas() {
@@ -157,26 +142,8 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
         JComboBox<String> comboBoxOrden = new JComboBox<>(opcionesOrden);
         
         // Botón para realizar la ordenación
-        JButton botonOrdenar = new JButton("Ordenar");
-        
-        // Listener para el botón
-        botonOrdenar.addActionListener(e -> {
-            // Obtener la opción seleccionada
-            String seleccion = (String) comboBoxOrden.getSelectedItem();
-            
-            // Ordenar según la selección
-            if (seleccion.equals("Ordenar por Nombre")) {
-                curso.ordenarCarpetasPorNombre();
-                carpetasArea.setText("Carpetas ordenadas por nombre.");
-            } else if (seleccion.equals("Ordenar por Visibilidad")) {
-                curso.ordenarCarpetasPorVisibilidad();
-                carpetasArea.setText("Carpetas ordenadas por visibilidad.");
-            }
-        });
-        
-        // Crear el botón para regresar al menú de curso
-        JButton volverBtn = new JButton("Volver al Menú Principal");
-        volverBtn.addActionListener(this);
+        botonOrdenar = new JButton("Ordenar");
+        volverBtn = new JButton("Volver al Menú Principal");
         
         // Panel para contener la selección de ordenamiento y el botón
         JPanel panelOpciones = new JPanel();
@@ -191,7 +158,7 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
         
         return panel;
     }
-    private JPanel crearPanelSeleccionCarpeta() {
+    private JPanel crearPanelSeleccionCarpeta() { // Metodo en clase submenu, permite elegir una carpeta
         // Crear el panel principal
         JPanel panelSeleccionCarpeta = new JPanel(new BorderLayout());
         panelSeleccionCarpeta.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -203,7 +170,7 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
 
         // Obtener las carpetas asociadas al curso actual
         List<Carpeta> carpetas = curso.getCarpetas();  // Obtener las carpetas del curso actual
-        JComboBox<Integer> carpetaComboBox = new JComboBox<>();  // JComboBox que contiene solo IDs de carpetas
+        carpetaComboBox = new JComboBox<>();  // JComboBox que contiene solo IDs de carpetas
 
         // Verificar si hay carpetas en el curso
         if (carpetas.isEmpty()) {
@@ -230,13 +197,11 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
             
             if (idCarpeta != null) {
                 // Mostrar la ventana de la carpeta seleccionada usando el ID
-                mainApp.mostrarVentanaSubmenuCarpeta(curso.getId(), idCarpeta);
             }
         });
 
         // Crear el botón para regresar al menú de curso
-        JButton volverBtn = new JButton("Volver al Menú Principal");
-        volverBtn.addActionListener(this);
+        volverBtn = new JButton("Volver al Menú Principal");
 
         // Crear el panel inferior con los botones
         JPanel botonesPanel = new JPanel(new FlowLayout());
@@ -250,38 +215,77 @@ public class VentanaSubMenuCurso extends JPanel implements ActionListener{
     }
     
     //
-    // Acciones
+    // Getters de componentes
     //
     
-    // Método que gestiona las acciones del menú
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    	if (e.getSource() == mostrarEstudiantesMenuItem) {
-            cardLayout.show(panelContenedor, "MostrarEstudiantes");
-            panelContenedor.revalidate(); // Actualiza el layout
-            panelContenedor.repaint();    // Refresca la interfaz gráfica
-        } else if (e.getSource() == ordenarCarpetasMenuItem) {
-            cardLayout.show(panelContenedor, "OrdenarCarpetas");
-            panelContenedor.revalidate();
-            panelContenedor.repaint();
-        } else if (e.getSource() == revisarCarpetasMenuItem) {
-            cardLayout.show(panelContenedor, "SeleccionCarpeta");
-            panelContenedor.revalidate();
-            panelContenedor.repaint();
-            
-        } else if (e.getSource() == buscarRecursosMenuItem) {
-        	mainApp.mostrarVentanaBusqueda(this.curso); // Llama al método en MainApp
-        } else if (e.getSource() == buscarEstudianteMenuItem) {
-        	mainApp.mostrarVentanaBusqueda(this.curso); // Llama al método en MainAp
-       
-        } else if (e.getSource() == regresarMenuItem) {
-            mainApp.mostrarVentana("MenuPrincipal"); // Método en MainApp para volver al menú principal
-        } else if (e.getSource() == salirMenuItem) {
-            // Cerrar la aplicación
-            System.exit(0);
-        }
-        else {
-        	mainApp.mostrarVentana("MenuPrincipal");
-        }
+ // Getters para los componentes
+    public JMenuItem getRegresarMenuItem() {
+        return regresarMenuItem;
     }
+
+    public JMenuItem getSalirMenuItem() {
+        return salirMenuItem;
+    }
+
+    public JMenuItem getRevisarCarpetasMenuItem() {
+        return revisarCarpetasMenuItem;
+    }
+
+    public JMenuItem getMostrarEstudiantesMenuItem() {
+        return mostrarEstudiantesMenuItem;
+    }
+
+    public JMenuItem getBuscarEstudianteMenuItem() {
+        return buscarEstudianteMenuItem;
+    }
+
+    public JMenuItem getOrdenarCarpetasMenuItem() {
+        return ordenarCarpetasMenuItem;
+    }
+
+    public JMenuItem getBuscarRecursosMenuItem() {
+        return buscarRecursosMenuItem;
+    }
+
+    public JPanel getPanelContenedor() {
+        return panelContenedor;
+    }
+
+    public void mostrarPanel(String nombrePanel) {
+        cardLayout.show(panelContenedor, nombrePanel);
+    }
+    
+    // Getters para componentes importantes
+    public JComboBox<Integer> getCarpetaComboBox() {
+        return carpetaComboBox;
+    }
+
+    public JButton getConfirmarBtn() {
+        return confirmarBtn;
+    }
+
+    public JButton getVolverBtn() {
+        return volverBtn;
+    }
+    
+    public JTextArea getEstudiantesArea() {
+        return estudiantesArea;  // Asegúrate de tener el campo de instancia correspondiente
+    }
+
+    public JTextArea getCarpetasArea() {
+        return carpetasArea;
+    }
+
+    public JComboBox<String> getComboBoxOrden() {
+        return comboBoxOrden;
+    }
+
+    public JButton getBotonOrdenar() {
+        return botonOrdenar;
+    }
+
+
+
+    
+   
 }

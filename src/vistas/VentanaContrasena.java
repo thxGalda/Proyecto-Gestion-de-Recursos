@@ -1,81 +1,76 @@
 package vistas;
 
 import javax.swing.*;
-
-import paqueteMain.Usuario;
-
+import modelo.Usuario;
+import controladores.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
 
-public class VentanaContrasena extends JPanel implements ActionListener {
+public class VentanaContrasena extends JPanel {
     private JPasswordField contraseñaActualField;
     private JPasswordField nuevaContraseñaField;
     private JButton btnConfirmar;
-    private Usuario usuarioActual;
-    private MainApp mainApp;
+    private MainController mainController;
 
-    private String contraseñaActual; 
-    private boolean tieneContraseñaEstablecida;  // Indica si el usuario ya tiene una contraseña establecida
+    public VentanaContrasena(MainController mainController) {
 
-    public VentanaContrasena(String contraseñaActual, Usuario usuarioActual, MainApp mainApp) {
-        this.contraseñaActual = contraseñaActual;
-        this.tieneContraseñaEstablecida = (contraseñaActual != null);
-        this.mainApp = mainApp;
-        this.usuarioActual = usuarioActual;
+        this.mainController = mainController; // Cambia MainApp por MainController
+        initialize();
+    }
+    
+    public void reiniciarVentana() {
+        // Limpiar el panel
+        removeAll();
+        // Volver a inicializar la ventana
+        initialize();
         
-        if (usuarioActual != null) {
-        	// Configurar el layout
-            setLayout(new GridLayout(3, 2, 10, 10));
+        revalidate();
+        repaint();
+ 
+    }
 
-            // Si ya tiene contraseña establecida, mostrar campo para la contraseña actual
-            if (tieneContraseñaEstablecida) {
-                add(new JLabel("Ingrese la contraseña actual:"));
-                contraseñaActualField = new JPasswordField();
-                add(contraseñaActualField);
-            }
+    public void initialize() {
+        // Configurar el layout
+        setLayout(new GridLayout(3, 2, 10, 10));
 
-            // Mostrar campo para la nueva contraseña
-            add(new JLabel("Ingrese la nueva contraseña:"));
-            nuevaContraseñaField = new JPasswordField();
-            add(nuevaContraseñaField);
-
-            // Botón para confirmar el cambio de contraseña
-            btnConfirmar = new JButton("Confirmar");
-            btnConfirmar.addActionListener(this);
-            add(btnConfirmar);
-           
+        if (mainController.debeMostrarContraseñaActual()) {
+        	System.out.println("El usuario tiene contraseña establecida");
+            add(new JLabel("Ingrese la contraseña actual:"));
+            contraseñaActualField = new JPasswordField();
+            add(contraseñaActualField);
         } else {
-            // Manejar el caso de usuario nulo
-
-            System.out.println("El usuario no está disponible.");
+            // Si no tiene contraseña previa, inicializa el campo como vacío para evitar errores
+            contraseñaActualField = null; // Se inicializa, pero no se añade al panel
         }
 
+        // Mostrar campo para la nueva contraseña
+        add(new JLabel("Ingrese la nueva contraseña:"));
+        nuevaContraseñaField = new JPasswordField();
+        add(nuevaContraseñaField);
+
+        // Botón para confirmar el cambio de contraseña
+        btnConfirmar = new JButton("Confirmar");
+        add(btnConfirmar);
+        
+        btnConfirmar.addActionListener(e -> mainController.handleConfirm());
+    }
+    // Método para obtener el botón confirmar
+    public JButton getBtnConfirmar() {
+        return btnConfirmar;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnConfirmar) {
-            if (tieneContraseñaEstablecida) {
-                // Verificar la contraseña actual
-                String contraseñaIngresada = new String(contraseñaActualField.getPassword());
-                if (!contraseñaIngresada.equals(contraseñaActual)) {
-                    JOptionPane.showMessageDialog(this, "La contraseña actual no es correcta.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-            // Establecer la nueva contraseña
-            String nuevaContraseña = new String(nuevaContraseñaField.getPassword());
-            if (nuevaContraseña.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "La nueva contraseña no puede estar vacía.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Actualizar la contraseña (esto se conectaría a tu modelo de usuario)
-            contraseñaActual = nuevaContraseña;
-            JOptionPane.showMessageDialog(this, "Contraseña cambiada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-
-            // Aquí puedes hacer la conexión con el modelo o cerrar el panel
-            mainApp.loginCompleto(usuarioActual);
-        }
+    // Métodos para obtener las contraseñas ingresadas
+    public String getContraseñaActual() {
+        return contraseñaActualField != null ? new String(contraseñaActualField.getPassword()) : "";
     }
+
+    public String getNuevaContraseña() {
+        return new String(nuevaContraseñaField.getPassword());
+    }
+    
+    // Método para saber si se debe mostrar el campo de contraseña actual
+    public boolean isContraseñaActualVisible() {
+        return contraseñaActualField != null;
+    }
+	
 }
