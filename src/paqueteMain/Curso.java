@@ -1,8 +1,9 @@
-package paqueteMain;
+package modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class Curso {
     // Atributos privados
@@ -204,15 +205,16 @@ public class Curso {
         System.out.println("Carpetas ordenadas por visibilidad.\n");
     }
     // Método para mostrar todas las carpetas
-    public void mostrarCarpetas() {
+    public String mostrarCarpetas() {
+        StringBuilder sb = new StringBuilder(); // Usamos StringBuilder para construir la salida
         if (carpetas.isEmpty()) {
-            System.out.println("No hay carpetas en el curso.");
+            sb.append("No hay carpetas en el curso.");
         } else {
             for (Carpeta carpeta : carpetas) {
-                System.out.println(carpeta.toString());
-                System.out.println();
+                sb.append(carpeta.toString()).append("\n"); // Añadimos cada carpeta al StringBuilder
             }
         }
+        return sb.toString(); // Devolvemos el contenido como String
     }
     // Método para modificar la descripción del curso
     public void actualizarDescripcion(String nuevaDescripcion) {
@@ -224,9 +226,12 @@ public class Curso {
         }
     }
     
-    public void agregarEstudiante(Estudiante estudiante) {
-        if (estudiante != null && !estudiantes.contains(estudiante)){
-           estudiantes.add(estudiante);
+    public void agregarEstudiante(String nombre, String rut, String correo, String paralelo) {
+    	Random random = new Random();
+    	int idEstudiante = random.nextInt(999999);  // Genera un número entre 0 y 999999
+    	Estudiante nuevoEstudiante = new Estudiante(nombre, idEstudiante, correo, paralelo);
+        if (nuevoEstudiante != null && !estudiantes.contains(nuevoEstudiante)){
+           estudiantes.add(nuevoEstudiante);
            this.numEstudiantes++;
         } else {
            System.out.println("Advertencia: No se puede agregar un estudiante null.");
@@ -301,14 +306,12 @@ public class Curso {
     }
    
    // Metodo para asignar o cambiar el profesor encargado del curso
-   public void asignarProfesor(Profesor nuevoProfesor) {
-	    if (nuevoProfesor == null) {
-	        System.out.println("Error: El profesor no puede ser null.");
-	    } else {
-	        this.profesor = nuevoProfesor;
-	        System.out.println("Nuevo Profesor : " + profesor.toString());
-	        System.out.println("Profesor de "+ this.nombre + " asignado correctamente.");
-	    }
+   public void asignarProfesor(String nombre, String rut, String email, String departamento) {
+	   Profesor nuevoProfesor = new Profesor(nombre, rut, email, departamento);
+	   this.profesor = nuevoProfesor;
+	   System.out.println("Nuevo Profesor : " + profesor.toString());
+	   System.out.println("Profesor de "+ this.nombre + " asignado correctamente.");
+
 	}
    //
    // Setters y Getters
