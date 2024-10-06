@@ -1,4 +1,4 @@
-package paqueteMain;
+package modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -107,12 +107,14 @@ public class Carpeta {
         }
     }
     // Método para eliminar un recurso por su título
-    public void eliminarRecurso(String titulo) {
+    public boolean eliminarRecurso(String titulo) {
         if (titulo != null && recursos.containsKey(titulo)) {
             recursos.remove(titulo);
             System.out.println("Recurso eliminado: " + titulo);
+            return true;
         } else {
             System.out.println("Error: No se puede eliminar. El título es null o no existe en la carpeta.");
+            return false;
         }
     }
     // Método para mover un recurso de una carpeta a otra
@@ -180,7 +182,7 @@ public class Carpeta {
                 .collect(Collectors.toList());
     }
     // Método para buscar una carpeta por nombre (SOBRECARGADO)
-    public void buscarRecursos(int opcionBusqueda, String criterioBusqueda){
+    public List<Recurso> buscarRecursos(int opcionBusqueda, String criterioBusqueda){
         List<Recurso> recursosEncontrados = new ArrayList<>();
         switch(opcionBusqueda) {
             case 1:
@@ -197,7 +199,7 @@ public class Carpeta {
                 break;
             }
 
-        this.mostrarRecursos(recursosEncontrados); // Mostrar los recursos encontrados
+        return recursosEncontrados; // Mostrar los recursos encontrados
     }
     // Método para mostrar todos los recursos encontrados
     public void mostrarRecursos(List<Recurso> listaRecursos) {
