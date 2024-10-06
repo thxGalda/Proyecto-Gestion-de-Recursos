@@ -256,4 +256,8 @@ public class Recurso {
     public void setEsVisible(boolean esVisible) {
         this.esVisible = esVisible;
     }
+    public void setCurso(List<Curso> cursos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCurso'");
+    }
 }
