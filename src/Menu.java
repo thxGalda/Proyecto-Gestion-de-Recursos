@@ -13,6 +13,14 @@ public class Menu {
     // Constructor
  // Constructor
     public Menu() {
+	String[] archivosCSV = new String[] {
+            "https://github.com/thxGalda/Proyecto-Gestion-de-Recursos/blob/main/src/Profesores.csv",
+            "https://github.com/thxGalda/Proyecto-Gestion-de-Recursos/blob/main/src/Carpetas.csv",
+            "https://github.com/thxGalda/Proyecto-Gestion-de-Recursos/blob/main/src/Cursos.csv",
+            "https://github.com/thxGalda/Proyecto-Gestion-de-Recursos/blob/main/src/Estudiantes.csv",
+            "https://github.com/thxGalda/Proyecto-Gestion-de-Recursos/blob/main/src/Recursos.csv"
+        };
+        cargarArchivosCSV(archivosCSV);
         scanner = new Scanner(System.in);
         this.cursos = new ArrayList<>();  // Inicializamos la lista de cursos
         this.estudiantes = new ArrayList<>();   // Inicializamos la lista de estudiantes
