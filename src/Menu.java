@@ -17,6 +17,55 @@ public class Menu {
         this.cursos = new ArrayList<>();  // Inicializamos la lista de cursos
         this.estudiantes = new ArrayList<>();   // Inicializamos la lista de estudiantes
     }
+    public void cargarArchivosCSV(String[] archivosCSV) {
+	    // Crear listas para almacenar los objetos leídos
+	    List<Profesor> profesores = new ArrayList<>();
+	    List<Carpeta> carpetas = new ArrayList<>();
+	    List<Curso> cursos = new ArrayList<>();
+	    List<Estudiante> estudiantes = new ArrayList<>();
+	    List<Recurso> recursos = new ArrayList<>();
+	
+	    // Leer archivos CSV y agregar objetos a las listas
+	    for (String archivoCSV : archivosCSV) {
+	        if (archivoCSV.contains("Profesores")) {
+	            profesores.addAll(Profesor.cargarProfesoresDesdeCSV(archivoCSV));
+	        } else if (archivoCSV.contains("Carpetas")) {
+	            carpetas.addAll(Carpeta.cargarCarpetasDesdeCSV(archivoCSV));
+	        } else if (archivoCSV.contains("Cursos")) {
+	            cursos.addAll(Curso.cargarCursosDesdeCSV(archivoCSV, profesores));
+	        } else if (archivoCSV.contains("Estudiantes")) {
+	            estudiantes.addAll(Estudiante.cargarEstudiantesDesdeCSV(archivoCSV, cursos));
+	        } else if (archivoCSV.contains("Recursos")) {
+	            recursos.addAll(Recurso.cargarRecursosDesdeCSV(archivoCSV));
+	        }
+	    }
+	
+	    // Agregar objetos a la lista de cursos
+	    for (Curso curso : cursos) {
+	        curso.setCarpetas(carpetas);
+	        curso.setEstudiantes(estudiantes);
+	    }
+	
+	    // Agregar objetos a la lista de profesores
+	    for (Profesor profesor : profesores) {
+	        profesor.setCursosImpartidos(cursos);
+	    }
+	
+	    // Agregar objetos a la lista de carpetas
+	    for (Carpeta carpeta : carpetas) {
+	        carpeta.setRecursos(recursos);
+	    }
+	
+	    // Agregar objetos a la lista de estudiantes
+	    for (Estudiante estudiante : estudiantes) {
+	        estudiante.setCursos(cursos);
+	    }
+	
+	    // Agregar objetos a la lista de recursos
+	    for (Recurso recurso : recursos) {
+	        recurso.setCurso(cursos);
+	    }
+	}
     // Metodo para agregar cursos en la carga inicial de datos
     public void agregarCurso(Curso curso) {
         if (curso != null) {
