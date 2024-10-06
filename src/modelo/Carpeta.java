@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Carpeta {
     // Atributos privados
@@ -82,15 +85,19 @@ public class Carpeta {
         } while (opcion.equalsIgnoreCase("s"));
         return listaRecursos;
     }
-    // Método para agregar un recurso a la carpeta (SOBRECARGADO)
-    public void agregarRecurso(Recurso recurso) {
-         if (recurso != null && recurso.getTitulo() != null) {
-            recursos.put(recurso.getTitulo(), recurso);
-            System.out.println("Recurso '"+ recurso.getTitulo() + "' agregado a '" + this.getNombre() + "'." );
-         } else {
-             System.out.println("Advertencia: No se puede agregar un recurso null o sin título.");
+  // Método para agregar un recurso a la carpeta (SOBRECARGADO)
+     @SuppressWarnings("unlikely-arg-type")
+     public void agregarRecurso(Recurso recurso) throws excepcionDuplicacionRecurso {
+         if (recursos.containsKey(recurso)) {
+             throw new excepcionDuplicacionRecurso("El recurso ya existe en la carpeta.");
          }
-    }
+          if (recurso != null && recurso.getTitulo() != null) {
+             recursos.put(recurso.getTitulo(), recurso);
+             System.out.println("Recurso '"+ recurso.getTitulo() + "' agregado a '" + this.getNombre() + "'." );
+          } else {
+              System.out.println("Advertencia: No se puede agregar un recurso null o sin título.");
+          }
+     }
     // Método agregarRecurso para una lista de recursos (SOBRECARGADO)
     public void agregarRecurso(List<Recurso> listaRecursos) {
         if (listaRecursos != null && !listaRecursos.isEmpty()) {
@@ -118,7 +125,7 @@ public class Carpeta {
         }
     }
     // Método para mover un recurso de una carpeta a otra
-    public boolean moverRecurso(String titulo, Carpeta destino) {
+    public boolean moverRecurso(String titulo, Carpeta destino) throws excepcionDuplicacionRecurso {
         if (titulo == null || destino == null) {
             System.out.println("Error: El título o la carpeta destino son nulos.");
             return false;
