@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.net.URL;
 
 public class Menu {
 	private Usuario usuarioActual;
