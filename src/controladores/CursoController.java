@@ -13,13 +13,7 @@ import java.util.stream.Collectors;
 
 import javax.swing.*;
 
-import modelo.Carpeta;
-import modelo.Curso;
 import modelo.Menu;
-import modelo.Usuario;
-import modelo.Recurso;
-import modelo.Profesor;
-import modelo.Estudiante;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -93,9 +87,23 @@ public class CursoController {
 	        ventanaEditarCurso.getAsignarProfesorButton().addActionListener(e -> asignarProfesor());
 	        ventanaEditarCurso.getAgregarCarpetaButton().addActionListener(e -> agregarCarpeta());
 	        ventanaEditarCurso.getEliminarCarpetaButton().addActionListener(e -> eliminarCarpeta());
-	        ventanaEditarCurso.getAgregarEstudianteButton().addActionListener(e -> agregarEstudiante());
+	        ventanaEditarCurso.getAgregarEstudianteButton().addActionListener(e -> {
+				try {
+					agregarEstudiante();
+				} catch (excepcionCursoCompleto e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
 	        ventanaEditarCurso.getEliminarEstudianteButton().addActionListener(e -> eliminarEstudiante());
-	        ventanaEditarCurso.getCargarRecursoButton().addActionListener(e -> cargarRecurso());
+	        ventanaEditarCurso.getCargarRecursoButton().addActionListener(e -> {
+				try {
+					cargarRecurso();
+				} catch (excepcionDuplicacionRecurso | excepcionArchivoInvalido e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
 	        ventanaEditarCurso.getBackButton().addActionListener(e -> regresar());
     	}
         
@@ -123,39 +131,6 @@ public class CursoController {
         }
 
  
-    }
-    
-    
-    public void regresar() {
-    	mainController.mostrarMenuPrincipal();
-    }
-    
-    public JPanel crearVentana(String tipoVentana) {
-        String panelKey = tipoVentana + curso.getId();
-
-        if (ventanas.containsKey(panelKey)) {
-            return ventanas.get(panelKey);
-        }
-
-        JPanel nuevaVentana;
-
-        switch (tipoVentana) {
-            case "EditarCurso":
-                ventanaEditarCurso = new VentanaEditarCurso(this, curso);
-                nuevaVentana = ventanaEditarCurso;
-                break;
-
-            case "SubMenuCurso":
-                ventanaSubMenuCurso = new VentanaSubMenuCurso(this, curso);
-                nuevaVentana = ventanaSubMenuCurso;
-                break;
-
-            default:
-                throw new IllegalArgumentException("Tipo de ventana no soportado: " + tipoVentana);
-        }
-
-        ventanas.put(panelKey, nuevaVentana); // Añadir al mapa de ventanas
-        return nuevaVentana;
     }
     
     
@@ -227,19 +202,15 @@ public class CursoController {
     
     private void eliminarCarpeta() {
         String nombreEliminar = ventanaEditarCurso.getNombreEliminar(); // Obtiene el nombre o ID de la carpeta a eliminar
-
-        // Verifica si el input es un número (ID) o un texto (nombre de la carpeta)
-        try {
-            int idCarpeta = Integer.parseInt(nombreEliminar);
-            // Si se puede convertir a int, llamamos al método de eliminar por ID
+        try { // Verifica si el input es un número (ID) o un texto (nombre de la carpeta)
+            int idCarpeta = Integer.parseInt(nombreEliminar); // Si se puede convertir a int, llamamos al método de eliminar por ID 
             if (curso != null) {
                 curso.eliminarCarpeta(idCarpeta); // Llama al método sobrecargado que recibe un ID
                 JOptionPane.showMessageDialog(ventanaEditarCurso, "Carpeta con ID '" + idCarpeta + "' eliminada con éxito.");
             } else {
                 JOptionPane.showMessageDialog(ventanaEditarCurso, "Error al eliminar la carpeta."); // Manejo de errores
             }
-        } catch (NumberFormatException e) {
-            // Si no es un número, tratamos de eliminar por nombre
+        } catch (NumberFormatException e) { // Si no es un número, tratamos de eliminar por nombre
             if (curso != null) {
                 curso.eliminarCarpeta(nombreEliminar); // Llama al método sobrecargado que recibe un nombre
                 JOptionPane.showMessageDialog(ventanaEditarCurso, "Carpeta '" + nombreEliminar + "' eliminada con éxito.");
@@ -249,7 +220,7 @@ public class CursoController {
         }
     }
 
-    private void agregarEstudiante() {
+    private void agregarEstudiante() throws excepcionCursoCompleto {
         String nombreEstudiante = ventanaEditarCurso.getNombreEstudiante();
         String rutEstudiante = ventanaEditarCurso.getRutEstudiante();
         String correoEstudiante = ventanaEditarCurso.getCorreoEstudiante();
@@ -281,7 +252,7 @@ public class CursoController {
         }
     }
 
-    private void cargarRecurso() {
+    private void cargarRecurso() throws excepcionDuplicacionRecurso, excepcionArchivoInvalido {
         String nombreCarpeta = ventanaEditarCurso.getNombreCarpetaRecurso();
         String opcionSeleccionada = ventanaEditarCurso.getOpcionSeleccionada(); 
         
@@ -331,7 +302,7 @@ public class CursoController {
      
     }
     
-    private void cargarListaRecursos(String nombreCarpeta) {
+    private void cargarListaRecursos(String nombreCarpeta) throws excepcionDuplicacionRecurso {
         List<Recurso> listaRecursos = new ArrayList<>(); // Crear una lista para almacenar los recursos
 
         while (true) {
@@ -459,12 +430,41 @@ public class CursoController {
         }
     }
     
-    
-    
-
     //-------------------------------------------------------------
     
     //--------------- Interacción con la vista --------------------
+    
+    public void regresar() {
+    	mainController.mostrarMenuPrincipal();
+    }
+    
+    public JPanel crearVentana(String tipoVentana) {
+        String panelKey = tipoVentana + curso.getId();
+
+        if (ventanas.containsKey(panelKey)) {
+            return ventanas.get(panelKey);
+        }
+
+        JPanel nuevaVentana;
+
+        switch (tipoVentana) {
+            case "EditarCurso":
+                ventanaEditarCurso = new VentanaEditarCurso(this, curso);
+                nuevaVentana = ventanaEditarCurso;
+                break;
+
+            case "SubMenuCurso":
+                ventanaSubMenuCurso = new VentanaSubMenuCurso(this, curso);
+                nuevaVentana = ventanaSubMenuCurso;
+                break;
+
+            default:
+                throw new IllegalArgumentException("Tipo de ventana no soportado: " + tipoVentana);
+        }
+
+        ventanas.put(panelKey, nuevaVentana); // Añadir al mapa de ventanas
+        return nuevaVentana;
+    }
     
     // Método para mostrar una ventana específica (por ejemplo, editar curso o submenú)
     public void mostrarVentana(String tipoVentana) {
