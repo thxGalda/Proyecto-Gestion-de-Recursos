@@ -15,23 +15,18 @@ public class MainApp {
 	         // Inicializar el lector de CSV
                 LectorCSV lectorCSV = new LectorCSV();
 	            String[] archivosCSV = new String[] {
-	                    "https://raw.githubusercontent.com/thxGalda/Proyecto-Gestion-de-Recursos/main/src/Profesores.csv",
-	                    "https://raw.githubusercontent.com/thxGalda/Proyecto-Gestion-de-Recursos/main/src/Carpetas.csv",
-	                    "https://raw.githubusercontent.com/thxGalda/Proyecto-Gestion-de-Recursos/main/src/Cursos.csv",
-	                    "https://raw.githubusercontent.com/thxGalda/Proyecto-Gestion-de-Recursos/main/src/Estudiantes.csv",
-	                    "https://raw.githubusercontent.com/thxGalda/Proyecto-Gestion-de-Recursos/main/src/Recursos.csv"
+	            		"src\\Profesores.csv",
+	            	    "src\\Carpetas.csv",
+	            	    "src\\Cursos.csv",
+	            	    "src\\Estudiantes.csv",
+	            	    "src\\Recursos.csv"
 	                };
-
-	            // Leer los archivos CSV y cargarlos antes de inicializar la GUI
-	            try {
-	                for (String archivoCSV : archivosCSV) {
-	                    lectorCSV.leerArchivoCSV(archivoCSV);
-	                }
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	                JOptionPane.showMessageDialog(null, "Error al cargar los archivos CSV", "Error", JOptionPane.ERROR_MESSAGE);
-	                return; // Salir del programa si ocurre un error grave
-	            }
+	            
+	            
+	            for (String archivoCSV : archivosCSV) {
+				    lectorCSV.leerArchivoCSV(archivoCSV); // Lee cada archivo CSV
+				}
+				lectorCSV.cargarArchivosCSV(archivosCSV); // Carga los datos en las listas
 	                
 	            List<Profesor> profesores = lectorCSV.getProfesores();
 	            List<Curso> cursos = lectorCSV.getCursos();
