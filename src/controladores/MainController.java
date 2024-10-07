@@ -2,15 +2,11 @@ package controladores;
 
 import modelo.*;
 import vistas.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import javax.swing.*;
 
@@ -42,27 +38,21 @@ public class MainController{
     private VentanaContrasena ventanaContrasena;
     private VentanaLogin ventanaLogin;
 
-    public MainController() { // Recibir usuarioActual como parámetro
+    public MainController(List<Curso> cursos, List<Profesor> profesores) throws IOException { // Recibir usuarioActual como parámetro
         this.ventanas = new HashMap<>(); // Inicializamos el mapa para las ventanas
         this.menu = new Menu();
-        this.cursos = new ArrayList<>();
-        this.profesores = new ArrayList<>();
+        this.cursos = cursos;
+        this.profesores = profesores;
         initialize(); // Inicializa el frame y componentes aquí
     }
     
-    
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
-    public void setProfesores(List<Profesor> profesores) {
-        this.profesores = profesores;
-    }
    public void initialize() {
-	   
-	   menu.pasarCursos(cursos); // Carga los cursos en la lista del controlador
-       menu.pasarProfesores(profesores); // Carga los profesores en la lista del controlador
-   
      // Inicializar el frame y otros componentes aquí
+	   int cont = 0;
+	   for(Curso c : cursos) { // Verificar que se estan cargando todos los cursos
+		   System.out.println("Curso n°: " + cont + c.getId());
+		   cont ++;
+	   }
         frame = new JFrame("Sistema de Gestión de Recursos Virtuales");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
@@ -260,7 +250,6 @@ public class MainController{
         ventanaMenuPrincipal.getCambiarNombreBtn().addActionListener(e ->cambiarNombreUsuario());
         ventanaMenuPrincipal.getCambiarEmailBtn().addActionListener(e ->cambiarEmailUsuario());
         ventanaMenuPrincipal.getContrasenaBtn().addActionListener(e -> mostrarVentanaContrasenaNueva(usuarioActual));
-        ventanaMenuPrincipal.getVolverBtn().addActionListener(e -> ventanaMenuPrincipal.mostrarPanel("Ficha Personal"));
 
         
     }
@@ -322,12 +311,22 @@ public class MainController{
    
     
     private void confirmarSeleccion() {
-        String cursoSeleccionado = (String) ventanaMenuPrincipal.getCursoComboBox().getSelectedItem();
-        int idCurso = Integer.parseInt(cursoSeleccionado);
-        System.out.println("Curso seleccionado: " + idCurso);
+    	String nombreCursoSeleccionado = (String) ventanaMenuPrincipal.getCursoComboBox().getSelectedItem();
         
-        // Llamada al modelo para manejar el curso seleccionado
-        // Aquí puedes hacer las validaciones necesarias o redirigir a otras ventanas
+    	Curso cursoSeleccionado = buscarCursoPorNombre(nombreCursoSeleccionado);
+    	if (cursoSeleccionado != null) {
+            System.out.println("Curso seleccionado: " + cursoSeleccionado.getId());
+
+            // Verificar si el panel está en modo Revisar o Editar
+            if (ventanaMenuPrincipal.isRevisarActual()) {
+                mostrarVentanaCurso(cursoSeleccionado, "SubMenuCurso");  // Mostrar el submenú (revisar)
+            } else {
+                mostrarVentanaCurso(cursoSeleccionado, "EditarCurso");  // Mostrar la ventana de edición
+            }
+            
+        } else {
+            System.out.println("Error: No se encontró el curso seleccionado.");
+        }
     }
     
 	 // Método para actualizar el nombre del usuario
@@ -390,6 +389,18 @@ public class MainController{
             return ((Profesor) usuarioActual).getDepartamento();
         }
         return null;
+    }
+    
+    public List<Curso> obtenerCursos() {
+        return cursos;  // La lista de cursos que ya cargaste
+    }
+    public Curso buscarCursoPorNombre(String nombreCurso) {
+        for (Curso curso : cursos) {
+            if (curso.getNombre().equals(nombreCurso)) {
+                return curso;
+            }
+        }
+        return null;  // Retornar null si no se encuentra el curso
     }
 
 }
