@@ -15,25 +15,30 @@ public class Profesor extends Usuario {
         setCursosImpartidos(cursosImpartidos);
         setDepartamento(departamento);
     }
+    // Constructor 2: Sin lista cursos
+    public Profesor(String nombre, int id, String rut, String email, String contrasena, boolean permisoEspecial, String departamento) {
+        super(nombre, id, rut, email, contrasena, permisoEspecial); // llama a la clase padre
+        setDepartamento(departamento);
+    }
 
-    // Constructor 2: Incluye atributos de la clase padre y departamento
+    // Constructor 3: Incluye atributos de la clase padre y departamento
     public Profesor(String nombre, String rut, String email, String departamento) {
         super(nombre, rut, email);
         setDepartamento(departamento);
     }
 
-    // Constructor 3: Incluye atributos de la clase padre, departamento y lista de cursos impartidos
+    // Constructor 4: Incluye atributos de la clase padre, departamento y lista de cursos impartidos
     public Profesor(String nombre, String rut, String email, String departamento, List<Curso> cursosImpartidos) {
         super(nombre, rut, email);
         setCursosImpartidos(cursosImpartidos);
     }
 
-    // Constructor 4: Incluye solo atributos de la clase padre
+    // Constructor 5: Incluye solo atributos de la clase padre
     public Profesor(String nombre, String rut, String email) {
         super(nombre, rut, email);
     }
 
-    // Constructor 5: Incluye solo atributos basicos
+    // Constructor 6: Incluye solo atributos basicos
     public Profesor(String nombre, String rut) {
         super(nombre, rut);
     }
