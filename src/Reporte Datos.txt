@@ -1,0 +1,3013 @@
+Reporte del archivo: Cursos.csv
+
+Columnas del archivo:
+nombre, descripcion, profesor, numEstudiantes
+
+Cantidad total de filas: 11
+
+Filas de datos:
+Fila 1:
+  nombre: Matemática 1
+  descripcion: Curso de matemáticas avanzadas
+  profesor: Dr. Juan Pérez
+  numEstudiantes: 40
+
+Fila 2:
+  nombre: Física 2
+  descripcion: Curso de física moderna
+  profesor: Prof. Laura Gómez
+  numEstudiantes: 48
+
+Fila 3:
+  nombre: Programación Avanzada
+  descripcion: Curso avanzado de programación en Java
+  profesor: Ing. Carlos Ruiz
+  numEstudiantes: 39
+
+Fila 4:
+  nombre: Química
+  descripcion: Introducción a los principios fundamentales de la química
+  profesor: Dr. Marta López
+  numEstudiantes: 85
+
+Fila 5:
+  nombre: Álgebra Lineal
+  descripcion: Estudio de matrices, determinantes y sistemas de ecuaciones lineales
+  profesor: Prof. José Ramírez
+  numEstudiantes: 40
+
+Fila 6:
+  nombre: Termodinámica
+  descripcion: Fundamentos de la transferencia de calor y la energía en sistemas físicos
+  profesor: Ing. Gabriela Torres
+  numEstudiantes: 19
+
+Fila 7:
+  nombre: Robótica
+  descripcion: Conceptos básicos de la robótica, sensores, actuadores y control
+  profesor: Ing. Valentina Soto
+  numEstudiantes: 80
+
+Fila 8:
+  nombre: Estática
+  descripcion: Análisis de fuerzas en equilibrio en cuerpos rígidos
+  profesor: Ing. Patricia Ortega
+  numEstudiantes: 47
+
+Fila 9:
+  nombre: Electromagnetismo
+  descripcion: Estudio de los campos eléctricos y magnéticos y sus interacciones
+  profesor: Dr. Andrés Silva
+  numEstudiantes: 30
+
+Fila 10:
+  nombre: Mecánica de Fluidos
+  descripcion: Dinámica de fluidos, fuerzas en líquidos y gases
+  profesor: Ing. Clara Fernández
+  numEstudiantes: 0
+
+Fila 11:
+  nombre: Dibujo Técnico
+  descripcion: Técnicas de representación gráfica de estructuras y diseños en ingeniería
+  profesor: Prof. Roberto Fuentes
+  numEstudiantes: 92
+
+
+Reporte del archivo: Estudiantes.csv
+
+Columnas del archivo:
+nombre, id, rut, email, contrasena, permisoEspecial, cursos, paralelo
+
+Cantidad total de filas: 100
+
+Filas de datos:
+Fila 1:
+  nombre: Juan Pérez
+  id: 12
+  rut: 21.345.678-9
+  email: juan.perez@estudiante.com
+  contrasena: Ju@nP3r3z!
+  permisoEspecial: False
+  cursos: Matemática 1, Física 2, Química, Robótica, Dibujo Técnico, Álgebra Lineal, Termodinámica
+  paralelo: 1
+
+Fila 2:
+  nombre: María López
+  id: 13
+  rut: 21.567.890-1
+  email: maria.lopez@estudiante.com
+  contrasena: M@r!aL0p3z22
+  permisoEspecial: False
+  cursos: Programación Avanzada, Álgebra Lineal, Robótica, Química, Física 2
+  paralelo: 2
+
+Fila 3:
+  nombre: Carlos García
+  id: 14
+  rut: 21.789.012-3
+  email: carlos.garcia@estudiante.com
+  contrasena: C@rl0sG4rc!a
+  permisoEspecial: False
+  cursos: Estática, Electromagnetismo, Química, Matemática 1, Física 2, Dibujo Técnico, Robótica
+  paralelo: 3
+
+Fila 4:
+  nombre: Ana Rodríguez
+  id: 15
+  rut: 22.001.234-5
+  email: ana.rodriguez@estudiante.com
+  contrasena: An@R0dr!gue7
+  permisoEspecial: False
+  cursos: Física 2, Robótica, Programación Avanzada, Álgebra Lineal, Dibujo Técnico, Química
+  paralelo: 2
+
+Fila 5:
+  nombre: José Martínez
+  id: 16
+  rut: 22.123.456-7
+  email: jose.martinez@estudiante.com
+  contrasena: J0s3M@rt!n3z
+  permisoEspecial: False
+  cursos: Química, Álgebra Lineal, Estática, Electromagnetismo, Robótica, Dibujo Técnico, Termodinámica
+  paralelo: 1
+
+Fila 6:
+  nombre: Laura Sánchez
+  id: 17
+  rut: 22.345.678-9
+  email: laura.sanchez@estudiante.com
+  contrasena: L@ur@S4nch3z
+  permisoEspecial: False
+  cursos: Robótica, Electromagnetismo, Termodinámica, Dibujo Técnico, Física 2, Química
+  paralelo: 3
+
+Fila 7:
+  nombre: David González
+  id: 18
+  rut: 22.567.890-0
+  email: david.gonzalez@estudiante.com
+  contrasena: D@vidG0nz@l3z
+  permisoEspecial: False
+  cursos: Física 2, Matemática 1, Álgebra Lineal, Química, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 8:
+  nombre: Carmen Díaz
+  id: 19
+  rut: 22.789.012-2
+  email: carmen.diaz@estudiante.com
+  contrasena: C@rm3nD!az88
+  permisoEspecial: False
+  cursos: Programación Avanzada, Estática, Robótica, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 9:
+  nombre: Javier Morales
+  id: 20
+  rut: 23.001.234-4
+  email: javier.morales@estudiante.com
+  contrasena: J@v!erM0r4l3s
+  permisoEspecial: False
+  cursos: Dibujo Técnico, Electromagnetismo, Química, Matemática 1, Física 2
+  paralelo: 3
+
+Fila 10:
+  nombre: Paula Hernández
+  id: 21
+  rut: 23.123.456-6
+  email: paula.hernandez@estudiante.com
+  contrasena: P@ul@H3rn@nd3z
+  permisoEspecial: False
+  cursos: Matemática 1, Física 2, Robótica, Dibujo Técnico, Estática
+  paralelo: 1
+
+Fila 11:
+  nombre: Luis Torres
+  id: 22
+  rut: 23.345.678-8
+  email: luis.torres@estudiante.com
+  contrasena: L#u1sT0rr3s
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Química, Programación Avanzada, Electromagnetismo, Dibujo Técnico, Termodinámica
+  paralelo: 2
+
+Fila 12:
+  nombre: Sofia Romero
+  id: 23
+  rut: 23.567.890-1
+  email: sofia.romero@estudiante.com
+  contrasena: S0f!@R0m3r0
+  permisoEspecial: False
+  cursos: Física 2, Química, Matemática 1, Robótica, Estática
+  paralelo: 3
+
+Fila 13:
+  nombre: Miguel Ruiz
+  id: 24
+  rut: 23.789.012-3
+  email: miguel.ruiz@estudiante.com
+  contrasena: M!gu3lRuiZ#
+  permisoEspecial: False
+  cursos: Programación Avanzada, Dibujo Técnico, Álgebra Lineal, Robótica, Termodinámica
+  paralelo: 2
+
+Fila 14:
+  nombre: Elena Jiménez
+  id: 25
+  rut: 21.890.123-4
+  email: elena.jimenez@estudiante.com
+  contrasena: El3n@J!m3n3z
+  permisoEspecial: False
+  cursos: Química, Estática, Electromagnetismo, Dibujo Técnico, Física 2
+  paralelo: 1
+
+Fila 15:
+  nombre: Andrés Castro
+  id: 26
+  rut: 21.234.567-8
+  email: andres.castro@estudiante.com
+  contrasena: @ndr3sC@str0
+  permisoEspecial: False
+  cursos: Matemática 1, Física 2, Robótica, Dibujo Técnico, Química, Álgebra Lineal
+  paralelo: 3
+
+Fila 16:
+  nombre: Teresa Ortega
+  id: 27
+  rut: 22.678.901-0
+  email: teresa.ortega@estudiante.com
+  contrasena: T3r3s@0rt3g@
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Programación Avanzada, Estática, Robótica, Química, Termodinámica
+  paralelo: 2
+
+Fila 17:
+  nombre: Fernando Vargas
+  id: 28
+  rut: 22.890.123-2
+  email: fernando.vargas@estudiante.com
+  contrasena: F3rn@nd0V@rg@s
+  permisoEspecial: False
+  cursos: Física 2, Electromagnetismo, Química, Dibujo Técnico, Robótica
+  paralelo: 1
+
+Fila 18:
+  nombre: Isabel Mendoza
+  id: 29
+  rut: 22.234.567-8
+  email: isabel.mendoza@estudiante.com
+  contrasena: Is@b3lM3nd0z4
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Estática, Dibujo Técnico, Álgebra Lineal, Robótica
+  paralelo: 3
+
+Fila 19:
+  nombre: Sergio Castillo
+  id: 30
+  rut: 22.678.901-3
+  email: sergio.castillo@estudiante.com
+  contrasena: S3rg!0C@st!llo
+  permisoEspecial: False
+  cursos: Programación Avanzada, Robótica, Termodinámica, Álgebra Lineal, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 20:
+  nombre: Marta Ruiz
+  id: 31
+  rut: 22.890.123-6
+  email: marta.ruiz@estudiante.com
+  contrasena: M@rt@RuiZ!23
+  permisoEspecial: False
+  cursos: Estática, Física 2, Química, Dibujo Técnico, Robótica
+  paralelo: 2
+
+Fila 21:
+  nombre: Guillermo Silva
+  id: 32
+  rut: 23.456.789-1
+  email: guillermo.silva@estudiante.com
+  contrasena: Gu!ll3rm0S!lv@
+  permisoEspecial: False
+  cursos: Matemática 1, Programación Avanzada, Termodinámica, Robótica, Electromagnetismo
+  paralelo: 3
+
+Fila 22:
+  nombre: Lucia Ramírez
+  id: 33
+  rut: 23.678.901-3
+  email: lucia.ramirez@estudiante.com
+  contrasena: L@c!@R@m!r3z
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Química, Física 2, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 23:
+  nombre: Alberto Morales
+  id: 34
+  rut: 21.345.678-0
+  email: alberto.morales@estudiante.com
+  contrasena: @lb3rt0M0r4l3s
+  permisoEspecial: False
+  cursos: Física 2, Electromagnetismo, Dibujo Técnico, Termodinámica, Robótica
+  paralelo: 1
+
+Fila 24:
+  nombre: Victoria Jiménez
+  id: 35
+  rut: 21.567.890-5
+  email: victoria.jimenez@estudiante.com
+  contrasena: V!ct0r!@J!m3n3z
+  permisoEspecial: False
+  cursos: Química, Robótica, Matemática 1, Estática, Dibujo Técnico
+  paralelo: 3
+
+Fila 25:
+  nombre: Felipe Paredes
+  id: 36
+  rut: 21.789.012-1
+  email: felipe.paredes@estudiante.com
+  contrasena: F3l!p3P@r3d3s
+  permisoEspecial: False
+  cursos: Programación Avanzada, Dibujo Técnico, Álgebra Lineal, Electromagnetismo, Química, Robótica
+  paralelo: 2
+
+Fila 26:
+  nombre: Valeria Aguirre
+  id: 37
+  rut: 22.001.234-7
+  email: valeria.aguirre@estudiante.com
+  contrasena: V@l3r!@Agu!rr3
+  permisoEspecial: False
+  cursos: Robótica, Estática, Física 2, Dibujo Técnico, Álgebra Lineal
+  paralelo: 1
+
+Fila 27:
+  nombre: Pablo Ríos
+  id: 38
+  rut: 22.123.456-0
+  email: pablo.rios@estudiante.com
+  contrasena: P@bl0R!0s77
+  permisoEspecial: False
+  cursos: Matemática 1, Química, Programación Avanzada, Dibujo Técnico, Física 2
+  paralelo: 3
+
+Fila 28:
+  nombre: Gabriela Soto
+  id: 39
+  rut: 22.345.678-5
+  email: gabriela.soto@estudiante.com
+  contrasena: G@bri3l@S0t0
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Robótica, Electromagnetismo, Estática, Química, Dibujo Técnico
+  paralelo: 1
+
+Fila 29:
+  nombre: Diego Guerrero
+  id: 40
+  rut: 22.567.890-9
+  email: diego.guerrero@estudiante.com
+  contrasena: D!3g0G!u3rr3r0
+  permisoEspecial: False
+  cursos: Estática, Física 2, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 30:
+  nombre: Natalia Salazar
+  id: 41
+  rut: 22.789.012-4
+  email: natalia.salazar@estudiante.com
+  contrasena: N@t@l!@S@l@z4r
+  permisoEspecial: False
+  cursos: Matemática 1, Química, Programación Avanzada, Dibujo Técnico, Álgebra Lineal
+  paralelo: 3
+
+Fila 31:
+  nombre: Marco Cordero
+  id: 42
+  rut: 23.001.234-6
+  email: marco.cordero@estudiante.com
+  contrasena: M@rc0C0rd3r0
+  permisoEspecial: False
+  cursos: Robótica, Electromagnetismo, Termodinámica, Álgebra Lineal, Química, Dibujo Técnico
+  paralelo: 2
+
+Fila 32:
+  nombre: Claudia León
+  id: 43
+  rut: 23.123.456-8
+  email: claudia.leon@estudiante.com
+  contrasena: Cl@ud!@L3on3
+  permisoEspecial: False
+  cursos: Física 2, Estática, Dibujo Técnico, Matemática 1
+  paralelo: 1
+
+Fila 33:
+  nombre: Rodrigo Peña
+  id: 44
+  rut: 23.345.678-0
+  email: rodrigo.pena@estudiante.com
+  contrasena: R0dr!g0P3n@
+  permisoEspecial: False
+  cursos: Programación Avanzada, Química, Robótica, Dibujo Técnico, Física 2
+  paralelo: 3
+
+Fila 34:
+  nombre: Beatriz Medina
+  id: 45
+  rut: 23.567.890-3
+  email: beatriz.medina@estudiante.com
+  contrasena: B3@tr!zM3d!n@
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Estática, Electromagnetismo, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 35:
+  nombre: Rubén Acosta
+  id: 46
+  rut: 23.789.012-5
+  email: ruben.acosta@estudiante.com
+  contrasena: Rub3n@C0st@23
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Física 2, Dibujo Técnico, Robótica
+  paralelo: 1
+
+Fila 36:
+  nombre: Patricia Vega
+  id: 47
+  rut: 21.890.124-6
+  email: patricia.vega@estudiante.com
+  contrasena: P@tr!c!@V3g4
+  permisoEspecial: False
+  cursos: Robótica, Programación Avanzada, Estática, Termodinámica, Química
+  paralelo: 3
+
+Fila 37:
+  nombre: Ricardo Salinas
+  id: 48
+  rut: 21.234.568-1
+  email: ricardo.salinas@estudiante.com
+  contrasena: R!c@rd0S@l!n4s
+  permisoEspecial: False
+  cursos: Estática, Física 2, Química, Dibujo Técnico, Álgebra Lineal
+  paralelo: 1
+
+Fila 38:
+  nombre: Carolina Ruiz
+  id: 49
+  rut: 22.678.902-2
+  email: carolina.ruiz@estudiante.com
+  contrasena: C@r0l!n@R!uZ
+  permisoEspecial: False
+  cursos: Matemática 1, Electromagnetismo, Robótica, Dibujo Técnico, Física 2
+  paralelo: 2
+
+Fila 39:
+  nombre: Daniel Castillo
+  id: 50
+  rut: 22.890.124-4
+  email: daniel.castillo@estudiante.com
+  contrasena: D@ni3lC@st!ll0
+  permisoEspecial: False
+  cursos: Programación Avanzada, Álgebra Lineal, Química, Estática, Robótica
+  paralelo: 3
+
+Fila 40:
+  nombre: Mariana Muñoz
+  id: 51
+  rut: 22.234.568-7
+  email: mariana.munoz@estudiante.com
+  contrasena: M@r!@n4M!uñ0z
+  permisoEspecial: False
+  cursos: Física 2, Dibujo Técnico, Química, Robótica, Electromagnetismo
+  paralelo: 2
+
+Fila 41:
+  nombre: Eduardo León
+  id: 52
+  rut: 22.678.902-9
+  email: eduardo.leon@estudiante.com
+  contrasena: 3du@rd0L3on
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Programación Avanzada, Estática, Dibujo Técnico
+  paralelo: 1
+
+Fila 42:
+  nombre: Angela Castillo
+  id: 53
+  rut: 22.890.124-3
+  email: angela.castillo@estudiante.com
+  contrasena: @ng3l@C@st!ll0
+  permisoEspecial: False
+  cursos: Robótica, Electromagnetismo, Física 2, Dibujo Técnico, Química
+  paralelo: 3
+
+Fila 43:
+  nombre: Felipe Serrano
+  id: 54
+  rut: 23.456.790-0
+  email: felipe.serrano@estudiante.com
+  contrasena: F3l!peS3rr@no
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Química, Matemática 1, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 44:
+  nombre: Vanessa Cortés
+  id: 55
+  rut: 23.678.902-6
+  email: vanessa.cortes@estudiante.com
+  contrasena: V@n3ss@C0rt3s
+  permisoEspecial: False
+  cursos: Estática, Programación Avanzada, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 45:
+  nombre: Iván Romero
+  id: 56
+  rut: 21.345.679-5
+  email: ivan.romero@estudiante.com
+  contrasena: !v@N.R0m3r0
+  permisoEspecial: False
+  cursos: Matemática 1, Robótica, Termodinámica, Dibujo Técnico, Química
+  paralelo: 3
+
+Fila 46:
+  nombre: Susana Guerra
+  id: 57
+  rut: 21.567.891-7
+  email: susana.guerra@estudiante.com
+  contrasena: Su$an@GueRr@
+  permisoEspecial: False
+  cursos: Física 2, Estática, Química, Dibujo Técnico, Robótica
+  paralelo: 1
+
+Fila 47:
+  nombre: Joaquín Cordero
+  id: 58
+  rut: 21.789.013-2
+  email: joaquin.cordero@estudiante.com
+  contrasena: J0aq!nC0rd3r0
+  permisoEspecial: False
+  cursos: Programación Avanzada, Álgebra Lineal, Robótica, Termodinámica, Química
+  paralelo: 2
+
+Fila 48:
+  nombre: Ana Beltrán
+  id: 59
+  rut: 22.001.235-9
+  email: ana.beltran@estudiante.com
+  contrasena: An@B3ltr@n!
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Física 2, Robótica, Dibujo Técnico
+  paralelo: 3
+
+Fila 49:
+  nombre: Mauricio López
+  id: 60
+  rut: 22.123.457-4
+  email: mauricio.lopez@estudiante.com
+  contrasena: M@ur!c!0L0p3z
+  permisoEspecial: False
+  cursos: Estática, Electromagnetismo, Dibujo Técnico, Química, Álgebra Lineal
+  paralelo: 2
+
+Fila 50:
+  nombre: Leticia Castro
+  id: 61
+  rut: 22.345.679-1
+  email: leticia.castro@estudiante.com
+  contrasena: L3t!c!@C@str0
+  permisoEspecial: False
+  cursos: Robótica, Programación Avanzada, Estática, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 51:
+  nombre: Raúl Aguirre
+  id: 62
+  rut: 22.567.891-2
+  email: raul.aguirre@estudiante.com
+  contrasena: R@ul.Agu!rr3
+  permisoEspecial: False
+  cursos: Matemática 1, Física 2, Química, Dibujo Técnico, Álgebra Lineal
+  paralelo: 3
+
+Fila 52:
+  nombre: Jimena Marín
+  id: 63
+  rut: 22.789.013-8
+  email: jimena.marin@estudiante.com
+  contrasena: J!m3n4M@r!n
+  permisoEspecial: False
+  cursos: Programación Avanzada, Estática, Robótica, Dibujo Técnico, Química
+  paralelo: 2
+
+Fila 53:
+  nombre: Octavio Figueroa
+  id: 64
+  rut: 23.001.235-6
+  email: octavio.figueroa@estudiante.com
+  contrasena: 0ct@v!0F!gu3r0
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Química, Electromagnetismo, Robótica, Termodinámica
+  paralelo: 1
+
+Fila 54:
+  nombre: Teresa Soto
+  id: 65
+  rut: 23.123.457-2
+  email: teresa.soto@estudiante.com
+  contrasena: T3r3s@S0t0!
+  permisoEspecial: False
+  cursos: Física 2, Matemática 1, Química, Dibujo Técnico, Robótica
+  paralelo: 3
+
+Fila 55:
+  nombre: César Morales
+  id: 66
+  rut: 23.345.679-8
+  email: cesar.morales@estudiante.com
+  contrasena: C3s@rM0r@l3s
+  permisoEspecial: False
+  cursos: Robótica, Estática, Programación Avanzada, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 56:
+  nombre: Estefanía Guzmán
+  id: 67
+  rut: 23.567.891-0
+  email: estefania.guzman@estudiante.com
+  contrasena: Est3f@ni@Guzm@n
+  permisoEspecial: False
+  cursos: Matemática 1, Termodinámica, Química, Dibujo Técnico, Física 2
+  paralelo: 2
+
+Fila 57:
+  nombre: Antonio Rivas
+  id: 68
+  rut: 23.789.013-4
+  email: antonio.rivas@estudiante.com
+  contrasena: @nt0n!0R!v@s
+  permisoEspecial: False
+  cursos: Electromagnetismo, Robótica, Álgebra Lineal, Dibujo Técnico, Química
+  paralelo: 3
+
+Fila 58:
+  nombre: Elena Castro
+  id: 69
+  rut: 21.890.125-3
+  email: elena.castro@estudiante.com
+  contrasena: El3n@C@str0
+  permisoEspecial: False
+  cursos: Física 2, Química, Estática, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 59:
+  nombre: Victor Morales
+  id: 70
+  rut: 21.234.569-9
+  email: victor.morales@estudiante.com
+  contrasena: V!ct0rM0r4l3s
+  permisoEspecial: False
+  cursos: Programación Avanzada, Matemática 1, Dibujo Técnico, Robótica, Electromagnetismo
+  paralelo: 1
+
+Fila 60:
+  nombre: Kassandra Espinoza
+  id: 71
+  rut: 22.678.903-5
+  email: kassandra.espinoza@estudiante.com
+  contrasena: K@ss@ndr@Esp!n0z@
+  permisoEspecial: False
+  cursos: Química, Estática, Robótica, Álgebra Lineal, Dibujo Técnico
+  paralelo: 3
+
+Fila 61:
+  nombre: Gastón Medina
+  id: 72
+  rut: 22.890.125-1
+  email: gaston.medina@estudiante.com
+  contrasena: G@st0nM3d!n@
+  permisoEspecial: False
+  cursos: Física 2, Robótica, Programación Avanzada, Dibujo Técnico, Química
+  paralelo: 2
+
+Fila 62:
+  nombre: Renata Torres
+  id: 73
+  rut: 22.234.569-6
+  email: renata.torres@estudiante.com
+  contrasena: R3n@t@T0rr3s
+  permisoEspecial: False
+  cursos: Matemática 1, Química, Estática, Electromagnetismo, Dibujo Técnico
+  paralelo: 1
+
+Fila 63:
+  nombre: Hugo Jiménez
+  id: 74
+  rut: 22.678.903-0
+  email: hugo.jimenez@estudiante.com
+  contrasena: H!g0J!m3n3z
+  permisoEspecial: False
+  cursos: Robótica, Dibujo Técnico, Álgebra Lineal, Química, Termodinámica
+  paralelo: 3
+
+Fila 64:
+  nombre: Fabiola Morales
+  id: 75
+  rut: 22.890.125-9
+  email: fabiola.morales@estudiante.com
+  contrasena: F@b!0l@M0r4l3s
+  permisoEspecial: False
+  cursos: Física 2, Programación Avanzada, Estática, Dibujo Técnico, Robótica
+  paralelo: 1
+
+Fila 65:
+  nombre: Samuel Alvarado
+  id: 76
+  rut: 23.456.791-3
+  email: samuel.alvarado@estudiante.com
+  contrasena: S@mu3l@lv@r@d0
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Robótica, Electromagnetismo, Dibujo Técnico
+  paralelo: 2
+
+Fila 66:
+  nombre: Ariadna Ruiz
+  id: 77
+  rut: 23.678.903-5
+  email: ariadna.ruiz@estudiante.com
+  contrasena: @ri@dn@Ru!z
+  permisoEspecial: False
+  cursos: Estática, Dibujo Técnico, Termodinámica, Química, Álgebra Lineal
+  paralelo: 3
+
+Fila 67:
+  nombre: Oscar Calderón
+  id: 78
+  rut: 21.345.680-2
+  email: oscar.calderon@estudiante.com
+  contrasena: 0sc@r.C@ld3r0
+  permisoEspecial: False
+  cursos: Matemática 1, Robótica, Programación Avanzada, Dibujo Técnico, Física 2
+  paralelo: 2
+
+Fila 68:
+  nombre: Renata Flores
+  id: 79
+  rut: 21.567.892-4
+  email: renata.flores@estudiante.com
+  contrasena: R3n@t@F!0r3s
+  permisoEspecial: False
+  cursos: Química, Estática, Electromagnetismo, Dibujo Técnico, Robótica
+  paralelo: 1
+
+Fila 69:
+  nombre: Nicolás Rojas
+  id: 80
+  rut: 21.789.014-5
+  email: nicolas.rojas@estudiante.com
+  contrasena: N!c0l@sR0j@s
+  permisoEspecial: False
+  cursos: Física 2, Programación Avanzada, Química, Robótica, Dibujo Técnico
+  paralelo: 3
+
+Fila 70:
+  nombre: Valentina Cabrera
+  id: 81
+  rut: 22.001.236-8
+  email: valentina.cabrera@estudiante.com
+  contrasena: V@l3nt!n@C@br3r@
+  permisoEspecial: False
+  cursos: Matemática 1, Química, Dibujo Técnico, Estática, Robótica
+  paralelo: 2
+
+Fila 71:
+  nombre: Esteban Salas
+  id: 82
+  rut: 22.123.458-3
+  email: esteban.salas@estudiante.com
+  contrasena: Est3b@nS@l@s
+  permisoEspecial: False
+  cursos: Robótica, Programación Avanzada, Física 2, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 72:
+  nombre: Julia Herrera
+  id: 83
+  rut: 22.345.680-1
+  email: julia.herrera@estudiante.com
+  contrasena: J#l!@H3rr3r@
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Electromagnetismo, Dibujo Técnico, Robótica
+  paralelo: 3
+
+Fila 73:
+  nombre: Alan Soto
+  id: 84
+  rut: 22.567.892-6
+  email: alan.soto@estudiante.com
+  contrasena: @l@nS0t0
+  permisoEspecial: False
+  cursos: Estática, Física 2, Programación Avanzada, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 74:
+  nombre: María Luisa Serrano
+  id: 85
+  rut: 22.789.014-7
+  email: maria.luisa.serrano@estudiante.com
+  contrasena: M@r!@Lu!s@S3rr@n0
+  permisoEspecial: False
+  cursos: Química, Matemática 1, Robótica, Dibujo Técnico, Electromagnetismo
+  paralelo: 2
+
+Fila 75:
+  nombre: Leonel Bravo
+  id: 86
+  rut: 23.001.236-0
+  email: leonel.bravo@estudiante.com
+  contrasena: L3on3lBr@v0
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Estática, Termodinámica, Dibujo Técnico, Robótica
+  paralelo: 3
+
+Fila 76:
+  nombre: Araceli Martínez
+  id: 87
+  rut: 23.123.458-5
+  email: araceli.martinez@estudiante.com
+  contrasena: @r@c3l!M@rt!n3z
+  permisoEspecial: False
+  cursos: Física 2, Programación Avanzada, Química, Robótica, Dibujo Técnico
+  paralelo: 2
+
+Fila 77:
+  nombre: Martín Vargas
+  id: 88
+  rut: 23.345.680-2
+  email: martin.vargas@estudiante.com
+  contrasena: M@rt!nV@rg@s
+  permisoEspecial: False
+  cursos: Robótica, Matemática 1, Electromagnetismo, Dibujo Técnico, Química
+  paralelo: 1
+
+Fila 78:
+  nombre: Patricia Castillo
+  id: 89
+  rut: 23.567.892-8
+  email: patricia.castillo@estudiante.com
+  contrasena: P@tr!c!@C@st!ll0
+  permisoEspecial: False
+  cursos: Estática, Química, Dibujo Técnico, Álgebra Lineal, Programación Avanzada
+  paralelo: 3
+
+Fila 79:
+  nombre: Esteban Ortega
+  id: 90
+  rut: 23.789.014-1
+  email: esteban.ortega@estudiante.com
+  contrasena: Est3b@n0rt3g@
+  permisoEspecial: False
+  cursos: Programación Avanzada, Robótica, Matemática 1, Dibujo Técnico, Física 2
+  paralelo: 2
+
+Fila 80:
+  nombre: Lucía López
+  id: 91
+  rut: 21.890.126-3
+  email: lucia.lopez@estudiante.com
+  contrasena: L@c!@L0p3z
+  permisoEspecial: False
+  cursos: Química, Estática, Física 2, Robótica, Dibujo Técnico
+  paralelo: 1
+
+Fila 81:
+  nombre: Fernando Guzmán
+  id: 92
+  rut: 21.234.570-2
+  email: fernando.guzman@estudiante.com
+  contrasena: F3rn@nd0G!zm@n
+  permisoEspecial: False
+  cursos: Álgebra Lineal, Programación Avanzada, Química, Dibujo Técnico, Robótica
+  paralelo: 3
+
+Fila 82:
+  nombre: Ana Clara Medina
+  id: 93
+  rut: 22.678.904-7
+  email: ana.clara.medina@estudiante.com
+  contrasena: An@Cl@r@M3d!n@
+  permisoEspecial: False
+  cursos: Matemática 1, Dibujo Técnico, Estática, Química, Electromagnetismo
+  paralelo: 1
+
+Fila 83:
+  nombre: Santiago Morales
+  id: 94
+  rut: 22.890.126-8
+  email: santiago.morales@estudiante.com
+  contrasena: S@nt!@g0M0r@l3s
+  permisoEspecial: False
+  cursos: Física 2, Robótica, Termodinámica, Dibujo Técnico, Química
+  paralelo: 2
+
+Fila 84:
+  nombre: Selene Reyes
+  id: 95
+  rut: 22.234.570-0
+  email: selene.reyes@estudiante.com
+  contrasena: S3l3n3R3y3s
+  permisoEspecial: False
+  cursos: Química, Estática, Programación Avanzada, Dibujo Técnico, Álgebra Lineal
+  paralelo: 3
+
+Fila 85:
+  nombre: Rodrigo Castro
+  id: 96
+  rut: 22.678.904-4
+  email: rodrigo.castro@estudiante.com
+  contrasena: R0dr!g0C@str0
+  permisoEspecial: False
+  cursos: Robótica, Matemática 1, Física 2, Dibujo Técnico, Química
+  paralelo: 2
+
+Fila 86:
+  nombre: Aurora Salinas
+  id: 97
+  rut: 22.890.126-9
+  email: aurora.salinas@estudiante.com
+  contrasena: A!r0r@S@l!n@
+  permisoEspecial: False
+  cursos: Estática, Programación Avanzada, Electromagnetismo, Robótica, Dibujo Técnico
+  paralelo: 1
+
+Fila 87:
+  nombre: Miguel Ángel Torres
+  id: 98
+  rut: 23.456.792-6
+  email: miguel.angel.torres@estudiante.com
+  contrasena: M!gU3l4ng3lT0rr3s
+  permisoEspecial: False
+  cursos: Química, Dibujo Técnico, Matemática 1, Estática, Física 2
+  paralelo: 3
+
+Fila 88:
+  nombre: Mónica Córdova
+  id: 99
+  rut: 23.678.904-3
+  email: monica.cordova@estudiante.com
+  contrasena: M0n!c@C0rd0v4
+  permisoEspecial: False
+  cursos: Robótica, Programación Avanzada, Dibujo Técnico, Química, Electromagnetismo
+  paralelo: 2
+
+Fila 89:
+  nombre: Alberto Silva
+  id: 100
+  rut: 21.345.681-7
+  email: alberto.silva@estudiante.com
+  contrasena: @lb3rt0S!lv@
+  permisoEspecial: False
+  cursos: Estática, Química, Matemática 1, Robótica, Dibujo Técnico
+  paralelo: 1
+
+Fila 90:
+  nombre: Gabriela Paredes
+  id: 101
+  rut: 21.567.893-0
+  email: gabriela.paredes@estudiante.com
+  contrasena: G@br!3lP@r3d3s
+  permisoEspecial: False
+  cursos: Física 2, Robótica, Programación Avanzada, Química, Dibujo Técnico
+  paralelo: 3
+
+Fila 91:
+  nombre: Gabriel Orozco
+  id: 102
+  rut: 21.789.015-9
+  email: gabriel.orozco@estudiante.com
+  contrasena: G@br!3l0r0zc0
+  permisoEspecial: False
+  cursos: Matemática 1, Dibujo Técnico, Estática, Química, Robótica
+  paralelo: 1
+
+Fila 92:
+  nombre: Eva Carrillo
+  id: 103
+  rut: 22.001.237-4
+  email: eva.carrillo@estudiante.com
+  contrasena: Ev@C@rr!ll0
+  permisoEspecial: False
+  cursos: Electromagnetismo, Química, Robótica, Álgebra Lineal, Dibujo Técnico
+  paralelo: 2
+
+Fila 93:
+  nombre: Ramiro Calderón
+  id: 104
+  rut: 22.123.459-1
+  email: ramiro.calderon@estudiante.com
+  contrasena: R@m!r0C@ld3r0
+  permisoEspecial: False
+  cursos: Programación Avanzada, Estática, Dibujo Técnico, Física 2, Química
+  paralelo: 3
+
+Fila 94:
+  nombre: Tamara Mena
+  id: 105
+  rut: 22.345.681-2
+  email: tamara.mena@estudiante.com
+  contrasena: T@m@r@M3n@
+  permisoEspecial: False
+  cursos: Robótica, Dibujo Técnico, Estática, Química, Matemática 1
+  paralelo: 2
+
+Fila 95:
+  nombre: Gonzalo Romero
+  id: 106
+  rut: 22.567.893-5
+  email: gonzalo.romero@estudiante.com
+  contrasena: G0nz@l0R0m3r0
+  permisoEspecial: False
+  cursos: Química, Robótica, Programación Avanzada, Dibujo Técnico, Física 2
+  paralelo: 1
+
+Fila 96:
+  nombre: Luciana Vega
+  id: 107
+  rut: 22.789.015-7
+  email: luciana.vega@estudiante.com
+  contrasena: L@c!@N@v3g@
+  permisoEspecial: False
+  cursos: Estática, Matemática 1, Dibujo Técnico, Química, Robótica
+  paralelo: 3
+
+Fila 97:
+  nombre: Sebastián González
+  id: 108
+  rut: 23.001.237-8
+  email: sebastian.gonzalez@estudiante.com
+  contrasena: S3b@st!@nG0nz@l3z
+  permisoEspecial: False
+  cursos: Física 2, Robótica, Química, Programación Avanzada, Dibujo Técnico
+  paralelo: 2
+
+Fila 98:
+  nombre: Martina Lira
+  id: 109
+  rut: 23.123.459-4
+  email: martina.lira@estudiante.com
+  contrasena: M@rt!n4L!r@
+  permisoEspecial: False
+  cursos: Dibujo Técnico, Estática, Robótica, Química, Física 2
+  paralelo: 1
+
+Fila 99:
+  nombre: Salvador Castillo
+  id: 110
+  rut: 23.345.681-0
+  email: salvador.castillo@estudiante.com
+  contrasena: S@lv@d0rC@st!ll0
+  permisoEspecial: False
+  cursos: Matemática 1, Programación Avanzada, Química, Dibujo Técnico, Robótica
+  paralelo: 3
+
+Fila 100:
+  nombre: Patricia Jiménez
+  id: 111
+  rut: 23.567.893-2
+  email: patricia.jimenez@estudiante.com
+  contrasena: P@tr!c!@J!m3n3z
+  permisoEspecial: False
+  cursos: Química, Estática, Dibujo Técnico, Robótica, Matemática 1
+  paralelo: 2
+
+
+Reporte del archivo: Profesores.csv
+
+Columnas del archivo:
+nombre, id, rut, email, contrasena, permisoEspecial, especialidad
+
+Cantidad total de filas: 11
+
+Filas de datos:
+Fila 1:
+  nombre: Dr. Juan Pérez
+  id: 1
+  rut: 16.909.702
+  email: juanperez@profesor.com
+  contrasena: JuanP123!
+  permisoEspecial: True
+  especialidad: Matemáticas
+
+Fila 2:
+  nombre: Prof. Laura Gómez
+  id: 2
+  rut: 14.705.555
+  email: lauragomez@profesor.com
+  contrasena: LauraG456@
+  permisoEspecial: True
+  especialidad: Física
+
+Fila 3:
+  nombre: Ing. Carlos Ruiz
+  id: 3
+  rut: 17.978.170
+  email: carlosruiz@profesor.com
+  contrasena: CarlosR789#
+  permisoEspecial: True
+  especialidad: Programación
+
+Fila 4:
+  nombre: Dr. Marta López
+  id: 4
+  rut: 13.832.925
+  email: martalopez@profesor.com
+  contrasena: MartaL321$
+  permisoEspecial: True
+  especialidad: Química
+
+Fila 5:
+  nombre: Prof. José Ramírez
+  id: 5
+  rut: 12.941.825
+  email: joseramirez@profesor.com
+  contrasena: JoseR!987
+  permisoEspecial: True
+  especialidad: Álgebra
+
+Fila 6:
+  nombre: Ing. Gabriela Torres
+  id: 6
+  rut: 14.868.036
+  email: gabrielatorres@profesor.com
+  contrasena: GabrielaT654&
+  permisoEspecial: True
+  especialidad: Termodinámica
+
+Fila 7:
+  nombre: Ing. Valentina Soto
+  id: 7
+  rut: 12.554.229
+  email: valentinasoto@profesor.com
+  contrasena: ValentinaS123%
+  permisoEspecial: True
+  especialidad: Robótica
+
+Fila 8:
+  nombre: Ing. Patricia Ortega
+  id: 8
+  rut: 17.182.113
+  email: patriciaortega@profesor.com
+  contrasena: PatriciaO456^
+  permisoEspecial: True
+  especialidad: Estática
+
+Fila 9:
+  nombre: Dr. Andrés Silva
+  id: 9
+  rut: 17.474.514
+  email: andressilva@profesor.com
+  contrasena: AndresS789*
+  permisoEspecial: True
+  especialidad: Electromagnetismo
+
+Fila 10:
+  nombre: Ing. Clara Fernández
+  id: 10
+  rut: 14.005.016
+  email: clarafernandez@profesor.com
+  contrasena: ClaraF321(
+  permisoEspecial: True
+  especialidad: Mecánica de Fluidos
+
+Fila 11:
+  nombre: Prof. Roberto Fuentes
+  id: 11
+  rut: 16.027.180
+  email: robertofuentes@profesor.com
+  contrasena: RobertoF987)
+  permisoEspecial: True
+  especialidad: Dibujo Técnico
+
+
+Reporte del archivo: Carpetas.csv
+
+Columnas del archivo:
+nombre, visibilidad, id
+
+Cantidad total de filas: 44
+
+Filas de datos:
+Fila 1:
+  nombre: MAT 1001-A Ayudantía
+  visibilidad: True
+  id: 10001
+
+Fila 2:
+  nombre: MAT 1001-A Control
+  visibilidad: True
+  id: 10051
+
+Fila 3:
+  nombre: MAT 1001-A Certamen
+  visibilidad: True
+  id: 10051
+
+Fila 4:
+  nombre: MAT 1001-A Talleres
+  visibilidad: True
+  id: 10051
+
+Fila 5:
+  nombre: FIS 1002-2/A Ayudantía
+  visibilidad: False
+  id: 10022
+
+Fila 6:
+  nombre: FIS 1002-2/A Control
+  visibilidad: False
+  id: 10328
+
+Fila 7:
+  nombre: FIS 1002-2/A Certamen
+  visibilidad: True
+  id: 10327
+
+Fila 8:
+  nombre: FIS 1002-2/A Talleres
+  visibilidad: True
+  id: 10346
+
+Fila 9:
+  nombre: ICI 2121-3 Ayudantía
+  visibilidad: True
+  id: 20001
+
+Fila 10:
+  nombre: ICI 2121-3 Control
+  visibilidad: True
+  id: 20002
+
+Fila 11:
+  nombre: ICI 2121-3 Certamen
+  visibilidad: False
+  id: 20003
+
+Fila 12:
+  nombre: ICI 2121-3 Talleres
+  visibilidad: False
+  id: 20004
+
+Fila 13:
+  nombre: QUI 1003-1 Ayudantía
+  visibilidad: False
+  id: 20032
+
+Fila 14:
+  nombre: QUI 1003-1 Control
+  visibilidad: True
+  id: 65702
+
+Fila 15:
+  nombre: QUI 1003-1 Certamen
+  visibilidad: False
+  id: 10001
+
+Fila 16:
+  nombre: QUI 1003-1 Talleres
+  visibilidad: False
+  id: 10001
+
+Fila 17:
+  nombre: ALJ 1009-1 Ayudantía
+  visibilidad: False
+  id: 60001
+
+Fila 18:
+  nombre: ALJ 1009-1 Control
+  visibilidad: True
+  id: 60002
+
+Fila 19:
+  nombre: ALJ 1009-1 Certamen
+  visibilidad: True
+  id: 60003
+
+Fila 20:
+  nombre: ALJ 1009-1 Talleres
+  visibilidad: False
+  id: 60004
+
+Fila 21:
+  nombre: TER 1008-1 Ayudantía
+  visibilidad: True
+  id: 50001
+
+Fila 22:
+  nombre: TER 1008-1 Control
+  visibilidad: True
+  id: 50002
+
+Fila 23:
+  nombre: TER 1008-1 Certamen
+  visibilidad: False
+  id: 50003
+
+Fila 24:
+  nombre: TER 1008-1 Talleres
+  visibilidad: True
+  id: 50004
+
+Fila 25:
+  nombre: ROB 1004-1 Ayudantía
+  visibilidad: True
+  id: 10052
+
+Fila 26:
+  nombre: ROB 1004-1 Control
+  visibilidad: True
+  id: 10053
+
+Fila 27:
+  nombre: ROB 1004-1 Certamen
+  visibilidad: False
+  id: 10054
+
+Fila 28:
+  nombre: ROB 1004-1 Talleres
+  visibilidad: True
+  id: 10055
+
+Fila 29:
+  nombre: EST 1007-1 Ayudantía
+  visibilidad: True
+  id: 40001
+
+Fila 30:
+  nombre: EST 1007-1 Control
+  visibilidad: False
+  id: 40002
+
+Fila 31:
+  nombre: EST 1007-1 Certamen
+  visibilidad: False
+  id: 40003
+
+Fila 32:
+  nombre: EST 1007-1 Talleres
+  visibilidad: True
+  id: 40004
+
+Fila 33:
+  nombre: ELM 1006-1 Ayudantía
+  visibilidad: True
+  id: 30001
+
+Fila 34:
+  nombre: ELM 1006-1 Control
+  visibilidad: True
+  id: 30002
+
+Fila 35:
+  nombre: ELM 1006-1 Certamen
+  visibilidad: False
+  id: 30003
+
+Fila 36:
+  nombre: ELM 1006-1 Talleres
+  visibilidad: False
+  id: 30004
+
+Fila 37:
+  nombre: MEC 1010-1 Ayudantía
+  visibilidad: True
+  id: 70001
+
+Fila 38:
+  nombre: MEC 1010-1 Control
+  visibilidad: True
+  id: 70002
+
+Fila 39:
+  nombre: MEC 1010-1 Certamen
+  visibilidad: False
+  id: 70003
+
+Fila 40:
+  nombre: MEC 1010-1 Talleres
+  visibilidad: False
+  id: 70004
+
+Fila 41:
+  nombre: DIB 1005-1 Ayudantía
+  visibilidad: False
+  id: 10056
+
+Fila 42:
+  nombre: DIB 1005-1 Control
+  visibilidad: False
+  id: 10057
+
+Fila 43:
+  nombre: DIB 1005-1 Certamen
+  visibilidad: True
+  id: 10058
+
+Fila 44:
+  nombre: DIB 1005-1 Talleres
+  visibilidad: False
+  id: 10059
+
+
+Reporte del archivo: Recursos.csv
+
+Columnas del archivo:
+nombre, autor, curso, fecha, formato, carpeta, esVisible
+
+Cantidad total de filas: 176
+
+Filas de datos:
+Fila 1:
+  nombre: Presentación Curso
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 25-07-2024
+  formato: ppt
+  carpeta: MAT 1001-A Ayudantía
+  esVisible: True
+
+Fila 2:
+  nombre: Cuadernillo Ejercicios
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 01-08-2024
+  formato: pdf
+  carpeta: MAT 1001-A Ayudantía
+  esVisible: True
+
+Fila 3:
+  nombre: Material Repaso Certamen
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 08-08-2024
+  formato: pdf
+  carpeta: MAT 1001-A Ayudantía
+  esVisible: True
+
+Fila 4:
+  nombre: Tip Taller 3
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 15-08-2024
+  formato: mp4
+  carpeta: MAT 1001-A Ayudantía
+  esVisible: True
+
+Fila 5:
+  nombre: Preparación Control
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 22-08-2024
+  formato: pptx
+  carpeta: MAT 1001-A Control
+  esVisible: False
+
+Fila 6:
+  nombre: Act. Decimas Control
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 29-08-2024
+  formato: pptx
+  carpeta: MAT 1001-A Control
+  esVisible: False
+
+Fila 7:
+  nombre: Notas Control
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 05-09-2024
+  formato: xlsx
+  carpeta: MAT 1001-A Control
+  esVisible: True
+
+Fila 8:
+  nombre: Revisión Control
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 12-09-2024
+  formato: pdf
+  carpeta: MAT 1001-A Control
+  esVisible: True
+
+Fila 9:
+  nombre: Preparacíon Certamen
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 19-09-2024
+  formato: pptx
+  carpeta: MAT 1001-A Certamen
+  esVisible: True
+
+Fila 10:
+  nombre: Act. Decimas Certamen
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 26-09-2024
+  formato: pptx
+  carpeta: MAT 1001-A Certamen
+  esVisible: True
+
+Fila 11:
+  nombre: Notas Certamen
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 03-10-2024
+  formato: xlsx
+  carpeta: MAT 1001-A Certamen
+  esVisible: False
+
+Fila 12:
+  nombre: Revisión Certamen
+  autor: Dr. Juan Pérez
+  curso: Matemática 1
+  fecha: 10-10-2024
+  formato: pdf
+  carpeta: MAT 1001-A Certamen
+  esVisible: False
+
+Fila 13:
+  nombre: Taller 1
+  autor: Prof. Taller Mat
+  curso: Matemática 1
+  fecha: 17-10-2024
+  formato: pdf
+  carpeta: MAT 1001-A Talleres
+  esVisible: False
+
+Fila 14:
+  nombre: Taller 2
+  autor: Prof. Taller Mat
+  curso: Matemática 1
+  fecha: 24-10-2024
+  formato: pdf
+  carpeta: MAT 1001-A Talleres
+  esVisible: True
+
+Fila 15:
+  nombre: Taller 3
+  autor: Prof. Taller Mat
+  curso: Matemática 1
+  fecha: 31-10-2024
+  formato: pdf
+  carpeta: MAT 1001-A Talleres
+  esVisible: False
+
+Fila 16:
+  nombre: Taller 4
+  autor: Prof. Taller Mat
+  curso: Matemática 1
+  fecha: 07-11-2024
+  formato: pdf
+  carpeta: MAT 1001-A Talleres
+  esVisible: False
+
+Fila 17:
+  nombre: Presentación Curso
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 26-07-2024
+  formato: ppt
+  carpeta: FIS 1002-2/A Ayudantía
+  esVisible: False
+
+Fila 18:
+  nombre: Ejercicio Caída Libre
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 02-08-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Ayudantía
+  esVisible: True
+
+Fila 19:
+  nombre: Material Repaso Certamen
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 09-08-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Ayudantía
+  esVisible: True
+
+Fila 20:
+  nombre: Certamen Semestre Pasado
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 16-08-2024
+  formato: mp4
+  carpeta: FIS 1002-2/A Ayudantía
+  esVisible: False
+
+Fila 21:
+  nombre: Preparación Control
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 23-08-2024
+  formato: pptx
+  carpeta: FIS 1002-2/A Control
+  esVisible: True
+
+Fila 22:
+  nombre: Act. Decimas Control
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 30-08-2024
+  formato: pptx
+  carpeta: FIS 1002-2/A Control
+  esVisible: True
+
+Fila 23:
+  nombre: Notas Control
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 06-09-2024
+  formato: xlsx
+  carpeta: FIS 1002-2/A Control
+  esVisible: False
+
+Fila 24:
+  nombre: Revisión Control
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 13-09-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Control
+  esVisible: True
+
+Fila 25:
+  nombre: Preparacíon Certamen
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 20-09-2024
+  formato: pptx
+  carpeta: FIS 1002-2/A Certamen
+  esVisible: True
+
+Fila 26:
+  nombre: Act. Decimas Certamen
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 27-09-2024
+  formato: pptx
+  carpeta: FIS 1002-2/A Certamen
+  esVisible: True
+
+Fila 27:
+  nombre: Notas Certamen
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 04-10-2024
+  formato: xlsx
+  carpeta: FIS 1002-2/A Certamen
+  esVisible: False
+
+Fila 28:
+  nombre: Revisión Certamen
+  autor: Prof. Laura Gómez
+  curso: Física 2
+  fecha: 11-10-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Certamen
+  esVisible: True
+
+Fila 29:
+  nombre: Taller 1
+  autor: Prof. Taller Fis
+  curso: Física 2
+  fecha: 18-10-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Talleres
+  esVisible: True
+
+Fila 30:
+  nombre: Taller 2
+  autor: Prof. Taller Fis
+  curso: Física 2
+  fecha: 25-10-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Talleres
+  esVisible: False
+
+Fila 31:
+  nombre: Taller 3
+  autor: Prof. Taller Fis
+  curso: Física 2
+  fecha: 01-11-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Talleres
+  esVisible: False
+
+Fila 32:
+  nombre: Taller 4
+  autor: Prof. Taller Fis
+  curso: Física 2
+  fecha: 08-11-2024
+  formato: pdf
+  carpeta: FIS 1002-2/A Talleres
+  esVisible: True
+
+Fila 33:
+  nombre: Presentación Curso
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 27-07-2024
+  formato: ppt
+  carpeta: ICI 2121-3 Ayudantía
+  esVisible: True
+
+Fila 34:
+  nombre: Ejercicio Tipo Cátedra
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 03-08-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Ayudantía
+  esVisible: True
+
+Fila 35:
+  nombre: Material Repaso Certamen
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 10-08-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Ayudantía
+  esVisible: False
+
+Fila 36:
+  nombre: Escritura de Archivos
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 17-08-2024
+  formato: mp4
+  carpeta: ICI 2121-3 Ayudantía
+  esVisible: False
+
+Fila 37:
+  nombre: Preparación Control
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 24-08-2024
+  formato: pptx
+  carpeta: ICI 2121-3 Control
+  esVisible: True
+
+Fila 38:
+  nombre: Act. Decimas Control
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 31-08-2024
+  formato: pptx
+  carpeta: ICI 2121-3 Control
+  esVisible: True
+
+Fila 39:
+  nombre: Notas Control
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 07-09-2024
+  formato: xlsx
+  carpeta: ICI 2121-3 Control
+  esVisible: False
+
+Fila 40:
+  nombre: Revisión Control
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 14-09-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Control
+  esVisible: False
+
+Fila 41:
+  nombre: Preparacíon Certamen
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 21-09-2024
+  formato: pptx
+  carpeta: ICI 2121-3 Certamen
+  esVisible: False
+
+Fila 42:
+  nombre: Act. Decimas Certamen
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 28-09-2024
+  formato: pptx
+  carpeta: ICI 2121-3 Certamen
+  esVisible: False
+
+Fila 43:
+  nombre: Notas Certamen
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 05-10-2024
+  formato: xlsx
+  carpeta: ICI 2121-3 Certamen
+  esVisible: True
+
+Fila 44:
+  nombre: Revisión Certamen
+  autor: Ing. Carlos Ruiz
+  curso: Programación Avanzada
+  fecha: 12-10-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Certamen
+  esVisible: False
+
+Fila 45:
+  nombre: Taller 1
+  autor: Prof. Taller Progra
+  curso: Programación Avanzada
+  fecha: 19-10-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Talleres
+  esVisible: True
+
+Fila 46:
+  nombre: Taller 2
+  autor: Prof. Taller Progra
+  curso: Programación Avanzada
+  fecha: 26-10-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Talleres
+  esVisible: True
+
+Fila 47:
+  nombre: Taller 3
+  autor: Prof. Taller Progra
+  curso: Programación Avanzada
+  fecha: 02-11-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Talleres
+  esVisible: True
+
+Fila 48:
+  nombre: Taller 4
+  autor: Prof. Taller Progra
+  curso: Programación Avanzada
+  fecha: 09-11-2024
+  formato: pdf
+  carpeta: ICI 2121-3 Talleres
+  esVisible: True
+
+Fila 49:
+  nombre: Presentación Curso
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 28-07-2024
+  formato: ppt
+  carpeta: QUI 1003-1 Ayudantía
+  esVisible: False
+
+Fila 50:
+  nombre: Equilibrio Quimico
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 04-08-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Ayudantía
+  esVisible: False
+
+Fila 51:
+  nombre: Material Repaso Certamen
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 11-08-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Ayudantía
+  esVisible: True
+
+Fila 52:
+  nombre: Estequimetría
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 18-08-2024
+  formato: mp4
+  carpeta: QUI 1003-1 Ayudantía
+  esVisible: True
+
+Fila 53:
+  nombre: Preparación Control
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 25-08-2024
+  formato: pptx
+  carpeta: QUI 1003-1 Control
+  esVisible: True
+
+Fila 54:
+  nombre: Act. Decimas Control
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 01-09-2024
+  formato: pptx
+  carpeta: QUI 1003-1 Control
+  esVisible: True
+
+Fila 55:
+  nombre: Notas Control
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 08-09-2024
+  formato: xlsx
+  carpeta: QUI 1003-1 Control
+  esVisible: False
+
+Fila 56:
+  nombre: Revisión Control
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 15-09-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Control
+  esVisible: False
+
+Fila 57:
+  nombre: Preparacíon Certamen
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 22-09-2024
+  formato: pptx
+  carpeta: QUI 1003-1 Certamen
+  esVisible: False
+
+Fila 58:
+  nombre: Act. Decimas Certamen
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 29-09-2024
+  formato: pptx
+  carpeta: QUI 1003-1 Certamen
+  esVisible: True
+
+Fila 59:
+  nombre: Notas Certamen
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 06-10-2024
+  formato: xlsx
+  carpeta: QUI 1003-1 Certamen
+  esVisible: False
+
+Fila 60:
+  nombre: Revisión Certamen
+  autor: Dr. Marta López
+  curso: Química
+  fecha: 13-10-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Certamen
+  esVisible: False
+
+Fila 61:
+  nombre: Taller 1
+  autor: Prof. Taller Química
+  curso: Química
+  fecha: 20-10-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Talleres
+  esVisible: False
+
+Fila 62:
+  nombre: Taller 2
+  autor: Prof. Taller Química
+  curso: Química
+  fecha: 27-10-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Talleres
+  esVisible: True
+
+Fila 63:
+  nombre: Taller 3
+  autor: Prof. Taller Química
+  curso: Química
+  fecha: 03-11-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Talleres
+  esVisible: True
+
+Fila 64:
+  nombre: Taller 4
+  autor: Prof. Taller Química
+  curso: Química
+  fecha: 10-11-2024
+  formato: pdf
+  carpeta: QUI 1003-1 Talleres
+  esVisible: False
+
+Fila 65:
+  nombre: Presentación Curso
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 29-07-2024
+  formato: ppt
+  carpeta: ALJ 1009-1 Ayudantía
+  esVisible: True
+
+Fila 66:
+  nombre: Matriz Adjunta
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 05-08-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Ayudantía
+  esVisible: True
+
+Fila 67:
+  nombre: Material Repaso Certamen
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 12-08-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Ayudantía
+  esVisible: False
+
+Fila 68:
+  nombre: Animaciones Geogebra
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 19-08-2024
+  formato: mp4
+  carpeta: ALJ 1009-1 Ayudantía
+  esVisible: True
+
+Fila 69:
+  nombre: Preparación Control
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 26-08-2024
+  formato: pptx
+  carpeta: ALJ 1009-1 Control
+  esVisible: True
+
+Fila 70:
+  nombre: Act. Decimas Control
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 02-09-2024
+  formato: pptx
+  carpeta: ALJ 1009-1 Control
+  esVisible: True
+
+Fila 71:
+  nombre: Notas Control
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 09-09-2024
+  formato: xlsx
+  carpeta: ALJ 1009-1 Control
+  esVisible: False
+
+Fila 72:
+  nombre: Revisión Control
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 16-09-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Control
+  esVisible: True
+
+Fila 73:
+  nombre: Preparacíon Certamen
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 23-09-2024
+  formato: pptx
+  carpeta: ALJ 1009-1 Certamen
+  esVisible: True
+
+Fila 74:
+  nombre: Act. Decimas Certamen
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 30-09-2024
+  formato: pptx
+  carpeta: ALJ 1009-1 Certamen
+  esVisible: False
+
+Fila 75:
+  nombre: Notas Certamen
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 07-10-2024
+  formato: xlsx
+  carpeta: ALJ 1009-1 Certamen
+  esVisible: False
+
+Fila 76:
+  nombre: Revisión Certamen
+  autor: Prof. José Ramírez
+  curso: Álgebra Lineal
+  fecha: 14-10-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Certamen
+  esVisible: True
+
+Fila 77:
+  nombre: Taller 1
+  autor: Prof. Taller Álgebra
+  curso: Álgebra Lineal
+  fecha: 21-10-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Talleres
+  esVisible: True
+
+Fila 78:
+  nombre: Taller 2
+  autor: Prof. Taller Álgebra
+  curso: Álgebra Lineal
+  fecha: 28-10-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Talleres
+  esVisible: True
+
+Fila 79:
+  nombre: Taller 3
+  autor: Prof. Taller Álgebra
+  curso: Álgebra Lineal
+  fecha: 04-11-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Talleres
+  esVisible: False
+
+Fila 80:
+  nombre: Taller 4
+  autor: Prof. Taller Álgebra
+  curso: Álgebra Lineal
+  fecha: 11-11-2024
+  formato: pdf
+  carpeta: ALJ 1009-1 Talleres
+  esVisible: False
+
+Fila 81:
+  nombre: Presentación Curso
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 30-07-2024
+  formato: ppt
+  carpeta: TER 1008-1 Ayudantía
+  esVisible: True
+
+Fila 82:
+  nombre: Energía Libre
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 06-08-2024
+  formato: pdf
+  carpeta: TER 1008-1 Ayudantía
+  esVisible: True
+
+Fila 83:
+  nombre: Material Repaso Certamen
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 13-08-2024
+  formato: pdf
+  carpeta: TER 1008-1 Ayudantía
+  esVisible: False
+
+Fila 84:
+  nombre: Transiciones de Fase
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 20-08-2024
+  formato: mp4
+  carpeta: TER 1008-1 Ayudantía
+  esVisible: False
+
+Fila 85:
+  nombre: Preparación Control
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 27-08-2024
+  formato: pptx
+  carpeta: TER 1008-1 Control
+  esVisible: False
+
+Fila 86:
+  nombre: Act. Decimas Control
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 03-09-2024
+  formato: pptx
+  carpeta: TER 1008-1 Control
+  esVisible: False
+
+Fila 87:
+  nombre: Notas Control
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 10-09-2024
+  formato: xlsx
+  carpeta: TER 1008-1 Control
+  esVisible: True
+
+Fila 88:
+  nombre: Revisión Control
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 17-09-2024
+  formato: pdf
+  carpeta: TER 1008-1 Control
+  esVisible: False
+
+Fila 89:
+  nombre: Preparacíon Certamen
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 24-09-2024
+  formato: pptx
+  carpeta: TER 1008-1 Certamen
+  esVisible: True
+
+Fila 90:
+  nombre: Act. Decimas Certamen
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 01-10-2024
+  formato: pptx
+  carpeta: TER 1008-1 Certamen
+  esVisible: True
+
+Fila 91:
+  nombre: Notas Certamen
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 08-10-2024
+  formato: xlsx
+  carpeta: TER 1008-1 Certamen
+  esVisible: True
+
+Fila 92:
+  nombre: Revisión Certamen
+  autor: Ing. Gabriela Torres
+  curso: Termodinámica
+  fecha: 15-10-2024
+  formato: pdf
+  carpeta: TER 1008-1 Certamen
+  esVisible: True
+
+Fila 93:
+  nombre: Taller 1
+  autor: Prof. Taller Termo
+  curso: Termodinámica
+  fecha: 22-10-2024
+  formato: pdf
+  carpeta: TER 1008-1 Talleres
+  esVisible: False
+
+Fila 94:
+  nombre: Taller 2
+  autor: Prof. Taller Termo
+  curso: Termodinámica
+  fecha: 29-10-2024
+  formato: pdf
+  carpeta: TER 1008-1 Talleres
+  esVisible: False
+
+Fila 95:
+  nombre: Taller 3
+  autor: Prof. Taller Termo
+  curso: Termodinámica
+  fecha: 05-11-2024
+  formato: pdf
+  carpeta: TER 1008-1 Talleres
+  esVisible: True
+
+Fila 96:
+  nombre: Taller 4
+  autor: Prof. Taller Termo
+  curso: Termodinámica
+  fecha: 12-11-2024
+  formato: pdf
+  carpeta: TER 1008-1 Talleres
+  esVisible: True
+
+Fila 97:
+  nombre: Presentación Curso
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 31-07-2024
+  formato: ppt
+  carpeta: ROB 1004-1 Ayudantía
+  esVisible: True
+
+Fila 98:
+  nombre: Control de Robots
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 07-08-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Ayudantía
+  esVisible: True
+
+Fila 99:
+  nombre: Material Repaso Certamen
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 14-08-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Ayudantía
+  esVisible: False
+
+Fila 100:
+  nombre: Robotica  Colaborativa 
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 21-08-2024
+  formato: mp4
+  carpeta: ROB 1004-1 Ayudantía
+  esVisible: False
+
+Fila 101:
+  nombre: Preparación Control
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 28-08-2024
+  formato: pptx
+  carpeta: ROB 1004-1 Control
+  esVisible: False
+
+Fila 102:
+  nombre: Act. Decimas Control
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 04-09-2024
+  formato: pptx
+  carpeta: ROB 1004-1 Control
+  esVisible: True
+
+Fila 103:
+  nombre: Notas Control
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 11-09-2024
+  formato: xlsx
+  carpeta: ROB 1004-1 Control
+  esVisible: False
+
+Fila 104:
+  nombre: Revisión Control
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 18-09-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Control
+  esVisible: False
+
+Fila 105:
+  nombre: Preparacíon Certamen
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 25-09-2024
+  formato: pptx
+  carpeta: ROB 1004-1 Certamen
+  esVisible: False
+
+Fila 106:
+  nombre: Act. Decimas Certamen
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 02-10-2024
+  formato: pptx
+  carpeta: ROB 1004-1 Certamen
+  esVisible: True
+
+Fila 107:
+  nombre: Notas Certamen
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 09-10-2024
+  formato: xlsx
+  carpeta: ROB 1004-1 Certamen
+  esVisible: True
+
+Fila 108:
+  nombre: Revisión Certamen
+  autor: Ing. Valentina Soto
+  curso: Robótica
+  fecha: 16-10-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Certamen
+  esVisible: False
+
+Fila 109:
+  nombre: Taller 1
+  autor: Prof. Taller Robótica
+  curso: Robótica
+  fecha: 23-10-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Talleres
+  esVisible: True
+
+Fila 110:
+  nombre: Taller 2
+  autor: Prof. Taller Robótica
+  curso: Robótica
+  fecha: 30-10-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Talleres
+  esVisible: True
+
+Fila 111:
+  nombre: Taller 3
+  autor: Prof. Taller Robótica
+  curso: Robótica
+  fecha: 06-11-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Talleres
+  esVisible: False
+
+Fila 112:
+  nombre: Taller 4
+  autor: Prof. Taller Robótica
+  curso: Robótica
+  fecha: 13-11-2024
+  formato: pdf
+  carpeta: ROB 1004-1 Talleres
+  esVisible: True
+
+Fila 113:
+  nombre: Presentación Curso
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 01-08-2024
+  formato: ppt
+  carpeta: EST 1007-1 Ayudantía
+  esVisible: True
+
+Fila 114:
+  nombre: Equilibrio de Particulas
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 08-08-2024
+  formato: pdf
+  carpeta: EST 1007-1 Ayudantía
+  esVisible: True
+
+Fila 115:
+  nombre: Material Repaso Certamen
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 15-08-2024
+  formato: pdf
+  carpeta: EST 1007-1 Ayudantía
+  esVisible: False
+
+Fila 116:
+  nombre: Centros de Gravedad
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 22-08-2024
+  formato: mp4
+  carpeta: EST 1007-1 Ayudantía
+  esVisible: True
+
+Fila 117:
+  nombre: Preparación Control
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 29-08-2024
+  formato: pptx
+  carpeta: EST 1007-1 Control
+  esVisible: True
+
+Fila 118:
+  nombre: Act. Decimas Control
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 05-09-2024
+  formato: pptx
+  carpeta: EST 1007-1 Control
+  esVisible: False
+
+Fila 119:
+  nombre: Notas Control
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 12-09-2024
+  formato: xlsx
+  carpeta: EST 1007-1 Control
+  esVisible: False
+
+Fila 120:
+  nombre: Revisión Control
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 19-09-2024
+  formato: pdf
+  carpeta: EST 1007-1 Control
+  esVisible: True
+
+Fila 121:
+  nombre: Preparacíon Certamen
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 26-09-2024
+  formato: pptx
+  carpeta: EST 1007-1 Certamen
+  esVisible: True
+
+Fila 122:
+  nombre: Act. Decimas Certamen
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 03-10-2024
+  formato: pptx
+  carpeta: EST 1007-1 Certamen
+  esVisible: True
+
+Fila 123:
+  nombre: Notas Certamen
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 10-10-2024
+  formato: xlsx
+  carpeta: EST 1007-1 Certamen
+  esVisible: False
+
+Fila 124:
+  nombre: Revisión Certamen
+  autor: Ing. Patricia Ortega
+  curso: Estática
+  fecha: 17-10-2024
+  formato: pdf
+  carpeta: EST 1007-1 Certamen
+  esVisible: False
+
+Fila 125:
+  nombre: Taller 1
+  autor: Prof. Taller Estática
+  curso: Estática
+  fecha: 24-10-2024
+  formato: pdf
+  carpeta: EST 1007-1 Talleres
+  esVisible: True
+
+Fila 126:
+  nombre: Taller 2
+  autor: Prof. Taller Estática
+  curso: Estática
+  fecha: 31-10-2024
+  formato: pdf
+  carpeta: EST 1007-1 Talleres
+  esVisible: True
+
+Fila 127:
+  nombre: Taller 3
+  autor: Prof. Taller Estática
+  curso: Estática
+  fecha: 07-11-2024
+  formato: pdf
+  carpeta: EST 1007-1 Talleres
+  esVisible: False
+
+Fila 128:
+  nombre: Taller 4
+  autor: Prof. Taller Estática
+  curso: Estática
+  fecha: 14-11-2024
+  formato: pdf
+  carpeta: EST 1007-1 Talleres
+  esVisible: False
+
+Fila 129:
+  nombre: Presentación Curso
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 02-08-2024
+  formato: ppt
+  carpeta: ELM 1006-1 Ayudantía
+  esVisible: False
+
+Fila 130:
+  nombre: Ley de Coulomb
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 09-08-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Ayudantía
+  esVisible: False
+
+Fila 131:
+  nombre: Material Repaso Certamen
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 16-08-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Ayudantía
+  esVisible: True
+
+Fila 132:
+  nombre: Magnetismo en la Materia
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 23-08-2024
+  formato: mp4
+  carpeta: ELM 1006-1 Ayudantía
+  esVisible: False
+
+Fila 133:
+  nombre: Preparación Control
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 30-08-2024
+  formato: pptx
+  carpeta: ELM 1006-1 Control
+  esVisible: True
+
+Fila 134:
+  nombre: Act. Decimas Control
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 06-09-2024
+  formato: pptx
+  carpeta: ELM 1006-1 Control
+  esVisible: True
+
+Fila 135:
+  nombre: Notas Control
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 13-09-2024
+  formato: xlsx
+  carpeta: ELM 1006-1 Control
+  esVisible: True
+
+Fila 136:
+  nombre: Revisión Control
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 20-09-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Control
+  esVisible: True
+
+Fila 137:
+  nombre: Preparacíon Certamen
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 27-09-2024
+  formato: pptx
+  carpeta: ELM 1006-1 Certamen
+  esVisible: False
+
+Fila 138:
+  nombre: Act. Decimas Certamen
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 04-10-2024
+  formato: pptx
+  carpeta: ELM 1006-1 Certamen
+  esVisible: False
+
+Fila 139:
+  nombre: Notas Certamen
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 11-10-2024
+  formato: xlsx
+  carpeta: ELM 1006-1 Certamen
+  esVisible: True
+
+Fila 140:
+  nombre: Revisión Certamen
+  autor: Dr. Andrés Silva
+  curso: Electromagnetismo
+  fecha: 18-10-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Certamen
+  esVisible: True
+
+Fila 141:
+  nombre: Taller 1
+  autor: Prof. Taller Electro
+  curso: Electromagnetismo
+  fecha: 25-10-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Talleres
+  esVisible: True
+
+Fila 142:
+  nombre: Taller 2
+  autor: Prof. Taller Electro
+  curso: Electromagnetismo
+  fecha: 01-11-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Talleres
+  esVisible: True
+
+Fila 143:
+  nombre: Taller 3
+  autor: Prof. Taller Electro
+  curso: Electromagnetismo
+  fecha: 08-11-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Talleres
+  esVisible: False
+
+Fila 144:
+  nombre: Taller 4
+  autor: Prof. Taller Electro
+  curso: Electromagnetismo
+  fecha: 15-11-2024
+  formato: pdf
+  carpeta: ELM 1006-1 Talleres
+  esVisible: False
+
+Fila 145:
+  nombre: Presentación Curso
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 03-08-2024
+  formato: ppt
+  carpeta: MEC 1010-1 Ayudantía
+  esVisible: False
+
+Fila 146:
+  nombre: Propiedades de los Fluidos
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 10-08-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Ayudantía
+  esVisible: True
+
+Fila 147:
+  nombre: Material Repaso Certamen
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 17-08-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Ayudantía
+  esVisible: False
+
+Fila 148:
+  nombre: Cavitación
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 24-08-2024
+  formato: mp4
+  carpeta: MEC 1010-1 Ayudantía
+  esVisible: False
+
+Fila 149:
+  nombre: Preparación Control
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 31-08-2024
+  formato: pptx
+  carpeta: MEC 1010-1 Control
+  esVisible: False
+
+Fila 150:
+  nombre: Act. Decimas Control
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 07-09-2024
+  formato: pptx
+  carpeta: MEC 1010-1 Control
+  esVisible: True
+
+Fila 151:
+  nombre: Notas Control
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 14-09-2024
+  formato: xlsx
+  carpeta: MEC 1010-1 Control
+  esVisible: True
+
+Fila 152:
+  nombre: Revisión Control
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 21-09-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Control
+  esVisible: False
+
+Fila 153:
+  nombre: Preparacíon Certamen
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 28-09-2024
+  formato: pptx
+  carpeta: MEC 1010-1 Certamen
+  esVisible: True
+
+Fila 154:
+  nombre: Act. Decimas Certamen
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 05-10-2024
+  formato: pptx
+  carpeta: MEC 1010-1 Certamen
+  esVisible: True
+
+Fila 155:
+  nombre: Notas Certamen
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 12-10-2024
+  formato: xlsx
+  carpeta: MEC 1010-1 Certamen
+  esVisible: False
+
+Fila 156:
+  nombre: Revisión Certamen
+  autor: Ing. Clara Fernández
+  curso: Mecánica de Fluidos
+  fecha: 19-10-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Certamen
+  esVisible: True
+
+Fila 157:
+  nombre: Taller 1
+  autor: Prof. Taller MecFluidos
+  curso: Mecánica de Fluidos
+  fecha: 26-10-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Talleres
+  esVisible: True
+
+Fila 158:
+  nombre: Taller 2
+  autor: Prof. Taller MecFluidos
+  curso: Mecánica de Fluidos
+  fecha: 02-11-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Talleres
+  esVisible: True
+
+Fila 159:
+  nombre: Taller 3
+  autor: Prof. Taller MecFluidos
+  curso: Mecánica de Fluidos
+  fecha: 09-11-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Talleres
+  esVisible: False
+
+Fila 160:
+  nombre: Taller 4
+  autor: Prof. Taller MecFluidos
+  curso: Mecánica de Fluidos
+  fecha: 16-11-2024
+  formato: pdf
+  carpeta: MEC 1010-1 Talleres
+  esVisible: True
+
+Fila 161:
+  nombre: Presentación Curso
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 04-08-2024
+  formato: ppt
+  carpeta: DIB 1005-1 Ayudantía
+  esVisible: True
+
+Fila 162:
+  nombre: Vistas Ortográficas
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 11-08-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Ayudantía
+  esVisible: False
+
+Fila 163:
+  nombre: Material Repaso Certamen
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 18-08-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Ayudantía
+  esVisible: False
+
+Fila 164:
+  nombre: Planificación del Proyecto
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 25-08-2024
+  formato: mp4
+  carpeta: DIB 1005-1 Ayudantía
+  esVisible: True
+
+Fila 165:
+  nombre: Preparación Control
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 01-09-2024
+  formato: pptx
+  carpeta: DIB 1005-1 Control
+  esVisible: True
+
+Fila 166:
+  nombre: Act. Decimas Control
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 08-09-2024
+  formato: pptx
+  carpeta: DIB 1005-1 Control
+  esVisible: True
+
+Fila 167:
+  nombre: Notas Control
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 15-09-2024
+  formato: xlsx
+  carpeta: DIB 1005-1 Control
+  esVisible: False
+
+Fila 168:
+  nombre: Revisión Control
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 22-09-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Control
+  esVisible: False
+
+Fila 169:
+  nombre: Preparacíon Certamen
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 29-09-2024
+  formato: pptx
+  carpeta: DIB 1005-1 Certamen
+  esVisible: True
+
+Fila 170:
+  nombre: Act. Decimas Certamen
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 06-10-2024
+  formato: pptx
+  carpeta: DIB 1005-1 Certamen
+  esVisible: True
+
+Fila 171:
+  nombre: Notas Certamen
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 13-10-2024
+  formato: xlsx
+  carpeta: DIB 1005-1 Certamen
+  esVisible: False
+
+Fila 172:
+  nombre: Revisión Certamen
+  autor: Prof. Roberto Fuentes
+  curso: Dibujo Técnico
+  fecha: 20-10-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Certamen
+  esVisible: False
+
+Fila 173:
+  nombre: Taller 1
+  autor: Prof. Taller DibujoTec
+  curso: Dibujo Técnico
+  fecha: 27-10-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Talleres
+  esVisible: False
+
+Fila 174:
+  nombre: Taller 2
+  autor: Prof. Taller DibujoTec
+  curso: Dibujo Técnico
+  fecha: 03-11-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Talleres
+  esVisible: False
+
+Fila 175:
+  nombre: Taller 3
+  autor: Prof. Taller DibujoTec
+  curso: Dibujo Técnico
+  fecha: 10-11-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Talleres
+  esVisible: True
+
+Fila 176:
+  nombre: Taller 4
+  autor: Prof. Taller DibujoTec
+  curso: Dibujo Técnico
+  fecha: 17-11-2024
+  formato: pdf
+  carpeta: DIB 1005-1 Talleres
+  esVisible: False
+
