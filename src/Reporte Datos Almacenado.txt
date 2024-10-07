@@ -1,0 +1,61 @@
+Dividimos El Reporte en Secciones Individuales Para cada Archivo
+
+Archivo: Cursos.csv
+- El archivo contiene 11 filas con 4 columnas: nombre, descripcion, profesor, numEstudiantes.
+- La cantidad de estudiantes por curso varía entre 0 y 92, siendo "Dibujo Técnico" el más numeroso y "Mecánica de Fluidos" el que tiene menos inscritos.
+
+**Ejemplo de fila**:
+- nombre: Matemática 1
+- descripcion: Curso de matemáticas avanzadas
+- profesor: Dr. Juan Pérez
+- numEstudiantes: 40
+
+Archivo: Estudiantes.csv
+- El archivo contiene 100 filas con 8 columnas: nombre, id, rut, email, contrasena, permisoEspecial, cursos, paralelo.
+- Cada estudiante está inscrito en varios cursos y ninguno tiene permisos especiales, ya que todos los permisos están en 'false'.
+
+**Ejemplo de fila**:
+- nombre: Juan Pérez
+- id: 12
+- rut: 21.345.678-9
+- email: juan.perez@estudiante.com
+- contrasena: Ju@nP3r3z!
+- permisoEspecial: False
+- cursos: Matemática 1, Física 2, Química, Robótica, Dibujo Técnico, Álgebra Lineal, Termodinámica
+- paralelo: 1
+
+Archivo: Profesores.csv
+- El archivo contiene 11 filas con 7 columnas: nombre, id, rut, email, contrasena, permisoEspecial, especialidad.
+- Hay 11 profesores enseñando diversos cursos con distintas especialidades.
+
+**Ejemplo de fila**:
+- nombre: Dr. Juan Pérez
+- id: 1
+- rut: 16.909.702
+- email: juanperez@profesor.com
+- contrasena: JuanP123!
+- permisoEspecial: True
+- especialidad: Matemáticas
+
+Archivo: Carpetas.csv
+- El archivo contiene 44 filas con 3 columnas: nombre, visibilidad, id.
+- Las carpetas están organizadas para contener diferentes recursos según su categoría, con sufijos como: ayudantia, control, certamen, taller.
+
+**Ejemplo de fila**:
+- nombre: MAT 1001-A Ayudantía
+- visibilidad: True
+- id: 10001
+
+Archivo: Recursos.csv
+- El archivo contiene 176 filas con 7 columnas: nombre, autor, curso, fecha, formato, carpeta, esVisible.
+- Los recursos disponibles incluyen los siguientes formatos: ppt, pdf, mp4, pptx, xlsx.
+- Los autores pueden variar dependiendo del creador del recurso.
+
+**Ejemplo de fila**:
+- nombre: Presentación Curso
+- autor: Dr. Juan Pérez
+- curso: Matemática 1
+- fecha: 25-07-2024
+- formato: ppt
+- carpeta: MAT 1001-A Ayudantía
+- esVisible: True
