@@ -38,7 +38,16 @@ public class Curso {
         setEstudiantes(estudiantes);
         setNumEstudiantes(numEstudiantes); 
     }
- // Constructor 3: Sin lista inicial de estudiantes
+    // Constructor 3: Sin carpetas de recursos y lista de estudiantes
+    public Curso(String nombre, String descripcion, Profesor profesor,  int numEstudiantes) {
+        setNombre(nombre);
+        setDescripcion(descripcion);
+        setProfesor(profesor);
+        setNumEstudiantes(numEstudiantes);
+        this.carpetas = carpetas != null ? carpetas : new ArrayList<>();
+        this.estudiantes = estudiantes != null ? estudiantes : new ArrayList<>();
+    }
+ // Constructor 4: Sin lista inicial de estudiantes
     public Curso(String nombre, int id, String descripcion, Profesor profesor) {
         setNombre(nombre);
         setId(id);
@@ -48,7 +57,7 @@ public class Curso {
         this.estudiantes = estudiantes != null ? estudiantes : new ArrayList<>();
         this.numEstudiantes = 0; // Inicialmente no hay estudiantes inscritos
     }
-    // Constructor 4: Sin profesor asignado
+    // Constructor 5: Sin profesor asignado
     public Curso(String nombre, int id, String descripcion) {
         setNombre(nombre);
         setId(id);
@@ -58,7 +67,7 @@ public class Curso {
         this.numEstudiantes = 0;
         this.profesor = null; // Profesor no asignado
     }
-    // Constructor 5: Solo datos basicos
+    // Constructor 6: Solo datos basicos
     public Curso(String nombre, int id) {
         setNombre(nombre);
         setId(id);
@@ -232,8 +241,11 @@ public class Curso {
         }
     }
     
-    public void agregarEstudiante(String nombre, String rut, String correo, String paralelo) {
+    public void agregarEstudiante(String nombre, String rut, String correo, String paralelo) throws excepcionCursoCompleto {
     	Random random = new Random();
+    	if (estudiantes.size() >= 50) {
+            throw new excepcionCursoCompleto("El curso ha alcanzado el número máximo de estudiantes inscritos.");
+        }
     	int idEstudiante = random.nextInt(999999);  // Genera un número entre 0 y 999999
     	Estudiante nuevoEstudiante = new Estudiante(nombre, idEstudiante, correo, paralelo);
         if (nuevoEstudiante != null && !estudiantes.contains(nuevoEstudiante)){
